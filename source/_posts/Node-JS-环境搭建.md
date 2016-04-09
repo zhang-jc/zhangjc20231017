@@ -85,4 +85,4 @@ date: 2015-11-25 16:45:45
 	Example app listening at http://:::3000
 然后在浏览器中打开 <http://10.176.30.167:3000/> 并查看输出结果。如果是在个人电脑上，在浏览器中打开 <http://localhost:3000/> 并查看数据结果。如果看到以下输出结果，则安装成功：
 
-![express hello world](http://www.zhangjc.com/uploads/20151125/nodejs1.png)
+![express hello world](/uploads/20151125/nodejs1.png)

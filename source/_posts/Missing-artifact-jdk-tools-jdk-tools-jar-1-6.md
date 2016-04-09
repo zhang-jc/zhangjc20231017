@@ -9,7 +9,7 @@ Eclipse maven工程 Missing artifact jdk.tools:jdk.tools:jar:1.6 可以用以下
 ### 下载安装JDK 1.6
 Oracle 官网下载JDK 1.6 的链接不太容易找到，可以在 [Java SE Site Map](http://www.oracle.com/technetwork/java/javase/sitemap-jsp-139155.html) 页面找到以下位置，点击即可看到 JDK 所有版本的列表：
 
-![java se site map](http://www.zhangjc.com/uploads/java-se-site-map.png)
+![java se site map](/uploads/java-se-site-map.png)
 
 ### 配置 maven 依赖
 

@@ -142,11 +142,11 @@ Java：
 ### 代码
 	<http://example.com/>
 	[链接文字](http://example.com/ "标题文字")
-	![图片文字](http://www.zhangjc.com/uploads/avatar.jpg "图片文字")
+	![图片文字](/uploads/avatar.jpg "图片文字")
 ### 效果
 <http://example.com/>  
 [链接文字](http://www.ituring.com.cn "标题文字")
-![图片文字](http://www.zhangjc.com/uploads/avatar.jpg "图片文字")
+![图片文字](/uploads/avatar.jpg "图片文字")
 
 ### 说明
 - 直接显示链接地址，则用 <> 包围链接即可。
