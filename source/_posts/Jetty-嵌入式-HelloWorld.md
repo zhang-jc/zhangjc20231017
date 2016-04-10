@@ -18,9 +18,9 @@ Jetty 被分解很多 jar 包和依赖包，通过选择 jar 包的最小集合�
 
 像下面这样使用 curl 命令：
 
-> > mkdir Demo  
-> > cd Demo  
-> > curl -o jetty-all-uber.jar http://central.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar
+> \> mkdir Demo  
+> \> cd Demo  
+> \> curl -o jetty-all-uber.jar http://central.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar
 
 ### HelloWorld
 
@@ -58,13 +58,13 @@ Jetty 官方文档中的 [嵌入 Jetty](http://www.eclipse.org/jetty/documentati
 
 下面的命令编译 HelloWorld 类：
 
-> > mkdir classes
-> > javac -d classes -cp jetty-all-uber.jar HelloWorld.java
+> \> mkdir classes
+> \> javac -d classes -cp jetty-all-uber.jar HelloWorld.java
 
 ### 运行处理器和服务器
 
 下面的命令运行 HelloWorld 实例：
 
-> > java -cp classes:jetty-all-uber.jar org.eclipse.jetty.embedded.HelloWorld
+> \> java -cp classes:jetty-all-uber.jar org.eclipse.jetty.embedded.HelloWorld
 
 在浏览器地址栏输入：[http://localhost:8080](http://localhost:8080) 查看 HelloWorld 页面。
