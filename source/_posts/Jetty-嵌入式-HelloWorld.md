@@ -1,5 +1,5 @@
 title: Jetty 嵌入式 HelloWorld
-tags: Jetty
+tags: Jetty 嵌入式
 categories:
   - 开发工具
   - Web Server
