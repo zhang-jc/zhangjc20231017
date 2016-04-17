@@ -1,5 +1,6 @@
 title: 'timed out waiting for input: auto-logout'
-tags: Linux
+tags:
+  - Linux
 categories:
   - 操作系统
   - Linux

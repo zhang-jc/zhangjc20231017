@@ -1,5 +1,7 @@
 title: dos命令
-tags: dos cmd
+tags:
+  - dos
+  - cmd
 categories:
   - 操作系统
   - DOS

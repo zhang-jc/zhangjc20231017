@@ -1,5 +1,6 @@
 title: Jenkins REST API
-tags: Jenkins
+tags:
+  - Jenkins
 categories:
   - 开发工具
   - Jenkins

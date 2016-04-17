@@ -1,5 +1,6 @@
 title: react native windows 系统本地图片不能显示问题
-tags: react-native
+tags:
+  - react native
 categories:
   - 语言
   - react native

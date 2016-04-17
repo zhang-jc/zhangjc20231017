@@ -1,5 +1,8 @@
 title: mongoose安装
-tags: nodejs mongoose MongoDB
+tags:
+  - nodejs
+  - mongoose
+  - MongoDB
 categories:
   - 开发
   - 环境搭建

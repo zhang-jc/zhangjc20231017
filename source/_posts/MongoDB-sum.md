@@ -1,9 +1,10 @@
 title: MongoDB中sum的方法
 date: 2015-11-15 16:01:43
-tags: MongoDB
+tags:
+  - MongoDB
 categories:
-- 数据库
-- MongoDB
+  - 数据库
+  - MongoDB
 ---
 MongoDB中求和的方法有以下两种：
 ### 聚合管道（Aggregation Pipelines）

@@ -1,10 +1,13 @@
 title: Markdown基本语法
 date: 2015-11-15 11:17:04
 categories:
-- 语言
-- Markdown
-tags: Markdown
+  - 语言
+  - Markdown
+tags:
+  - Markdown
+
 ---
+
 # Markdown基本语法
 ---
 ## 1. 基本语法

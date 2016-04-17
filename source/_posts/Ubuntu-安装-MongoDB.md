@@ -1,5 +1,7 @@
 title: Ubuntu 15.10 安装 MongoDB
-tags: MongoDB Ubuntu
+tags:
+  - MongoDB
+  - Ubuntu
 categories:
   - 数据库
   - MongoDB

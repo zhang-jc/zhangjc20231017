@@ -1,9 +1,11 @@
 title: addShutdownHook
 date: 2015-11-16 22:19:28
-tags: Java addShutdownHook
+tags:
+  - Java
+  - addShutdownHook
 categories:
-- 语言
-- Java
+  - 语言
+  - Java
 ---
 ### 方法介绍
 **addShutdownHook** 是 Runtime 类中的一个方法，方法声明：

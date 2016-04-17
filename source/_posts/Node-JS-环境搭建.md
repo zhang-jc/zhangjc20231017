@@ -1,5 +1,6 @@
 title: Node JS 安装
-tags: nodejs
+tags:
+  - nodejs
 categories:
   - 开发
   - 环境搭建

@@ -1,5 +1,7 @@
 title: Ubuntu 常见安装源更新问题
-tags: Ubuntu 操作系统
+tags:
+  - Ubuntu
+  - 操作系统
 categories:
   - 操作系统
   - Ubuntu
