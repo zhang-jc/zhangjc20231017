@@ -1,4 +1,4 @@
-title: mongoDB查询和投影操作符
+title: MongoDB 查询和投影操作符
 tags: MongoDB
 categories:
 - 数据库
@@ -11,3 +11,6 @@ categories:
 $eq 匹配跟指定值相等的值  
 $gt 匹配比指定值大的值  
 $gte 
+
+
+(https://docs.mongodb.org/manual/reference/operator/query/)
