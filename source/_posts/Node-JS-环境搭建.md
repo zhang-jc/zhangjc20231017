@@ -1,6 +1,6 @@
 title: Node JS 安装
 tags:
-  - nodejs
+  - Node.js
 categories:
   - 开发
   - 环境搭建
@@ -38,7 +38,7 @@ date: 2015-11-25 16:45:45
 	[root@vm-10-176-30-167 DataInspector]# npm init
 此命令将要求你输入几个参数，例如此应用的名称和版本。 应用名称不能包含大写字母，如果默认应用名称包含大写字母会提示错误，并要求重新录入：
 
-	name: (DataInspector) 
+	name: (DataInspector)
 	Sorry, name can no longer contain capital letters.
 	name: (DataInspector) data_inspector
 
@@ -74,7 +74,7 @@ date: 2015-11-25 16:45:45
 	var server = app.listen(3000, function () {
 	  	var host = server.address().address;
 	  	var port = server.address().port;
-	
+
 	  	console.log('Example app listening at http://%s:%s', host, port);
 	});
 上面的代码启动一个服务并监听从 3000 端口进入的所有连接请求。他将对所有 (/) URL 或 ***路由*** 返回 “Hello World!” 字符串。对于其他所有路径全部返回 **404 Not Found**。

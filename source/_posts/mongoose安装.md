@@ -1,6 +1,6 @@
 title: mongoose安装
 tags:
-  - nodejs
+  - Node.js
   - mongoose
   - MongoDB
 categories:

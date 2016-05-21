@@ -1,12 +1,12 @@
 title: 'Missing artifact jdk.tools:jdk.tools:jar:1.6'
 date: 2015-11-17 14:06:14
 tags:
-  - maven
-  - eclipse
-  - jdk
-categories: 
+  - Maven
+  - Eclipse
+  - JDK
+categories:
   - 开发工具
-  - maven
+  - Maven
 ---
 Eclipse maven工程 Missing artifact jdk.tools:jdk.tools:jar:1.6 可以用以下方法解决。思路是配置 maven 依赖本地的 tools.jar ，需要本地安装有 jdk 1.6 。
 ### 下载安装JDK 1.6

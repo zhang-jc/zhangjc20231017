@@ -3,10 +3,10 @@ tags:
   - 操作系统
   - Linux
   - service
-  - Nodejs
+  - Node.js
 categories:
   - 语言
-  - Nodejs
+  - Node.js
 date: 2016-05-16 00:12:51
 ---
 

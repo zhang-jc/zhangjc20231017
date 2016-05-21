@@ -1,11 +1,11 @@
 title: hive 内置字符串（String）函数
 tags:
-  - hive
+  - Hive
   - SQL
   - 内置函数
 categories:
   - 大数据
-  - hive
+  - Hive
 date: 2016-05-15 08:55:09
 ---
 
