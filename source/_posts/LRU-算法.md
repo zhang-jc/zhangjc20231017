@@ -8,6 +8,8 @@ categories:
 date: 2016-06-03 02:39:14
 ---
 
+转载：<http://flychao88.iteye.com/blog/1977653>
+
 ### LRU
 #### 原理
 
