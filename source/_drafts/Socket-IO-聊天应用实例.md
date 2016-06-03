@@ -24,3 +24,14 @@ categories:
 第一个目标是，设置一个提供提供表单和消息列表的简单 HTML 网页。我们将使用 Node.JS Web 框架 express 来达到目的。确保已经[安装了 Node.JS](https://nodejs.org/en/)。
 
 首先，创建清单文件 package.json 来描述我们的项目。建议你将这个文件放在专门的一个空目录下（如，chat-example）。
+
+    {
+      "name": "socket-chat-example",
+      "version": "0.0.1",
+      "description": "my first socket.io app",
+      "dependencies": {}
+    }
+
+现在，为了方便迁移需要的依赖，我们使用 npm install --save:
+
+    npm install --save express@4.10.2
