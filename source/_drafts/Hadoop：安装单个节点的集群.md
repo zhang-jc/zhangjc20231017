@@ -83,3 +83,18 @@ etc/hadoop/core-site.xml:
     </configuration>
 
 etc/hadoop/hdfs-site.xml:
+
+    <configuration>
+      <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+      </property>
+    </configuration>
+
+#### 设置免密码 ssh
+
+检查是否可以无密码 ssh 到本地主机：
+
+    $ ssh localhost
+
+如果不能无密码 ssh 本地主机，则执行以下命令：
