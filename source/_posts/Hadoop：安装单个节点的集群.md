@@ -1,11 +1,13 @@
 title: Hadoop：安装单个节点的集群
 tags:
-- 大数据
-- Hadoop
+  - 大数据
+  - Hadoop
 categories:
-- 大数据
-- Hadoop
+  - 大数据
+  - Hadoop
+date: 2016-06-24 22:59:01
 ---
+
 ### 目的
 
 本文档描述如何安装并配置一个单节点 Hadoop，因此可以使用 Hadoop MapReduce 和分布式文件系统（HDFS）快速执行简单的操作。
@@ -109,3 +111,82 @@ etc/hadoop/hdfs-site.xml:
 #### 执行
 
 下面的操作指南会执行一个本地 MapReduce 任务。如果想在 YARN 上执行一个任务，参见[单节点上的 YARN](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html#YARN_on_Single_Node)。
+
+1. 格式化文件系统：
+
+    $ bin/hdfs namenode -format
+
+2. 启动 NameNode 和 DataNode 后台进程：
+
+    $ sbin/start-dfs.sh
+
+Hadoop 后台进程日志写入到 $HADOOP_LOG_DIR 目录（默认是 $HADOOP_HOME/logs）。
+
+3. 浏览 NameNode 的 Web 界面；默认是：
+
+- NameNode - http://localhost:50070/
+
+4. 创建执行 MapReduce 任务需要的 HDFS 目录：
+
+    $ bin/hdfs dfs -mkdir /user
+    $ bin/hdfs dfs -mkdir /user/<username>
+
+5. 拷贝输入文件到分布式文件系统：
+
+    $ bin/hdfs dfs -put etc/hadoop input
+
+6. 运行提供的例子：
+
+    $ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar grep input output 'dfs[a-z.]+'
+
+7. 检查输出文件：从分布式文件系统拷贝输出文件到本地文件系统并检查：
+
+    $ bin/hdfs dfs -get output output
+    $ cat output/*
+
+或者在分布式文件系统上查看输出文件：
+
+    $ bin/hdfs dfs -cat output/*
+
+8. 用下面的命令停止后台进程：
+
+    $ sbin/stop-dfs.sh
+
+#### 单个节点上的 YARN
+
+设置几个参数就可以在伪分布式模式下在 YARN 上运行 MapReduce 任务，并且运行另外的 ResourceManager 和 NodeManager 后台进程。
+
+下面的操作指南假设上面的 1.～4. 步已经执行。
+
+1. 配置参数如下：
+
+etc/hadoop/mapred-site.xml：
+
+    <configuration>
+      <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+      </property>
+    </configuration>
+
+etc/hadoop/yarn-site.xml：
+
+    <configuration>
+      <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+      </property>
+    </configuration>
+
+2. 启动 ResourceManager 和 NodeManager 后台进程：
+
+    $ sbin/start-yarn.sh
+
+3. 浏览 ResourceManager 的 Web 界面；默认是：
+
+- ResourceManager - http://localhost:8088/
+
+4. 运行一个 MapReduce 任务。
+5. 用以下命令停止后台进程：
+
+    $ sbin/stop-yarn.sh
