@@ -98,3 +98,14 @@ etc/hadoop/hdfs-site.xml:
     $ ssh localhost
 
 如果不能无密码 ssh 本地主机，则执行以下命令：
+
+> 官方手册中是用 dsa，但实际操作在 Ubuntu16.04 上没能通过。具体原因有待学习。
+> 使用 rsa 通过，下面也以 rsa 为例。
+
+    $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+    $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    $ chmod 0600 ~/.ssh/authorized_keys
+
+#### 执行
+
+下面的操作指南会执行一个本地 MapReduce 任务。如果想在 YARN 上执行一个任务，参见[单节点上的 YARN](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html#YARN_on_Single_Node)。
