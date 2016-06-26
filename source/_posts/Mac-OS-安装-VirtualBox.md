@@ -1,6 +1,6 @@
-title: Mac OS X 安装 VirtualBox
+title: Mac OS 安装 VirtualBox
 tags:
-  - Mac OS X
+  - Mac OS
   - VirtualBox
   - 虚拟机
 categories:
