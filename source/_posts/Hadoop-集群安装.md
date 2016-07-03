@@ -10,7 +10,7 @@ date: 2016-07-02 22:33:29
 
 ### 目旳
 
-这篇文档描述如何安装并配置规模从几台节点到上千台节点的集群。为了练习 Hadoop，可以先在单台机器上安装（参见[Hadoop：安装单个节点的集群](http://zhang-jc.github.io/2016/06/24/Hadoop%EF%BC%9A%E5%AE%89%E8%A3%85%E5%8D%95%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E9%9B%86%E7%BE%A4/)。
+这篇文档描述如何安装并配置规模从几台节点到上千台节点的集群。为了练习 Hadoop，可以先在单台机器上安装（参见[Hadoop：安装单个节点的集群](http://zhang-jc.github.io/2016/06/24/Hadoop%EF%BC%9A%E5%AE%89%E8%A3%85%E5%8D%95%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E9%9B%86%E7%BE%A4/))。
 
 这篇文档不含盖像[安全](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SecureMode.html)或高可用等高级主题。
 
