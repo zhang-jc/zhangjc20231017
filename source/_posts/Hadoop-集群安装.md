@@ -170,7 +170,7 @@ HDFS 守护进程是 NameNode、SecondaryNameNode 和 DataNode。YARN 守护进�
 | mapreduce.reduce.java.opts | -Xmx2560M | Reduce 任务子虚拟机较大的堆大小。 |
 | mapreduce.task.io.sort.mb | 512 | 当为了提高数据排序性能设置的较高内存限制。 |
 | mapreduce.task.io.sort.factor | 100 | 在排序文件时，多个流合并一次。 |
-| mapreduce.reduce.shuffle.parallelcopies ｜ 50 ｜ 当 Reduce 从大量 Map 任务获取输出时更高数量的并行拷贝。 |
+| mapreduce.reduce.shuffle.parallelcopies | 50 | 当 Reduce 从大量 Map 任务获取输出时更高数量的并行拷贝。 |
 
 - 设置 MapReduce JobHistory Server：
 
