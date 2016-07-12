@@ -1,10 +1,12 @@
 title: Emacs 禁用自动备份及修改备份目录
 tags:
-- Emacs
+  - Emacs
 categories:
-- 开发工具
-- Emacs
+  - 开发工具
+  - Emacs
+date: 2016-07-12 15:17:48
 ---
+
 
 ### Emacs 禁用自动备份
 
