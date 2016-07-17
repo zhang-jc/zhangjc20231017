@@ -182,8 +182,8 @@ date: 2016-07-12 22:46:10
 
 在检查 NameNode 的 Web 界面时，发现 live node 数量为 0，检查及解决步骤如下：
 
-- 检查了 Slave 主机上的 DataNode 都已经启动；
-- 检查 192.168.1.134 Slave 主机上 DataNode 启动 log，发现下面的警告信息，说明 DataNode 节点无法连接 NameNode 的 9000 端口：
+1. 检查了 Slave 主机上的 DataNode 都已经启动；
+2. 检查 192.168.1.134 Slave 主机上 DataNode 启动 log，发现下面的警告信息，说明 DataNode 节点无法连接 NameNode 的 9000 端口：
 
     2016-07-10 22:41:17,213 WARN org.apache.hadoop.hdfs.server.datanode.DataNode: Problem connecting to server: master-hadoop/192.168.1.133:9000
     2016-07-10 22:41:23,216 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: master-hadoop/192.168.1.133:9000. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
@@ -197,23 +197,23 @@ date: 2016-07-12 22:46:10
     2016-07-10 22:41:31,229 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: master-hadoop/192.168.1.133:9000. Already tried 8 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
     2016-07-10 22:41:32,231 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: master-hadoop/192.168.1.133:9000. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
 
-- 检查 NameNode 端口 9000 情况，信息如下所示，说明 NameNode 进程只监听了 127.0.1.1:9000 端口，除了自己之外其他主机都不能连接：
+3. 检查 NameNode 端口 9000 情况，信息如下所示，说明 NameNode 进程只监听了 127.0.1.1:9000 端口，除了自己之外其他主机都不能连接：
 
-    # netstat -apn|grep 9000
+    $ netstat -apn|grep 9000  
     tcp        0      0 127.0.1.1:9000          0.0.0.0:*               LISTEN      4964/java
 
-- 检查 /etc/hosts 配置文件，发现有如下配置：
+4. 检查 /etc/hosts 配置文件，发现有如下配置：
 
     127.0.1.1 master-hadoop
 
-- 从 /etc/hosts 中删除上面一条配置，重启 NameNode，再次检查 NameNode 端口 9000 情况：
+5. 从 /etc/hosts 中删除上面一条配置，重启 NameNode，再次检查 NameNode 端口 9000 情况：
 
-    # netstat -apn|grep 9000
-    tcp        0      0 192.168.1.133:9000      0.0.0.0:*               LISTEN      1772/java       
-    tcp        0      0 192.168.1.133:9000      192.168.1.139:56002     ESTABLISHED 1772/java       
+    $ netstat -apn|grep 9000  
+    tcp        0      0 192.168.1.133:9000      0.0.0.0:*               LISTEN      1772/java        
+    tcp        0      0 192.168.1.133:9000      192.168.1.139:56002     ESTABLISHED 1772/java  
     tcp        0      0 192.168.1.133:9000      192.168.1.134:35168     ESTABLISHED 1772/java
 
-- 再次检查 NameNode 的 Web 界面发现 live node 数量为 2。
+6. 再次检查 NameNode 的 Web 界面发现 live node 数量为 2。
 
 ### 运行 WordCount 示例程序
 
