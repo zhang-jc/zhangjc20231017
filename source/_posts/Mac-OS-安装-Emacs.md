@@ -1,11 +1,13 @@
 title: Mac OS 安装 Emacs
 tags:
-- Mac OS
-- Emacs
+  - Mac OS
+  - Emacs
 categories:
-- 开发工具
-- Emacs
+  - 开发工具
+  - Emacs
+date: 2016-07-17 11:55:37
 ---
+
 
 在 Mac OS X 上可以使用 [Homebrew](http://brew.sh/) 安装 Emacs：
 
