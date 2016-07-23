@@ -84,3 +84,7 @@ date: 2016-07-23 22:30:14
 
     # src/lua -v
     Lua 5.3.3  Copyright (C) 1994-2016 Lua.org, PUC-Rio
+
+#### 编译安装
+
+    # make linux install
