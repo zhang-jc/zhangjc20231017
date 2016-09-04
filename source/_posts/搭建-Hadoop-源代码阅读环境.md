@@ -32,6 +32,16 @@ date: 2016-08-29 02:11:42
 
 > 这个过程时间比较久，最好有内部的 Nexus 服务器，不然可能会不够顺畅。
 
+### Hadoop 2.7.3 源码环境
+
+下载地址：<http://hadoop.apache.org/releases.html>。下载 2.7.3 源代码包到本地。使用以下命令解压：
+
+    $ tar xzvf hadoop-2.7.3-src.tar.gz
+
+> 解压目录下的 hadoop-2.7.3-src/BUILDING.txt 文件提供了很多信息。
+
+源码构建方式同上。
+
 ### Eclipse 中的操作
 
 #### Common
@@ -102,3 +112,23 @@ date: 2016-08-29 02:11:42
     [ERROR] Failed to execute goal org.apache.hadoop:hadoop-maven-plugins:3.0.0-SNAPSHOT:protoc (compile-protoc) on project hadoop-common: org.apache.maven.plugin.MojoExecutionException: protoc version is 'libprotoc 3.0.0', expected version is '2.5.0' -> [Help 1]
 
 安装 protoc2.5.0 版本后重新执行成功。
+
+#### hadoop-common 编译错误：Type AvroRecord cannot be resolved to a type
+
+- 下载 [avro-tools](http://mirrors.cnnic.cn/apache/avro/avro-1.7.7/java/avro-tools-1.7.7.jar) 最新版。
+- 进入源码目录 hadoop-2.7.3-src/hadoop-common-project/hadoop-common/src/test/avro，执行以下命令：
+
+    $ java -jar <所在目录>/avro-tools-1.8.1.jar compile schema avroRecord.avsc ../java/
+
+其中 avsc 文件是 avro 的模式文件，上面命令是要通过模式文件生成相应的 .java 文件。
+- 右键单击 eclipse 中的 hadoop-common 项目，然后 refresh。
+
+> 注意，avro-tools 不要下载最新版，要下载 1.7.7 版本；最新 1.8.1 版本测试失败。
+
+#### hadoop-common 编译错误：Type EchoRequestProto cannot be resolved
+
+- 进入源码目录 hadoop-2.7.3-src/hadoop-common-project/hadoop-common/src/test/proto，执行以下命令：
+
+    $ protoc --java_out=../java *.proto
+
+- 右键单击 eclipse 中的 hadoop-common，然后 refresh。
