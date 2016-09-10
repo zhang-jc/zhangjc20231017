@@ -83,6 +83,12 @@ Hadoop Eclipse 插件项目 Github 地址：<https://github.com/winghc/hadoop2x-
 
 在 WordCount.java 代码中点击右键，在弹出的菜单中选中 Run As -> Run On Hadoop。在 Console 中会打印程序执行信息。最后执行结果如下图：![WordCount Result](/uploads/20160910/word-count-result.png)
 
+#### Debug MapReduce 作业
+
+在 WordCount.java 中设置断点，然后点击右键，在弹出的菜单中选择 Debug As -> Debug Configurations... 弹出 Debug 配置窗口，选中 Java Application -> WordCount（WordCount 是刚才配置的运行环境），如下图：![Debug Configuration](/uploads/20160910/debug-configuration.png)
+
+点击 Debug 按钮就可以对 MapReduce 进行调试了，调试界面如下图：![Debug View](/uploads/20160910/debug-view.png)
+
 ### 错误
 #### Map/Reduce Locations 错误
 
