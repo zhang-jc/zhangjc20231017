@@ -6,42 +6,41 @@ categories:
   - Shell
 date: 2016-09-11 19:18:58
 ---
-
 Bash Shell 可以进行变量的条件替换，条件放在 {} 中，只有条件发生时才进行替换：
 
-1. ${v1:-$v2}
+- ${v1:\-$v2}
 
 当变量 v1 未定义或者值为空时，返回 v2 的值，否则返回 v1 的值。
 
-2. ${v1:=$v2}
+- ${v1:=$v2}
 
 若变量 v1 未定义或者值为空时，在返回 v2 的值的同时将 v2 的值给 v1。
 
-3. ${v1:?message}
+- ${v1:?message}
 
 若变量已赋值的话，正常替换。否则将消息message送到标准错误输出(若此替换出现在 Shell 程序中，那么该程序将终止运行)。
 
-4. ${v1:+$v2}
+- ${v1:+$v2}
 
 若变量已赋值的话，其值才用 v2 的值替换，否则不进行任何替换。
 
-5. ${v1:offset}、${v1:offset:length}
+- ${v1:offset}、${v1:offset:length}
 
 从变量中提取子串，这里 offset 和 length 可以是算术表达式。
 
-6. ${#v1}
+- ${&#35;v1}
 
 变量的字符个数 (变量的字符个数，并不是变量个数）。
 
-7. ${v1#pattern}、${v1##pattern}
+- ${v1&#35;pattern}、${v1&#35;&#35;pattern}
 
-去掉 v1 中与 pattern 相匹配的部分，条件是 v1 的开头与 pattern 相匹配。# 与 ## 的区别在于一个是最短匹配模式，一个是最长匹配模式。
+去掉 v1 中与 pattern 相匹配的部分，条件是 v1 的开头与 pattern 相匹配。&#35; 与 &#35;&#35; 的区别在于一个是最短匹配模式，一个是最长匹配模式。
 
-8. ${v1％pattern}、${v1％％pattern}
+- ${v1％pattern}、${v1％％pattern}
 
-于 7 类似，只是 从v1 的尾部与 pattern 相匹配，％ 与 ％％ 的区别与 # 与 ## 一样。
+于 7 类似，只是 从v1 的尾部与 pattern 相匹配，％ 与 ％％ 的区别与 &#35; 与 &#35;&#35; 一样。
 
-9. ${v1/pattern/string}、${v1//pattern/string}
+- ${v1/pattern/string}、${v1//pattern/string}
 
 进行变量内容的替换，把与 pattern 匹配的部分替换为 string 的内容，/ 与 // 的区别与上同。
 
