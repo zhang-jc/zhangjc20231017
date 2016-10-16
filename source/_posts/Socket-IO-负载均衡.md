@@ -15,9 +15,12 @@ date: 2016-10-16 18:35:34
 
 ### Nginx 配置
 
+为了负载均衡时连接保证始终连到一个节点上，使用 Nginx 的 ip_hash 实现 session sticky，让客户端始终连接到集群内一台节点上。
+
 在 Nginx 的 conf.d 目录下创建配置文件 socket_io.conf，内容如下：
 
     upstream nodejs_websocket {
+      ip_hash;
       server 192.168.1.100:3000;
       server 192.168.1.101:3000;
     }
@@ -41,3 +44,5 @@ date: 2016-10-16 18:35:34
         proxy_set_header Connection "upgrade";
       }
     }
+
+由于 Nginx 的反向代理机制和 Socket.IO 的自动重连机制，上述架构还具备高可用的特性，即当某个节点宕机时，原先连接到该节点上的客户端会自动重连至其它节点上。
