@@ -10,6 +10,8 @@ date: 2016-06-20 23:38:53
 
 这个过程使用二进制打包文件（.tar.gz）为 64 位 Linux 安装 Java 开发包（JDK）。
 
+<!-- more -->
+
 本教程使用文件：jdk-8uversion-linux-x64.tar.gz
 
 1. 下载文件

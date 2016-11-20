@@ -7,6 +7,9 @@ categories:
   - MongoDB
 ---
 MongoDB中求和的方法有以下两种：
+
+<!-- more -->
+
 ### 聚合管道（Aggregation Pipelines）
 以下是MongoDB官网的示例，很清楚。注意，用来统计的 field 的数据类型得是数值类型，不能是字符串，否则统计结果为 0。
 

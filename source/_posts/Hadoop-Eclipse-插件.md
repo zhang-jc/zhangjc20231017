@@ -15,6 +15,8 @@ date: 2016-09-10 20:13:02
 - Hadoop 2.7.3：安装路径 /Users/ling/frin/work/hadoop/hadoop-2.7.3
 - Eclipse Mars.2 Release (4.5.2)：安装路径 /Users/ling/frin/apps/Eclipse.app/Contents/Eclipse。
 
+<!-- more -->
+
 ### 安装 Hadoop
 
 按照官方文档 [Hadoop: Setting up a Single Node Cluster.](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/SingleCluster.html) 安装并配置伪分布式模式，并启动 hdfs。

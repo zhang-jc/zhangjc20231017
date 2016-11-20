@@ -12,6 +12,8 @@ date: 2015-11-24 13:12:59
 	url=http://${ip}:${port}/job/${projectName}/buildWithParameters?args=${argsValue}
 	curl -X POST ${url} --user ${userName}:${password}
 
+<!-- more -->
+
 url  --  完整的 REST API 请求地址，包含请求参数  
 ip  --  Jenkins Master 主机的ip地址（如果有域名可以使用域名）  
 port  --  Jenkins 服务监听端口  

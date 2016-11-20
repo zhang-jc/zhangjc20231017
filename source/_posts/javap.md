@@ -10,6 +10,8 @@ date: 2016-10-16 00:28:10
 
 反汇编一个或多个 class 文件。
 
+<!-- more -->
+
 ### 摘要
 
 **javap** [*options*] *classfile...*

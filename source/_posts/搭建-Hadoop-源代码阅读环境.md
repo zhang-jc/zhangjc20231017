@@ -17,6 +17,8 @@ date: 2016-08-29 02:11:42
 - git version 2.7.4 (Apple Git-66)
 - Apache Maven 3.3.9
 
+<!-- more -->
+
 ### 下载源代码
 
 从 Git 上下载最新源代码：
@@ -118,7 +120,7 @@ date: 2016-08-29 02:11:42
 - 下载 [avro-tools](http://mirrors.cnnic.cn/apache/avro/avro-1.7.7/java/avro-tools-1.7.7.jar) 最新版。
 - 进入源码目录 hadoop-2.7.3-src/hadoop-common-project/hadoop-common/src/test/avro，执行以下命令：
 
-    $ java -jar <所在目录>/avro-tools-1.8.1.jar compile schema avroRecord.avsc ../java/
+    $ java -jar <所在目录>/avro-tools-1.7.7.jar compile schema avroRecord.avsc ../java/
 
 其中 avsc 文件是 avro 的模式文件，上面命令是要通过模式文件生成相应的 .java 文件。
 - 右键单击 eclipse 中的 hadoop-common 项目，然后 refresh。

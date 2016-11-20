@@ -14,6 +14,8 @@ date: 2015-12-07 09:51:59
 
 	$ npm install mongoose
 
+<!-- more -->
+
 ### gyp ERR! build error
 如果安装过程中遇到以下错误，请尝试下面的解决方法：
 

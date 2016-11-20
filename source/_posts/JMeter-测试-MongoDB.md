@@ -16,6 +16,8 @@ date: 2016-04-17 22:37:11
 
 **Apache JMeter** 是一个 100% 纯 Java 应用程序，设计来做“客户端/服务器”软件（例如 [Web 应用程序](http://jmeter.apache.org/usermanual/build-web-test-plan.html)）。它可以用来测试静态和动态资源的性能，例如静态文件、Java Servlets、ASP.NET、PHP、CGI 脚本、Java 对象、[数据库](http://jmeter.apache.org/usermanual/build-db-test-plan.html)、[FTP 服务器](http://jmeter.apache.org/usermanual/build-ftp-test-plan.html)，还有更多。JMeter 可以给服务器、网络或对象模拟重负载来测试它的强度或者分析不同负载类型下的综合性能。
 
+<!-- more -->
+
 此外，通过创建[断言](http://jmeter.apache.org/usermanual/test_plan.html#assertions)脚本验证应用程序是否返回期望的结果，JMeter可以帮助回归测试你的应用程序。为了最大的灵活性，JMeter 允许用正则表达式创建断言。
 
 但是请注意，JMeter 不是一个浏览器，它在协议层运行。

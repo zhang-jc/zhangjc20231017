@@ -12,6 +12,8 @@ date: 2016-05-16 00:12:51
 
 Linux 的 service 命令用于对系统服务进行管理，比如启动（start）、停止（stop）、重启（restart）、查看状态（status）等。service 命令本身是一个 shell 脚本，它在 /etc/init.d/ 目录查找指定的服务脚本，然后调用该服务脚本来完成任务。
 
+<!-- more -->
+
 下面以基于 Nodejs 开发的名称为 data-inspector 的应用为例，说明 Linux service 的配置。
 
 第一步：在 /frin/DataInspector 下创建指向 node 命令的软链接 data-inspector，执行 ll 命令查看该文件的信息如下：

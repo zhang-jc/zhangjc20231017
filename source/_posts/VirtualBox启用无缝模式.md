@@ -9,6 +9,8 @@ categories:
 ---
 VirtualBox是个不错的产品，免费而且轻量。平时学习、开发使用很方便。vbox安装ubuntu后不能启用无缝模式，外观不能全屏，操作也很不方便，如下图：
 
+<!-- more -->
+
 ![vbox非无缝模式](/uploads/20151122/vbox1.png)
 
 要启用vbox无缝模式需要安装增强功能，如下图：

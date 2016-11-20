@@ -11,6 +11,8 @@ date: 2016-04-16 20:19:29
 
 以下两种情况都是因为无效安装源导致的，可以直接删除无效安装源解决。
 
+<!-- more -->
+
 有两个位置可以添加仓库。/etc/apt/sources.list 文件和所有在 /etc/apt/sources.list.d/ 目录下以 .list 结尾的文件。所以，只需要检查这个目录下的文件并移除不需要的即可。
 
 **1、Duplicate sources.list entry**

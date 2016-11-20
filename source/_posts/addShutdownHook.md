@@ -12,6 +12,8 @@ categories:
 
 	public void addShutdownHook(Thread hook)
 
+<!-- more -->
+
 JDK 帮助手册中的解释如下：
 
 注册一个新的虚拟机关闭钩子。

@@ -10,6 +10,8 @@ date: 2016-01-01 16:14:31
 
 ngx_http_core_module 模块支持与 Apache 服务器相同名称的内置变量。首先，这些都是表示客户端请求头字段的变量，例如 $http_user_agent 、$http_cookie 等等。还有其他变量：
 
+<!-- more -->
+
 $arg_name
 
 请求行中的参数名称

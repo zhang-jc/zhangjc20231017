@@ -14,6 +14,8 @@ date: 2016-04-10 18:08:48
 Jetty 是一个开源的项目，提供 HTTP 服务端、HTTP 客户端和 javax.servlet 容器。  
 下面看如何利用 Jetty 的 API 快速开发嵌入式代码。
 
+<!-- more -->
+
 ### 下载 Jar 包
 
 Jetty 被分解很多 jar 包和依赖包，通过选择 jar 包的最小集合达到占用最小空间的目的。通常，最好使用像 Maven 一样的工具管理 jar 包，但本例中使用包含 Jetty 所有类的聚合 jar 包。可以用 [curl](https://curl.haxx.se/) 命令或者浏览器手动下载 [jetty-all.jar](http://central.maven.org/maven2/org/eclipse/jetty/aggregate/jetty-all/9.3.7.v20160115/jetty-all-9.3.7.v20160115-uber.jar)。

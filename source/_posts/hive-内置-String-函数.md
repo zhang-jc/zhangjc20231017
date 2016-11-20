@@ -13,6 +13,9 @@ Hive 支持以下内置字符串函数：
 
 1. int ascii(string str)：返回字符串第一个字符的 ASCII 码值
 2. string base64(binary bin)：将二进制参数转换为 base 64 编码的字符串
+
+<!-- more -->
+
 3. string concat(string|binary A, string|binary B...)：将作为参数的字符串或者二进制数据依次拼接，并返回拼接后的结果。例如：concat('foo', 'bar')，返回结果为‘foobar’。这个函数可以接受任意数量的字符串参数。
 4. array<struct<string,double&gt;&gt; context_ngrams(array<array<string&gt;&gt;, array<string&gt;, int K, int pf)：给定一个字符串作“语境”，返回一组标记句子的Top-k语境n-grams。更多信息参见 [StatisticsAndDataMining](https://cwiki.apache.org/confluence/display/Hive/StatisticsAndDataMining)
 5. string concat_ws(string SEP, string A, string B...)：像上面的 concat() 函数一样，不过可以自定义分隔符 SEP。

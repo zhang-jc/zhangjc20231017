@@ -10,6 +10,8 @@ date: 2016-06-14 22:49:33
 
 Socket.IO 是一个非常棒的项目；Java 是目前应用非常广的开发语言。两者的结合也是必然的。本篇翻译自 Socket.IO-client Java 项目的 github 主页。
 
+<!-- more -->
+
 [Socket.IO-client Java](https://github.com/socketio/socket.io-client-java) 是 Socket.IO v1.x 的 Java 客户端类库，这个类库是从 [JavaScript client](https://github.com/socketio/socket.io-client) 移植过来的。
 
 参见：

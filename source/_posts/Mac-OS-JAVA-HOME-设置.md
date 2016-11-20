@@ -31,6 +31,8 @@ date: 2016-08-28 11:36:14
     drwxr-xr-x  45 root  wheel    1530 10 18  2015 Resources
     drwxr-xr-x   3 root  wheel     102  8 23  2015 _CodeSignature
 
+<!-- more -->
+
 在 Mac OS 下可以使用 /usr/libexec/java_home 命令来定位 JAVA_HOME：
 
     $ /usr/libexec/java_home 

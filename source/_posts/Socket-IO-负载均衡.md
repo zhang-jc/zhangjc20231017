@@ -13,6 +13,8 @@ date: 2016-10-16 18:35:34
 
 ![Socket.IO 负载均衡架构](/uploads/20161016/socketio.png)
 
+<!-- more -->
+
 ### Nginx 配置
 
 为了负载均衡时连接保证始终连到一个节点上，使用 Nginx 的 ip_hash 实现 session sticky，让客户端始终连接到集群内一台节点上。

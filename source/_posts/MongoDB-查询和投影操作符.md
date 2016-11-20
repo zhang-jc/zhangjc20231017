@@ -23,6 +23,8 @@ date: 2016-05-15 18:58:31
 [$in](https://docs.mongodb.com/manual/reference/operator/query/in/#op._S_in) 匹配在指定数组中的任意值  
 [$nin](https://docs.mongodb.com/manual/reference/operator/query/nin/#op._S_nin) 匹配不在指定数组中的值
 
+<!-- more -->
+
 #### 逻辑操作符
 
 [$or](https://docs.mongodb.com/manual/reference/operator/query/or/#op._S_or) 用逻辑 **OR** 操作符连接查询子句，返回所有匹配任一个条件子句的文档。  

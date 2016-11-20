@@ -9,6 +9,9 @@ date: 2016-09-11 22:03:28
 
 1. -e filename：如果 filename 存在，则为真。
 2. -d filename：如果 filename 为目录，则为真。
+
+<!-- more -->
+
 3. -f filename：如果 filename 为常规文件，则为真。
 4. -L filename：如果 filename 为符号链接，则为真。
 5. -r filename：如果 filename 可读，则为真。

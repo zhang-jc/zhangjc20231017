@@ -12,6 +12,8 @@ date: 2016-05-24 22:50:38
 #### 下载
 从 Orale 官网下载 dmg 文件。下载网址：http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html?ssSourceSiteId=ocomen
 
+<!-- more -->
+
 #### 安装
 
 双击下载的 dmg 文件，按照说明进行安装，选项按照默认完成安装。

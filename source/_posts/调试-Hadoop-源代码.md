@@ -12,6 +12,8 @@ date: 2016-09-11 12:26:51
 
 Hadoop 2.7.3
 
+<!-- more -->
+
 ### 调试模式下启动 Hadoop NameNode
 
 在 ${HADOOP_HOME}/etc/hadoop/hadoop-env.sh 中设置 NameNode 启动的 JVM 参数，如下：

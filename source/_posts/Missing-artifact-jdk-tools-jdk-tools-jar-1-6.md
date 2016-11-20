@@ -9,6 +9,9 @@ categories:
   - Maven
 ---
 Eclipse maven工程 Missing artifact jdk.tools:jdk.tools:jar:1.6 可以用以下方法解决。思路是配置 maven 依赖本地的 tools.jar ，需要本地安装有 jdk 1.6 。
+
+<!-- more -->
+
 ### 下载安装JDK 1.6
 Oracle 官网下载JDK 1.6 的链接不太容易找到，可以在 [Java SE Site Map](http://www.oracle.com/technetwork/java/javase/sitemap-jsp-139155.html) 页面找到以下位置，点击即可看到 JDK 所有版本的列表：
 

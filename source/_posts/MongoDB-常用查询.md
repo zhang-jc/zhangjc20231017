@@ -12,7 +12,9 @@ date: 2016-04-20 17:02:48
 
 1. 当前 MongoDB 版本：
 
-	db.version();
+    db.version();
+
+<!-- more -->
 
 2. Web控制台
 

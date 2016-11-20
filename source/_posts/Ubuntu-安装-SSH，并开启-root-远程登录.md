@@ -14,6 +14,8 @@ date: 2016-05-25 05:18:28
 
 其中包含了 openssh-client 和 openssh-server。
 
+<!-- more -->
+
 #### 开启 root 远程登录
 
 修改配置文件 /etc/ssh/sshd_config 中的 PermitRootLogin 参数值为 yes：  

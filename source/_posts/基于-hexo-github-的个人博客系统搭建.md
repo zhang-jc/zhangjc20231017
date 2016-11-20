@@ -17,12 +17,11 @@ date: 2016-05-21 22:58:56
 Hexo 是一个快速、简单，并且强大的博客框架。主要有以下特性：
 
 1. Node.js 带来不可思议的生成速度。建立数百个文件只需要几秒钟。
-
 2. 支持 GitHub 所有推荐的 Markdown 特性。你甚至可以在 Hexo 中使用大部分 Octopress 的插件。
-
 3. 只需要一个命令就可以部署个人博客到 GitHub、Heroku 或者其他站点。
-
 4. Hexo 有一个强大的插件系统。可以安装很多 Jade 插件和 CoffeeScript 插件。
+
+<!-- more -->
 
 #### github
 

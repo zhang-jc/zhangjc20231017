@@ -11,6 +11,8 @@ date: 2016-04-09 23:30:54
 
 对于 Linux 平台，[Nginx 安装包](http://nginx.org/en/linux_packages.html) 可以从 nginx.org 下载。
 
+<!-- more -->
+
 **Ubuntu:**
 
 版本&nbsp;&nbsp;&nbsp;&nbsp;Codename&nbsp;&nbsp;&nbsp;&nbsp;支持平台  

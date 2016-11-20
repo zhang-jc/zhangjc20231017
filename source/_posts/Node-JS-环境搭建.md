@@ -10,6 +10,9 @@ date: 2015-11-25 16:45:45
 ### 系统环境
 	[root@vm-10-176-30-167 ~]# cat /etc/redhat-release
 	CentOS release 6.6
+
+<!-- more -->
+
 ### 下载 nodejs
 下载地址：<https://nodejs.org/en/download/>  
 我下载的是**Linux Binaries (.tar.gz) 64-bit**

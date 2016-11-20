@@ -16,6 +16,8 @@ date: 2016-07-23 22:30:14
     cd lua-5.3.3
     make linux test
 
+<!-- more -->
+
 #### 安装 make
 
 编译过程如果提示以下信息则需要先安装 make：

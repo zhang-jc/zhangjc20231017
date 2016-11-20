@@ -10,6 +10,8 @@ date: 2016-05-31 20:57:20
 ### 安装
 Redis 下载地址及安装说明官方地址：<http://redis.io/download>。Redis 目前没有官方支持的 Windows 平台版本。
 
+<!-- more -->
+
 用以下命令下载、解压、编译 Redis：
 
     $ wget http://download.redis.io/releases/redis-3.2.0.tar.gz

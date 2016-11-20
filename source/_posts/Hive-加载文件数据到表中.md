@@ -15,6 +15,8 @@ Hive 在加载数据进表的时候不会做任何转换。Load 操作只是纯�
 
 > 注意：Hive 表字段分隔符必须与文件中数据字段分隔符一致。
 
+<!-- more -->
+
 ##### 语法
 
     LOAD DATA [LOCAL] INPATH 'filepath' [OVERWRITE] INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 ...)]

@@ -14,6 +14,8 @@ date: 2016-07-02 22:33:29
 
 这篇文档不含盖像[安全](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SecureMode.html)或高可用等高级主题。
 
+<!-- more -->
+
 ### 前提
 
 - 安装 Java。查阅 [Hadoop Wiki](http://wiki.apache.org/hadoop/HadoopJavaVersions) 获取已知的适合版本。

@@ -24,6 +24,8 @@ date: 2016-06-26 18:57:04
 
 当然，所有的 slave 都配置过免密码登陆。
 
+<!-- more -->
+
 但是，这个脚本在 Mac OS 下至性的时候一直报错，信息如下：
 
     t.sh: line 12: syntax error: unexpected end of file

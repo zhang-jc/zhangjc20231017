@@ -16,6 +16,8 @@ date: 2016-09-11 21:28:31
     Template render error: (unknown path)
       Error: expected end of comment, got end of file
 
+<!-- more -->
+
 想到刚才文章内容中有 # 字符作为普通字符出现，但并没有做转义处理，包含 # 字符的内容如下：
 
     ${#v1}
