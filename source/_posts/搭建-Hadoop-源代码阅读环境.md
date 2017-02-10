@@ -99,7 +99,7 @@ date: 2016-08-29 02:11:42
 如果使用 JDK8 执行 mvn install -DskipTests 的话会报一下错误，需要替换为 JDK7 后再执行。
 
     [INFO] -------------------------------------------------------------
-    [ERROR] COMPILATION ERROR : 
+    [ERROR] COMPILATION ERROR :
     [INFO] -------------------------------------------------------------
     [ERROR] /Users/ling/work/git/hadoop-common/hadoop-common-project/hadoop-annotations/src/main/java/org/apache/hadoop/classification/tools/ExcludePrivateAnnotationsStandardDoclet.java:[20,22] 错误: 程序包com.sun.javadoc不存在
 
@@ -131,6 +131,6 @@ date: 2016-08-29 02:11:42
 
 - 进入源码目录 hadoop-2.7.3-src/hadoop-common-project/hadoop-common/src/test/proto，执行以下命令：
 
-    $ protoc --java_out=../java *.proto
+    $ protoc \-\-java_out=../java *.proto
 
 - 右键单击 eclipse 中的 hadoop-common，然后 refresh。
