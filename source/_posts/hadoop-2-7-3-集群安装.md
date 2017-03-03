@@ -273,11 +273,10 @@ date: 2017-03-03 10:31:39
 
 ##### 检测脚本
 
-在 bin 目录下创建 nodemanager-health-checker.sh，内容如下：
+在 bin 目录下创建 nodemanager-health-checker.sh，在该脚本中可以编写 NodeManager 是否健康的判断逻辑：
 
     #!/bin/bash
     cd `dirname $0`
-    cat STATUS
 
 ##### 检测配置
 
@@ -289,9 +288,12 @@ date: 2017-03-03 10:31:39
       <value>/usr/local/hadoop/bin/nodemanager-health-checker.sh</value>
     </property>
     <property>
-      <name>yarn.nodemanager.health-checker.script.interval-ms</name>
+      <name>yarn.nodemanager.health-checker.interval-ms</name>
       <value>300000</value>
     </property>
+
+> 官网文档中的参数 yarn.nodemanager.health-checker.script.interval-ms 是错误的，正确的参数应该是 yarn.nodemanager.health-checker.interval-ms。我已经在 Jira 中提交了一个 Issue：<https://issues.apache.org/jira/browse/YARN-6274>。
+> 官网文档URL：<http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/ClusterSetup.html>
 
 ##### 分发 Hadoop
 
