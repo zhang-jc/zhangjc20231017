@@ -36,5 +36,36 @@ date: 2017-03-06 17:22:20
 
 检查点之间的间隔分钟数。应该比 fs.trash.interval 小或者相等。如果为 0，该参数的值被设置为 fs.trash.interval 的参数值。每次检查点程序运行时，它会从当前回收站创建一个新的检查点，并移除超过 fs.trash.interval 配置参数分钟数以前的检查点。
 
-> 1. 回收站用的数据保存的理论最长时间约等于 fs.trash.interval 参数的 2 倍；
-> 2. 如果 NameNode 重启，会重新开始计时以确定检查点程序的执行时间。
+### 示例
+
+（1）创建两个目录：
+
+    $ hadoop fs -mkdir -p /user/hadoop/delete/test1
+    $ hadoop fs -mkdir -p /user/hadoop/delete/test2
+    $ hadoop fs -ls /user/hadoop/delete/
+    Found 2 items
+    drwxr-xr-x   - hadoop supergroup          0 2017-03-06 18:43 /user/hadoop/delete/test1
+    drwxr-xr-x   - hadoop supergroup          0 2017-03-06 18:46 /user/hadoop/delete/test2
+
+（2）删除目录 test1，提示信息显示目录被移动到回收站目录：
+
+    $ hadoop fs -rm -r /user/hadoop/delete/test1
+    17/03/06 18:49:02 INFO fs.TrashPolicyDefault: Namenode trash configuration: Deletion interval = 4320 minutes, Emptier interval = 1440 minutes.
+    Moved: 'hdfs://frin-namenode1:9000/user/hadoop/delete/test1' to trash at: hdfs://frin-namenode1:9000/user/hadoop/.Trash/Current
+
+（3）使用 skipTrash 选项删除目录 test2，目录不会移动到回收站。它会从从 HDFS 被彻底删除。
+
+    $ hadoop fs -rm -r -skipTrash /user/hadoop/delete/test2
+    Deleted /user/hadoop/delete/test2
+
+（4）查看回收站目录可以看到只包含 test1 目录：
+
+    $ hadoop fs -ls /user/hadoop/.Trash/Current/user/hadoop/delete/
+    Found 1 items
+    drwxr-xr-x   - hadoop supergroup          0 2017-03-06 18:43 /user/hadoop/.Trash/Current/user/hadoop/delete/test1
+
+### 特别说明
+
+1. 回收站用的数据保存的理论最长时间约等于 fs.trash.interval 参数的 2 倍；
+
+2. 如果 NameNode 重启，会重新开始计时以确定检查点程序的执行时间。
