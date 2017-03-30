@@ -10,13 +10,13 @@ categories:
 date: 2017-03-03 10:56:11
 ---
 
-今天在运行 MR 程序是遇到以下信息：
+今天在运行 MR 程序时遇到以下信息：
 
     17/03/03 10:09:45 INFO mapreduce.Job: Job job_1488363995041_0002 failed with state KILLED due to: REDUCE capability required is more than the supported max container capability in the cluster. Killing the Job. reduceResourceRequest: <memory:4096, vCores:1> maxContainerCapability:<memory:3096, vCores:8>
 
 <!-- more -->
 
-原因是 Reduce Task 在申请资源是超过了设置的最大可申请内容量。检查 yarn-site.xml 中的配置项 yarn.scheduler.maximum-allocation-mb，如下：
+原因是 Reduce Task 在申请资源时超过了设置的最大可申请内容量。检查 yarn-site.xml 中的配置项 yarn.scheduler.maximum-allocation-mb，如下：
 
     <property>
       <name>yarn.scheduler.maximum-allocation-mb</name>

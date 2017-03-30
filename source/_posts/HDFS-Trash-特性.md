@@ -10,11 +10,11 @@ date: 2017-03-06 17:22:20
 
 ### HDFS Trash 特性
 
-如果启用 Trash 配置，通过 [FS Shell](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) 删除的文件不会立即从 HDFS 上移除。HDFS 将这些文件移动到一个回收站目录（每个用户在 /user/<username>/.Trash 下都有他自己的回收站目录）。只要这些文件还在回收站中，可以很快地进行恢复。
+如果启用 Trash 配置，通过 [FS Shell](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) 删除的文件不会立即从 HDFS 上移除。HDFS 将这些文件移动到一个回收站目录（每个用户在 /user/&lt;username&gt;/.Trash 下都有他自己的回收站目录）。只要这些文件还在回收站中，可以很快地进行恢复。
 
 <!-- more -->
 
-最近删除的文件移动到当前的回收站目录（/user/<username>/.Trash/Current），在一个可配置的时间间隔，HDFS 对当前回收站目录中的文件创建检查点（在 /user/<username>/.Trash/<date>下），并删除过期的检查点。参见关于回收站检查点的 [FS Shell  expunge 命令](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/FileSystemShell.html#expunge)。
+最近删除的文件移动到当前的回收站目录（/user/&lt;username&gt;/.Trash/Current），在一个可配置的时间间隔，HDFS 对当前回收站目录中的文件创建检查点（在 /user/&lt;username&gt;/.Trash/&lt;date&gt;下），并删除过期的检查点。参见关于回收站检查点的 [FS Shell  expunge 命令](http://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/FileSystemShell.html#expunge)。
 
 当文件在回收站中过期后，NameNode 会从 HDFS 命名空间删除这些文件。一个文件的删除会引起跟这个文件相关联的块被释放。注意，在文件被用户删除的时间和 HDFS 中与之相关的可用空间增长时间之间存在一个可感知的时间延迟。
 
