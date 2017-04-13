@@ -12,6 +12,7 @@ date: 2017-03-30 18:53:52
 
 <!-- more -->
 
+    - &#45; &minus; — 减号
     ! &#33; — 惊叹号Exclamation mark 
     ” &#34; &quot; 双引号Quotation mark # &#35; — 数字标志Number sign $ &#36; — 美元标志Dollar sign 
     % &#37; — 百分号Percent sign 
