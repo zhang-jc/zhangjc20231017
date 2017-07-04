@@ -8,7 +8,9 @@ categories:
 date: 2017-07-04 22:31:44
 ---
 
-今天在列出 HDFS 文件时遇到以下异常：
+今天在列出 HDFS 文件时遇到异常 java.io.FileNotFoundException: /data/hadoop/logs/hdfs-audit.log (Permission denied)，详细异常信息如下：
+
+<!-- more -->
 
     $ hadoop fs -ls /
     log4j:ERROR setFile(null,true) call failed.
