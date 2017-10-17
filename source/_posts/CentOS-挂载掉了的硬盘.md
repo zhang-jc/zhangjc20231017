@@ -17,6 +17,8 @@ date: 2017-10-17 14:03:19
     tmpfs            63G     0   63G   0% /dev/shm
     /dev/sda1       194M   28M  157M  15% /boot
 
+<!-- more -->
+
 使用 fdisk 命令查看磁盘情况：
 
     $ fdisk -l
