@@ -1,11 +1,13 @@
 title: HDFS Rebalance
 tags:
-- Hadoop
-- HDFS
+  - Hadoop
+  - HDFS
 categories:
-- 大数据
-- Hadoop
+  - 大数据
+  - Hadoop
+date: 2018-03-18 17:29:03
 ---
+
 
 ### 相关配置项
 
@@ -14,6 +16,8 @@ categories:
 DataNode 用于数据 balance 的最大带宽，单位 byte / s。
 
 默认值：1048576（1M）
+
+<!-- more -->
 
 2. dfs.datanode.fsdataset.volume.choosing.policy
 
@@ -92,7 +96,9 @@ Balancer proncipal。一般会设置为 balancer/\_HOST@REALM.TLD。Balancer 启
 
 #### 说明
 
-运行一个 Balancer 功能，管理员可以简单的按 Ctrl + C 停止均衡过程。参考 [Balancer](http://hadoop.apache.org/docs/r2.7.4/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html#Balancer) 获取更多详细说明。
-
-注意，blockpool 策略比 datanode 策略更严格。
+- 运行一个 Balancer 功能，管理员可以简单的按 Ctrl + C 停止均衡过程。参考 [Balancer](http://hadoop.apache.org/docs/r2.7.4/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html#Balancer) 获取更多详细说明。
+- blockpool 策略比 datanode 策略更严格。
+- 通过命令 hdfs dfsadmin -setBalancerBandwidth <bandwidth in bytes per second> 可以动态设置 Balance 的带宽。
+- 使用脚本 sbin/start-balancer.sh 将 balancer 进程放到后台运行；使用 sbin/stop-balancer.sh 停止后台进程。
+- 2.7.3 版本不支持按照磁盘进行 Balance，3.0 版本支持。 
 
