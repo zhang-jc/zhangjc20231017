@@ -1,14 +1,12 @@
 title: Centos7.3 安装 Python3
 tags:
-  - Linux
-  - Centos
-  - Python3
+- Linux
+- Centos
+- Python3
 categories:
-  - 开发
-  - 环境搭建
-date: 2018-11-19 18:26:32
+- 开发
+- 环境搭建
 ---
-
 
 采用源代码构建的方式安装。此处安装的是 Python3.7.1 版本。源代码下载地址：[[https://www.python.org/downloads/release/python-371/]]。
 
@@ -42,7 +40,7 @@ date: 2018-11-19 18:26:32
     # ln -s /opt/python/bin/python3.7 /usr/bin/python3
     # ln -s /opt/python/bin/pip3.7 /usr/bin/pip3
 
-最后升级新安装的 pip3：
+最后升级新安装的 pip3 的版本：
 
     # pip3 install --upgrade pip
 
