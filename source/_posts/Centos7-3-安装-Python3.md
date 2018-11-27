@@ -1,7 +1,7 @@
 title: Centos7.3 安装 Python3
 tags:
   - Linux
-  - Centos
+  - CentOS
   - Python3
 categories:
   - 开发
@@ -19,22 +19,22 @@ date: 2018-11-19 18:26:32
     已发出 HTTP 请求，正在等待回应... 200 OK
     长度：16960060 (16M) [application/octet-stream]
     正在保存至: “Python-3.7.1.tar.xz”
-    
+
     100%[======================================================================================================>] 16,960,060  4.67MB/s 用时 4.6s   
-    
+
     2018-11-19 17:13:34 (3.51 MB/s) - 已保存 “Python-3.7.1.tar.xz” [16960060/16960060])
-    
+
     # xz -d Python-3.7.1.tar.xz
     # tar xvf Python-3.7.1.tar
     # ./configure --prefix=/opt/Python-3.7.1
     # make
     Failed to build these modules:
     _ctypes
-    
+
 以上异常信息是因为 Python3.7.1 需要安装包 libffi-devel：
 
     # yum install libffi-devel -y
-    
+
 安装完成后重新执行 make 成功。
 
     # make altinstall
@@ -47,4 +47,3 @@ date: 2018-11-19 18:26:32
     # pip3 install --upgrade pip
 
 安装完成。
-
