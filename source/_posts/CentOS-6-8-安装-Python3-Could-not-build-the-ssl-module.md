@@ -86,12 +86,13 @@ export PKG_CONFIG_PATH="/usr/local/openssl/lib/pkgconfig"
 
 此处需要取消证书验证。
 
-#python3
-Python 3.7.1 (default, Nov 28 2018, 17:42:41)
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import ssl
->>> import urllib.request
->>> urllib.request.urlopen('https://www.sogou.com/',context=context).read()
+    #python3
+    Python 3.7.1 (default, Nov 28 2018, 17:42:41)
+    [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import ssl
+    >>> import urllib.request
+    >>> context = ssl._create_unverified_context()
+    >>> urllib.request.urlopen('https://www.sogou.com/',context=context).read()
 
 测试成功！！
