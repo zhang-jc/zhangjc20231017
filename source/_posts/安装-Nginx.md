@@ -1,10 +1,9 @@
 title: 安装 Nginx
 tags:
-  - web server
-  - nginx
+  - Nginx
 categories:
   - 开发工具
-  - nginx
+  - Nginx
 date: 2016-04-09 23:30:54
 ---
 
