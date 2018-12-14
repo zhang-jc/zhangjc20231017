@@ -39,7 +39,16 @@ MySQL 中原始数据有 790W+ 的记录数，在 Sqoop 抽取作业成功的情
 
 所以，怀疑是 MR 在执行结束时，将临时文件移动到正式目录时发生错误。
 
-原始 Log 文件见目录：[MapTask 执行日志](../uploads/20181214/application_1533196506314_4460157)
+原始 Log 文件见目录：
+
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-12_27463.txt)  
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-24_16310.txt)  
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-84_13498.txt)  
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-93_53778.txt)
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-23_18284.txt)  
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-73_2363.txt)  
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-88_24481.txt)  
+(../uploads/20181214/application_1533196506314_4460157/192-168-72-94_54353.txt)
 
 ##### 查看 DN Log 信息
 
@@ -73,13 +82,13 @@ MySQL 中原始数据有 790W+ 的记录数，在 Sqoop 抽取作业成功的情
 
 默认的，Log4j 输出的 NameNode 日志文件只保留最近的 20 个文件。因为 NN 的 Log 信息比较多，20 个文件保存的日志不足 1 天，异常时间的日志已经被冲掉了。
 
-(../uploads/20181214/namenodeLogs.png)
+![NameNode Log](../uploads/20181214/namenodeLogs.png)
 
 ##### 查看 NN 信息
 
 通过 NN WebUI 查看发现 NN 内存的使用已经 70% 左右，负载已经比较高。
 
-(../uploads/20181214/namenodeInfo.png)
+![NameNode Info](../uploads/20181214/namenodeInfo.png)
 
 ##### 处理措施
 
