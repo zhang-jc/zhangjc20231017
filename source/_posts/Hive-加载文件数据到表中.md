@@ -1,8 +1,6 @@
 title: Hive 加载文件数据到表
 tags:
   - Hive
-  - SQL
-  - LOAD
 categories:
   - 大数据
   - Hive

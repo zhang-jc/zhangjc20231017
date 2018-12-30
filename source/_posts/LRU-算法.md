@@ -1,7 +1,6 @@
 title: LRU 算法
 tags:
   - 算法
-  - LRU
 categories:
   - 算法
   - LRU

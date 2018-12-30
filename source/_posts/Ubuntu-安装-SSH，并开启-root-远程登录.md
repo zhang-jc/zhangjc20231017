@@ -1,7 +1,6 @@
 title: Ubuntu 安装 SSH，并开启 root 远程登录
 tags:
   - Ubuntu
-  - SSH
 categories:
   - 操作系统
   - Ubuntu

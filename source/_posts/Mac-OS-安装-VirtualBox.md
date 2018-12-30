@@ -2,7 +2,6 @@ title: Mac OS 安装 VirtualBox
 tags:
   - Mac OS
   - VirtualBox
-  - 虚拟机
 categories:
   - 操作系统
   - 虚拟机

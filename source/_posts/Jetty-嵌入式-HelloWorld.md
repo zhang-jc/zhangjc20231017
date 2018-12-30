@@ -1,7 +1,6 @@
 title: Jetty 嵌入式 HelloWorld
 tags:
   - Jetty
-  - 嵌入式
 categories:
   - 开发工具
   - Web Server
@@ -31,7 +30,7 @@ Jetty 被分解很多 jar 包和依赖包，通过选择 jar 包的最小集合�
 Jetty 官方文档中的 [嵌入 Jetty](http://www.eclipse.org/jetty/documentation/current/advanced-embedding.html)一章有很多通过 Jetty API 编写的实例。本教程用只包含一个 Main 方法的简单 HelloWorld 处理器运行服务器。[HelloWorld.java](https://raw.githubusercontent.com/eclipse/jetty.project/master/examples/embedded/src/main/java/org/eclipse/jetty/embedded/HelloWorld.java) 文件代码如下：
 
 	package org.eclipse.jetty.embedded;
-	 
+
 	import java.io.IOException;
 	import javax.servlet.ServletException;
 	import javax.servlet.http.HttpServletRequest;
@@ -39,9 +38,9 @@ Jetty 官方文档中的 [嵌入 Jetty](http://www.eclipse.org/jetty/documentati
 	import org.eclipse.jetty.server.Request;
 	import org.eclipse.jetty.server.Server;
 	import org.eclipse.jetty.server.handler.AbstractHandler;
-	 
+
 	public class HelloWorld extends AbstractHandler {
-	 
+
 	    @Override
 	    public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 	        response.setContentType("text/html; charset=utf-8");
@@ -49,7 +48,7 @@ Jetty 官方文档中的 [嵌入 Jetty](http://www.eclipse.org/jetty/documentati
 	        response.getWriter().println("<h1>Hello World</h1>");
 	        baseRequest.setHandled(true);
 	    }
-	 
+
 	    public static void main(String[] args) throws Exception {
 	        Server server = new Server(8080);
 	        server.setHandler(new HelloWorld());

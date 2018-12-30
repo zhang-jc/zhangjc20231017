@@ -2,7 +2,6 @@ title: Java 单例模式
 tags:
   - 设计模式
   - Java
-  - 单例模式
 categories:
   - 语言
   - Java

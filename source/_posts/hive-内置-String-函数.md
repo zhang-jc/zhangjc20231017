@@ -1,8 +1,6 @@
 title: hive 内置字符串（String）函数
 tags:
   - Hive
-  - SQL
-  - 内置函数
 categories:
   - 大数据
   - Hive

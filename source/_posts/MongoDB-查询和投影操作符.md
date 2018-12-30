@@ -1,8 +1,6 @@
 title: MongoDB 查询和投影操作符
 tags:
   - MongoDB
-  - 查询操作符
-  - 投影操作符
 categories:
   - 数据库
   - MongoDB

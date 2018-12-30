@@ -1,7 +1,6 @@
 title: Ubuntu 常见安装源更新问题
 tags:
   - Ubuntu
-  - 操作系统
 categories:
   - 操作系统
   - Ubuntu
@@ -60,7 +59,7 @@ date: 2016-04-16 20:19:29
 	#ls -l /etc/apt/sources.list.d/tldm217-ubuntu-tahutek_net-wily.list*
 	-rw-r--r-- 1 root root 138  4月 16 02:03 /etc/apt/sources.list.d/tldm217-ubuntu-tahutek_net-wily.list
 	-rw-r--r-- 1 root root 138  4月 16 02:03 /etc/apt/sources.list.d/tldm217-ubuntu-tahutek_net-wily.list.save
-	
+
 	#sudo rm -f /etc/apt/sources.list.d/tldm217-ubuntu-tahutek_net-wily.list*
-	
+
 再次执行更新，问题解决。

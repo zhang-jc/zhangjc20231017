@@ -1,8 +1,6 @@
 title: 'MySQL 表分区修改操作不支持 IF [NOT] EXISTS'
 tags:
   - MySQL
-  - SQL
-  - PARTITION
 categories:
   - 数据库
   - MySQL

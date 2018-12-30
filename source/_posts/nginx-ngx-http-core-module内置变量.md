@@ -1,10 +1,9 @@
 title: nginx ngx_http_core_module 内置变量
 tags:
-  - web server
-  - nginx
+  - Nginx
 categories:
   - 开发工具
-  - nginx
+  - Nginx
 date: 2016-01-01 16:14:31
 ---
 

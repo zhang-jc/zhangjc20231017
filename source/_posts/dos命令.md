@@ -1,7 +1,6 @@
 title: dos命令
 tags:
   - DOS
-  - CMD
 categories:
   - 操作系统
   - DOS

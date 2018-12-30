@@ -1,7 +1,6 @@
 title: Mac OS JAVA_HOME 设置
 tags:
   - Java
-  - JDK
   - Mac OS
 categories:
   - 语言
@@ -35,7 +34,7 @@ date: 2016-08-28 11:36:14
 
 在 Mac OS 下可以使用 /usr/libexec/java_home 命令来定位 JAVA_HOME：
 
-    $ /usr/libexec/java_home 
+    $ /usr/libexec/java_home
     /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
 
 设置 JAVA_HOME：

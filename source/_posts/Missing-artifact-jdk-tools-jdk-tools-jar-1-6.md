@@ -3,7 +3,6 @@ date: 2015-11-17 14:06:14
 tags:
   - Maven
   - Eclipse
-  - JDK
 categories:
   - 开发工具
   - Maven

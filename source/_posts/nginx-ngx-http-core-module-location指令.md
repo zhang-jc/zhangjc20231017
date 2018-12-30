@@ -1,10 +1,9 @@
 title: nginx ngx_http_core_module location指令
 tags:
-  - web server
-  - nginx
+  - Nginx
 categories:
   - 开发工具
-  - nginx
+  - Nginx
 date: 2016-01-15 21:33:10
 ---
 

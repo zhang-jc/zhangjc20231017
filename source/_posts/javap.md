@@ -1,7 +1,6 @@
 title: javap
 tags:
   - Java
-  - JDK
 categories:
   - 语言
   - Java

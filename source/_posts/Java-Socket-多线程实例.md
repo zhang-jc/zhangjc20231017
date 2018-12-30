@@ -1,8 +1,6 @@
 title: Java Socket 多线程实例
 tags:
   - Java
-  - Socket
-  - 多线程
 categories:
   - 语言
   - Java

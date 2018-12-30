@@ -1,7 +1,7 @@
 title: Socket.IO 聊天应用实例
 tags:
   - Socket.IO
-  - Node.JS
+  - Node.js
   - WebSocket
 categories:
   - 工具箱

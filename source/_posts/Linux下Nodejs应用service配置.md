@@ -1,8 +1,6 @@
 title: Linux下Nodejs应用service配置
 tags:
-  - 操作系统
   - Linux
-  - service
   - Node.js
 categories:
   - 语言

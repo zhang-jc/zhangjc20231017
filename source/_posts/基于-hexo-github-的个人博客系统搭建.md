@@ -2,9 +2,7 @@ title: 基于 hexo + github 的个人博客系统搭建
 tags:
   - Hexo
   - GitHub
-  - blog
-  - Oray
-  - 个人博客
+  - Node.js
 categories:
   - 开发
   - Node.js

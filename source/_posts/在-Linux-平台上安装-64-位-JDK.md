@@ -1,7 +1,6 @@
 title: 在 Linux 平台上安装 64 位 JDK
 tags:
   - Java
-  - JDK
 categories:
   - 语言
   - Java

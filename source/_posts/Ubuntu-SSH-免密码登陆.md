@@ -1,7 +1,6 @@
 title: Ubuntu SSH 免密码登陆
 tags:
   - Ubuntu
-  - SSH
 '-categories':
   - 操作系统
   - Ubuntu

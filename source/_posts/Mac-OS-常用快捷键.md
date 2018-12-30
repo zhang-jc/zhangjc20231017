@@ -1,6 +1,5 @@
 title: Mac OS 常用快捷键
 tags:
-  - 操作系统
   - Mac OS
 categories:
   - 操作系统
