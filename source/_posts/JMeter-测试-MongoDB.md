@@ -3,8 +3,8 @@ tags:
   - JMeter
   - MongoDB
 categories:
-  - 软件测试
-  - 测试工具
+  - 工具箱
+  - JMeter
 date: 2016-04-17 22:37:11
 ---
 

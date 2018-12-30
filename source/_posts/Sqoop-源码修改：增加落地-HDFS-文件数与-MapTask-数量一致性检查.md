@@ -3,5 +3,6 @@ date: 2018-12-30 17:04:29
 tags:
 - Sqoop
 - 大数据
-
+categories:
+- 
 ---
