@@ -30,7 +30,7 @@ date: 2018-09-28 14:21:00
 
 我的解决方法是从安装目录 azkaban-exec-server-3.52.0 下的文件 executor.port 中找到端口号，然后从浏览器中进行激活。如下图：
 
-(/uploads/20180926/azkaban-executor-activate.png)
+![azkaban executor activate](/uploads/20180928/azkaban-executor-activate.png)
 
 ### 支持 SSL
 
