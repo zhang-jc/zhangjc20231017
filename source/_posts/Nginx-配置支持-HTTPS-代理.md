@@ -9,6 +9,8 @@ categories:
 
 本文描述的是 Nginx HTTPS 反向代理的情况（即后端服务是 HTTP 的）。
 
+<!-- more -->
+
 #### 使用 openssl 配置 ssl 证书
 
 ##### 生成服务器端的私钥（key 文件）：
