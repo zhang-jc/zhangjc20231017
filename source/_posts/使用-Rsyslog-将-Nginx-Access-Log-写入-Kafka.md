@@ -69,7 +69,14 @@ Nginx 配置主要是日志格式和 Access Log 配置项：
 
 ### Rsyslog Server 端配置
 
-Rsyslog 的主配置文件 /etc/rsyslog.conf，其中会包含引入 /etc/rsyslog.d 下扩展名为 conf 的配置文件。在 /etc/rsyslog.d 目录下创建 rsyslog_nginx_kafka_cluster.conf，配置内容如下：
+Rsyslog 的主配置文件 /etc/rsyslog.conf，其中会包含引入 /etc/rsyslog.d 下扩展名为 conf 的配置文件。
+
+修改配置文件 /etc/rsyslog.conf 将下面两行前面的注释去掉：
+
+    $ModLoad imudp
+    $UDPServerRun 514
+
+在 /etc/rsyslog.d 目录下创建 rsyslog_nginx_kafka_cluster.conf，配置内容如下：
 
     module(load="imudp")
     input(type="imudp" port="514")
@@ -120,3 +127,9 @@ Rsyslog 中没有包含 omkafka 模块，需要另外安装。查看 /var/log/me
     Mar 15 15:13:40 192-168-72-29 rsyslogd: module name 'omkafka' is unknown [v8.24.0-34.el7 try     http://www.rsyslog.com/e/2209 ]
 
 #### CentOS 6.5 升级 Rsyslog
+
+CentOS 6.5 自带的 Rsyslog 版本是 rsyslogd 5.8.10。按照以下方式安装新版本：
+
+    # cd /etc/yum.repos.d/
+    # wget http://rpms.adiscon.com/v8-stable/rsyslog.repo
+    # yum install rsyslog
