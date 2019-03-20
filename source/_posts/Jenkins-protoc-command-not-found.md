@@ -13,6 +13,8 @@ categories:
     [ERROR] stdout: []
     [INFO] ------------------------------------------------------------------------
 
+<!-- more -->
+
 原因是 Jenkins 中找不到 protoc 命令。解决方法是在 Jenkins 中配置环境变量 PATH 指定 protoc 路径。
 ![jenkins path](/uploads/20190320/jenkins-path.png)
 
