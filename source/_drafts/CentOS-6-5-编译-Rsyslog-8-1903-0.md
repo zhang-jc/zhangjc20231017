@@ -65,6 +65,8 @@ CURLOPT_TCP_KEEPALIVE is defined by libcurl since version 7.25.0.
 # rpm -q libcurl
 libcurl-7.19.7-52.el6.x86_64
 
+curl 升级参考：https://www.jianshu.com/p/14f5f145453e
+
 # ln -s /usr/local/curl/include/curl/ /usr/include/curl
 
 make[2]: Entering directory `/data/kafka/rsyslog-8.1903.0/contrib/omhttp'
