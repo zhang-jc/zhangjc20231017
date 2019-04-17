@@ -19,7 +19,7 @@ categories:
 
 ###### 第一步：安装 OpenSSL
 
-从 OpenSSL 的官方网站（https://www.openssl.org/）下载源代码。此处使用“openssl-1.1.1a.tar.gz”。
+从 OpenSSL 的官方网站 <https://www.openssl.org/> 下载源代码。此处使用“openssl-1.1.1a.tar.gz”。
 
 依次执行以下命令进行安装：
 
@@ -47,7 +47,7 @@ categories:
 
 ###### 第二步：安装 LibreSSL
 
-从 LibreSSL 官网（http://www.libressl.org/）下载源代码。此处使用“libressl-2.8.2.tar.gz”。
+从 LibreSSL 官网 <http://www.libressl.org/> 下载源代码。此处使用“libressl-2.8.2.tar.gz”。
 
 以此执行以下命令安装：
 

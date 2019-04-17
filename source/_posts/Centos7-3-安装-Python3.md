@@ -10,7 +10,7 @@ date: 2018-11-19 18:26:32
 ---
 
 
-采用源代码构建的方式安装。此处安装的是 Python3.7.1 版本。源代码下载地址：[[https://www.python.org/downloads/release/python-371/]]。
+采用源代码构建的方式安装。此处安装的是 Python3.7.1 版本。源代码下载地址：<https://www.python.org/downloads/release/python-371/>。
 
     # wget https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz
     --2018-11-19 17:13:28--  https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz
