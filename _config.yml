@@ -69,5 +69,5 @@ theme: hexo-theme-next
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-	repo: https://github.com/zhang-jc/zhang-jc.github.io.git
+	repo: git@github.com:zhang-jc/zhang-jc.github.io.git
 	branch: master
