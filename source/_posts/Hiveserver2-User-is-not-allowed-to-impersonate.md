@@ -15,3 +15,5 @@ categories:
 
     $ hdfs dfsadmin -refreshSuperUserGroupsConfiguration
     $ yarn rmadmin -refreshSuperUserGroupsConfiguration
+
+执行完成后需要重启HiveServer2。然后问题解决。
