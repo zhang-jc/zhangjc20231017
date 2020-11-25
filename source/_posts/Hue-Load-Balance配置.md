@@ -38,7 +38,7 @@ categories:
 重点是调整 upstream hash 的策略。因为 Hue 是需要保持 session 的，同一个 session 的请求需要发送到同一台后端服务器上。简单的可以采用 ip_hash 策略，这个策略存在两个重要的问题：
 
 - 对隐藏在局域网后的用户不起作用。
-- ip_hash 只取 IPV4 的前三段值做 Hash，在非公网大并发场景下会出现负载非常不均衡的情况。
+- ip_hash 只取 IPV4 的前三段值做 Hash，在非公网大并发场景下会出现负载非常不均衡的情况。参见：http://nginx.org/en/docs/http/ngx_http_upstream_module.html#ip_hash
 
 基于以上两点修改了 Nginx 的配置采用 $cookie_sessionid 做为 hash 值，达到 session 级别的负载均衡。
 
