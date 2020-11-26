@@ -59,3 +59,17 @@ b. 启用 MySQL5.7 版本
 检查 MySQL 启动状态
 
 	# sudo service mysqld status
+	
+安装时生成的超级用户初始密码查看：
+
+	# sudo grep 'temporary password' /var/log/mysqld.log
+	
+修改初始密码：
+
+	# mysql -uroot -p
+	mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
+	mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Data-platform@212' WITH GRANT OPTION;
+	Query OK, 0 rows affected, 1 warning (0.00 sec)
+	
+	mysql> FLUSH   PRIVILEGES;
+	Query OK, 0 rows affected (0.00 sec)
