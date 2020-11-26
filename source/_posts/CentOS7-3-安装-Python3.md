@@ -1,4 +1,4 @@
-title: Centos7.3 安装 Python3
+title: CentOS7.3 安装 Python3
 tags:
   - Linux
   - CentOS
