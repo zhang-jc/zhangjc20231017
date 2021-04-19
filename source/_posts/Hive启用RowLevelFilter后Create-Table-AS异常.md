@@ -28,6 +28,7 @@ Hive社区Jira参考信息：<https://issues.apache.org/jira/browse/HIVE-22029>
 
   - L292-L298：
 
+    ```Java
     // 2. Regen OP plan from optimized AST
     init(false);
     if (cboCtx.type == PreCboCtx.Type.CTAS) {
@@ -35,9 +36,11 @@ Hive社区Jira参考信息：<https://issues.apache.org/jira/browse/HIVE-22029>
       setAST(newAST);
       newAST = reAnalyzeCtasAfterCbo(newAST);
     }
+    ```
     
   - L647-L657：
 
+    ```Java
     ASTNode reAnalyzeCtasAfterCbo(ASTNode newAst) throws SemanticException {
       // analyzeCreateTable uses this.ast, but doPhase1 doesn't, so only reset it
       // here.
@@ -49,9 +52,11 @@ Hive社区Jira参考信息：<https://issues.apache.org/jira/browse/HIVE-22029>
       }
       return newAst;
     }
+    ```
     
   - L590-L604：
 
+    ```Java
     private void set(Type type, ASTNode ast) {
       if (this.type != Type.NONE) {
         STATIC_LOG.warn("Setting " + type + " when already " + this.type + "; node " + ast.dump()
@@ -67,11 +72,13 @@ Hive社区Jira参考信息：<https://issues.apache.org/jira/browse/HIVE-22029>
     void setCTASToken(ASTNode child) {
       set(PreCboCtx.Type.CTAS, child);
     }
-    
+    ```
+
 - org.apache.hadoop.hive.ql.parse.SemanticAnalyzer
 
   - L11573-L11597:
   
+    ```Java
     case HiveParser.TOK_QUERY: // CTAS
       if (command_type == CTLT) {
         throw new SemanticException(ErrorMsg.CTAS_CTLT_COEXISTENCE.getMsg());
@@ -97,12 +104,15 @@ Hive社区Jira参考信息：<https://issues.apache.org/jira/browse/HIVE-22029>
       }
       selectStmt = child;
       break;
+      ```
       
 ### 解决方法
 
 禁用CBO可以解决问题。
 
+    ```XML
     <property>
         <name>hive.cbo.enable</name>
         <value>false</value>
     </property>
+    ```
