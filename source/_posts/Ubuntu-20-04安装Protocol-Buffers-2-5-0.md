@@ -40,7 +40,7 @@ make install
 ```
 
 # 安装问题
-## 问题一：undefined macro: AC_PROG_LIBTOOL
+## 问题一
 ### 问题现象
 
 执行 autogen.sh 时出现一下错误：
@@ -60,7 +60,7 @@ autoreconf: /usr/bin/autoconf failed with exit status: 1
 sudo apt-get install libtool
 ```
 
-## 问题二：找不到libprotoc.so.8
+## 问题二
 ### 问题现象
 
 安装完成后验证出现以下错误：
