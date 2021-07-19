@@ -40,8 +40,28 @@ make install
 ```
 
 # 安装问题
+## 问题一：undefined macro: AC_PROG_LIBTOOL
+### 问题现象
 
-## 问题现象
+执行 autogen.sh 时出现一下错误：
+
+```Shell
+configure.ac:29: error: possibly undefined macro: AC_PROG_LIBTOOL
+      If this token and others are legitimate, please use m4_pattern_allow.
+      See the Autoconf documentation.
+autoreconf: /usr/bin/autoconf failed with exit status: 1
+```
+
+### 问题解决
+
+安装 libtool：
+
+```Shell
+sudo apt-get install libtool
+```
+
+## 问题二：找不到libprotoc.so.8
+### 问题现象
 
 安装完成后验证出现以下错误：
 
@@ -50,7 +70,7 @@ $ protoc --version
 protoc: error while loading shared libraries: libprotoc.so.8: cannot open shared object file: No such file or directory
 ```
 
-## 问题解决
+### 问题解决
 
 - 使用find命令找到libprotoc.so.8文件位置。
 
