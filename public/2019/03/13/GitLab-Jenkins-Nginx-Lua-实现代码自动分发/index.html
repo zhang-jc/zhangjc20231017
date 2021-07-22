@@ -21,35 +21,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="在大数据 Hive 数据仓库的开发中，主要是 shell + HQL 的脚本开发。脚本的测试需要放到适当的大数据环境中进行。如果大家共用 GitLab 项目上的同一个 Branch 进行测试需要代码频繁合并，影响效率。我的思路是每个 Developer 在自己的 Branch 开发并经过测试后发起 Merge Request。在我的开发场景中 GitLab 在内网中通过端口映射后允许从外网访问，G">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GitLab + Jenkins + Nginx + Lua 实现代码自动分发">
-<meta property="og:url" content="http://zhang-jc.github.io/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/index.html">
+<meta property="og:url" content="https://www.zhangjc.com/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
 <meta property="og:description" content="在大数据 Hive 数据仓库的开发中，主要是 shell + HQL 的脚本开发。脚本的测试需要放到适当的大数据环境中进行。如果大家共用 GitLab 项目上的同一个 Branch 进行测试需要代码频繁合并，影响效率。我的思路是每个 Developer 在自己的 Branch 开发并经过测试后发起 Merge Request。在我的开发场景中 GitLab 在内网中通过端口映射后允许从外网访问，G">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zhang-jc.github.io/uploads/20190314/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="http://zhang-jc.github.io/uploads/20190314/GitLabWebHook.png">
-<meta property="og:image" content="http://zhang-jc.github.io/uploads/20190314/JenkinsProject1.png">
-<meta property="og:image" content="http://zhang-jc.github.io/uploads/20190314/JenkinsProject2.png">
+<meta property="og:image" content="https://www.zhangjc.com/uploads/20190314/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://www.zhangjc.com/uploads/20190314/GitLabWebHook.png">
+<meta property="og:image" content="https://www.zhangjc.com/uploads/20190314/JenkinsProject1.png">
+<meta property="og:image" content="https://www.zhangjc.com/uploads/20190314/JenkinsProject2.png">
 <meta property="article:published_time" content="2019-03-13T14:48:30.000Z">
 <meta property="article:modified_time" content="2021-07-19T16:28:00.244Z">
-<meta property="article:author" content="一张假钞">
+<meta property="article:author" content="Charles Zhang">
 <meta property="article:tag" content="Nginx">
 <meta property="article:tag" content="GitLab">
 <meta property="article:tag" content="Jenkins">
 <meta property="article:tag" content="Lua">
 <meta property="article:tag" content="OpenResty">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zhang-jc.github.io/uploads/20190314/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B.png">
+<meta name="twitter:image" content="https://www.zhangjc.com/uploads/20190314/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B.png">
 
 
-<link rel="canonical" href="http://zhang-jc.github.io/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/">
+<link rel="canonical" href="https://www.zhangjc.com/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/","path":"2019/03/13/GitLab-Jenkins-Nginx-Lua-实现代码自动分发/","title":"GitLab + Jenkins + Nginx + Lua 实现代码自动分发"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.zhangjc.com/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/","path":"2019/03/13/GitLab-Jenkins-Nginx-Lua-实现代码自动分发/","title":"GitLab + Jenkins + Nginx + Lua 实现代码自动分发"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>GitLab + Jenkins + Nginx + Lua 实现代码自动分发 | 一张假钞的真实世界</title>
@@ -86,6 +86,7 @@
       <h1 class="site-title">一张假钞的真实世界</h1>
       <i class="logo-line"></i>
     </a>
+      <p class="site-subtitle" itemprop="description">大道至简</p>
   </div>
 
   <div class="site-nav-right">
@@ -139,9 +140,9 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="一张假钞"
+    <img class="site-author-image" itemprop="image" alt="Charles Zhang"
       src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <p class="site-author-name" itemprop="name">Charles Zhang</p>
   <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -202,11 +203,11 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="https://www.zhangjc.com/2019/03/13/GitLab-Jenkins-Nginx-Lua-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="name" content="Charles Zhang">
       <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
     </span>
 
@@ -406,7 +407,7 @@ sudo yum install openresty
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+  <span class="author" itemprop="copyrightHolder">Charles Zhang</span>
 </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">

@@ -21,26 +21,26 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="使用 Rsyslog 的 omhttp 模块可以将收集的日志数据以 HTTP 请求的方式输出。该模块支持单条&#x2F;批量发送数据，支持 GZIP 压缩，支持 HTTPS。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rsyslog omhttp（HTTP 输出模块）">
-<meta property="og:url" content="http://zhang-jc.github.io/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/index.html">
+<meta property="og:url" content="https://www.zhangjc.com/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
 <meta property="og:description" content="使用 Rsyslog 的 omhttp 模块可以将收集的日志数据以 HTTP 请求的方式输出。该模块支持单条&#x2F;批量发送数据，支持 GZIP 压缩，支持 HTTPS。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-01T07:31:48.000Z">
 <meta property="article:modified_time" content="2021-07-19T16:28:00.288Z">
-<meta property="article:author" content="一张假钞">
+<meta property="article:author" content="Charles Zhang">
 <meta property="article:tag" content="Rsyslog">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://zhang-jc.github.io/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/">
+<link rel="canonical" href="https://www.zhangjc.com/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/","path":"2019/04/01/Rsyslog-omhttp（HTTP-输出模块）/","title":"Rsyslog omhttp（HTTP 输出模块）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.zhangjc.com/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/","path":"2019/04/01/Rsyslog-omhttp（HTTP-输出模块）/","title":"Rsyslog omhttp（HTTP 输出模块）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Rsyslog omhttp（HTTP 输出模块） | 一张假钞的真实世界</title>
@@ -77,6 +77,7 @@
       <h1 class="site-title">一张假钞的真实世界</h1>
       <i class="logo-line"></i>
     </a>
+      <p class="site-subtitle" itemprop="description">大道至简</p>
   </div>
 
   <div class="site-nav-right">
@@ -129,9 +130,9 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="一张假钞"
+    <img class="site-author-image" itemprop="image" alt="Charles Zhang"
       src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <p class="site-author-name" itemprop="name">Charles Zhang</p>
   <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -192,11 +193,11 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://www.zhangjc.com/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="name" content="Charles Zhang">
       <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
     </span>
 
@@ -266,8 +267,8 @@
         <p>使用 Rsyslog 的 omhttp 模块可以将收集的日志数据以 HTTP 请求的方式输出。该模块支持单条/批量发送数据，支持 GZIP 压缩，支持 HTTPS。</p>
 <span id="more"></span>
 
-<p>Rsyslog 默认未包含 omhttp 模块，需要重新编译。编译过程参考我的博文：<br><a href="http://zhang-jc.github.io/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 7.3 编译 Rsyslog 8.1903.0</a><br><a href="http://zhang-jc.github.io/2019/04/03/CentOS-6-5-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 6.5 编译 Rsyslog 8.1903.0</a></p>
-<p>CentOS 6.5 系统下编译比较麻烦，可以下载我编译后的 so 文件：<a href="http://zhang-jc.github.io/2019/04/06/CentOS-6-5-%E7%BC%96%E8%AF%91-omhttp-so-%E4%B8%8B%E8%BD%BD/">CentOS 6.5 编译 omhttp.so 下载</a></p>
+<p>Rsyslog 默认未包含 omhttp 模块，需要重新编译。编译过程参考我的博文：<br><a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 7.3 编译 Rsyslog 8.1903.0</a><br><a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2019/04/03/CentOS-6-5-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 6.5 编译 Rsyslog 8.1903.0</a></p>
+<p>CentOS 6.5 系统下编译比较麻烦，可以下载我编译后的 so 文件：<a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2019/04/06/CentOS-6-5-%E7%BC%96%E8%AF%91-omhttp-so-%E4%B8%8B%E8%BD%BD/">CentOS 6.5 编译 omhttp.so 下载</a></p>
 <p>一个简单的配置示例如下：</p>
 <pre><code>module(load=&quot;omhttp&quot;)
 template(name=&quot;tpl1&quot; type=&quot;string&quot; string=&quot;&#123;\&quot;type\&quot;:\&quot;syslog\&quot;, \&quot;host\&quot;:\&quot;%HOSTNAME%\&quot;&#125;&quot;)
@@ -345,7 +346,7 @@ action(
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+  <span class="author" itemprop="copyrightHolder">Charles Zhang</span>
 </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">

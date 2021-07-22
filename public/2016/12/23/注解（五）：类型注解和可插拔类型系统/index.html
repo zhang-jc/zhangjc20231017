@@ -21,26 +21,26 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="Java SE 8 发布之前，注解只能应用于声明。随着 Java SE 8 发布，注解可以被应用于任何类型使用。这意味着注解可以被用于任何使用类型的地方。类型在什么地方使用的几个例子是类实例创建表达式（new）、强制类型转换、implements 子句和 throws 子句。这种形式的注解称为类型注解，在注解基础中提供了几个例子。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="注解（五）：类型注解和可插拔类型系统">
-<meta property="og:url" content="http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:url" content="https://www.zhangjc.com/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
 <meta property="og:description" content="Java SE 8 发布之前，注解只能应用于声明。随着 Java SE 8 发布，注解可以被应用于任何类型使用。这意味着注解可以被用于任何使用类型的地方。类型在什么地方使用的几个例子是类实例创建表达式（new）、强制类型转换、implements 子句和 throws 子句。这种形式的注解称为类型注解，在注解基础中提供了几个例子。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-12-23T13:33:50.000Z">
 <meta property="article:modified_time" content="2021-07-19T16:28:00.312Z">
-<meta property="article:author" content="一张假钞">
+<meta property="article:author" content="Charles Zhang">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">
+<link rel="canonical" href="https://www.zhangjc.com/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/","path":"2016/12/23/注解（五）：类型注解和可插拔类型系统/","title":"注解（五）：类型注解和可插拔类型系统"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.zhangjc.com/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/","path":"2016/12/23/注解（五）：类型注解和可插拔类型系统/","title":"注解（五）：类型注解和可插拔类型系统"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>注解（五）：类型注解和可插拔类型系统 | 一张假钞的真实世界</title>
@@ -77,6 +77,7 @@
       <h1 class="site-title">一张假钞的真实世界</h1>
       <i class="logo-line"></i>
     </a>
+      <p class="site-subtitle" itemprop="description">大道至简</p>
   </div>
 
   <div class="site-nav-right">
@@ -129,9 +130,9 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="一张假钞"
+    <img class="site-author-image" itemprop="image" alt="Charles Zhang"
       src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <p class="site-author-name" itemprop="name">Charles Zhang</p>
   <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -192,11 +193,11 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://www.zhangjc.com/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="name" content="Charles Zhang">
       <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
     </span>
 
@@ -339,7 +340,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+  <span class="author" itemprop="copyrightHolder">Charles Zhang</span>
 </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
