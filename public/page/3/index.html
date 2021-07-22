@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="人一定要有梦想，万一实现了呢...">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一张假钞的真实世界">
@@ -238,6 +238,22 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/18/Hue-Load-Balance%E9%85%8D%E7%BD%AE/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/18/Hue-Load-Balance%E9%85%8D%E7%BD%AE/" class="cy_cmt_count" data-xid="2020/11/18/Hue-Load-Balance配置/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -274,13 +290,14 @@ upstream hue &#123;
 &#125;
 </code></pre>
 <p>重点是调整 upstream hash 的策略。因为 Hue 是需要保持 session 的，同一个 session 的请求需要发送到同一台后端服务器上。简单的可以采用 ip_hash 策略，这个策略存在两个重要的问题：</p>
-<ul>
-<li>对隐藏在局域网后的用户不起作用。</li>
-<li>ip_hash 只取 IPV4 的前三段值做 Hash，在非公网大并发场景下会出现负载非常不均衡的情况。参见：<a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html#ip_hash">http://nginx.org/en/docs/http/ngx_http_upstream_module.html#ip_hash</a></li>
-</ul>
-<p>基于以上两点修改了 Nginx 的配置采用 $cookie_sessionid 做为 hash 值，达到 session 级别的负载均衡。</p>
-<p>主要的问题其实是这种方式未做到按照后端服务器实际负载再按照 session 级别来分配请求。后续打算研究 HAProxy 是否可以做到。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/18/Hue-Load-Balance%E9%85%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -354,6 +371,22 @@ upstream hue &#123;
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/09/17/Hue-UI-%E5%B1%95%E7%A4%BA%E4%B8%AD%E6%96%87/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/09/17/Hue-UI-%E5%B1%95%E7%A4%BA%E4%B8%AD%E6%96%87/" class="cy_cmt_count" data-xid="2020/09/17/Hue-UI-展示中文/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -368,7 +401,14 @@ upstream hue &#123;
 $ make locales
 </code></pre>
 <p>如果需要则重启Hue即可。是否需要重启我没有验证：）</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/17/Hue-UI-%E5%B1%95%E7%A4%BA%E4%B8%AD%E6%96%87/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -442,6 +482,22 @@ $ make locales
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/09/17/npm-%E4%BB%A3%E7%90%86/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/09/17/npm-%E4%BB%A3%E7%90%86/" class="cy_cmt_count" data-xid="2020/09/17/npm-代理/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -455,11 +511,14 @@ $ make locales
 <p>使用以下命令查看当前的库：</p>
 <pre><code>npm config get registry
 </code></pre>
-<p>默认为：<a target="_blank" rel="noopener" href="https://registry.npmjs.org/%E3%80%82%E5%9B%A0%E4%B8%BA%E6%98%AF%E5%9B%BD%E5%A4%96%E7%9A%84%E7%AB%99%E7%82%B9%EF%BC%8C%E6%89%80%E4%BB%A5%E4%BC%9A%E5%BE%88%E6%85%A2%E3%80%82">https://registry.npmjs.org/。因为是国外的站点，所以会很慢。</a></p>
-<p>用set命令换成阿里的镜像：</p>
-<pre><code>npm config set registry https://registry.npm.taobao.org
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/17/npm-%E4%BB%A3%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -533,6 +592,22 @@ $ make locales
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/09/09/Hiveserver2-User-is-not-allowed-to-impersonate/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/09/09/Hiveserver2-User-is-not-allowed-to-impersonate/" class="cy_cmt_count" data-xid="2020/09/09/Hiveserver2-User-is-not-allowed-to-impersonate/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -547,8 +622,14 @@ $ make locales
 <pre><code>$ hdfs dfsadmin -refreshSuperUserGroupsConfiguration
 $ yarn rmadmin -refreshSuperUserGroupsConfiguration
 </code></pre>
-<p>执行完成后需要重启HiveServer2。然后问题解决。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/09/Hiveserver2-User-is-not-allowed-to-impersonate/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -609,6 +690,22 @@ $ yarn rmadmin -refreshSuperUserGroupsConfiguration
       </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/06/24/CentOS-7-3-Python-3-7-2-%E7%BC%96%E8%AF%91-Hue-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/06/24/CentOS-7-3-Python-3-7-2-%E7%BC%96%E8%AF%91-Hue-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="cy_cmt_count" data-xid="2020/06/24/CentOS-7-3-Python-3-7-2-编译-Hue-问题解决/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -622,85 +719,15 @@ $ yarn rmadmin -refreshSuperUserGroupsConfiguration
 <li>CentOS 7.3</li>
 <li>Python 3.7.2，我服务器上的安装是直接从其他服务器拷贝过来，然后配置环境变量的版本。正式因为这样我才遇到如下的问题。 </li>
 </ul>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><h4 id="python3-7-devel"><a href="#python3-7-devel" class="headerlink" title="python3.7-devel"></a>python3.7-devel</h4><pre><code>$ make apps
-&quot;PYTHON_VER is python3.7.&quot;
-&quot;Python 3 module install via pip&quot;
-/opt/hue-4.7.1/Makefile.vars:65: *** &quot;Error: must have python development packages for python3.7. Could not find Python.h. Please install python3.7-devel&quot;.  Stop.
-</code></pre>
-<p>尝试安装 python3.7-devel 包，发现该包不存在，所以通过以下方式解决：</p>
-<pre><code># ln -s /opt/python/include/python3.7m /usr/include/python3.7
-</code></pre>
-<p>我的 python 是安装在 /opt/ 目录下的。</p>
-<h4 id="找不到对应版本的-python"><a href="#找不到对应版本的-python" class="headerlink" title="找不到对应版本的 python"></a>找不到对应版本的 python</h4><pre><code>$ make apps
-&quot;PYTHON_VER is python3.7.&quot;
-&quot;Python 3 module install via pip&quot;
-/opt/hue-4.7.1/Makefile.vars:73: *** &quot;Error: Need python version 2.7 or &gt;= 3.5&quot;.  Stop.
-</code></pre>
-<p>创建以下软连接解决：</p>
-<pre><code># ln -s /opt/python/bin/python3.7 /usr/bin/python3.7
-</code></pre>
-<h4 id="找不到-npm-命令"><a href="#找不到-npm-命令" class="headerlink" title="找不到 npm 命令"></a>找不到 npm 命令</h4><pre><code>npm --version
-/bin/bash: npm: command not found
-make[1]: *** [npm-install] Error 127
-</code></pre>
-<p>不能使用yum安装npm，因为安装的版本太低。需要安装 node 10 以上的版本：</p>
-<pre><code># cd /opt/
-# wget -c https://npm.taobao.org/mirrors/node/latest-v10.x/node-v10.21.0-linux-x64.tar.gz
-# tar xzf node-v10.21.0-linux-x64.tar.gz
-# ln -s node-v10.21.0-linux-x64 node
-</code></pre>
-<h4 id="No-module-named-‘pysqlite2’"><a href="#No-module-named-‘pysqlite2’" class="headerlink" title="No module named ‘pysqlite2’"></a>No module named ‘pysqlite2’</h4><pre><code>Traceback (most recent call last):
-  File &quot;/opt/hue-4.7.1/build/env/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py&quot;, line 31, in &lt;module&gt;
-    from pysqlite2 import dbapi2 as Database
-ModuleNotFoundError: No module named &#39;pysqlite2&#39;
-</code></pre>
-<p>Python3 只支持 sqlite3：</p>
-<pre><code># pip install pysqlite
-Collecting pysqlite
-  Using cached pysqlite-2.8.3.tar.gz (80 kB)
-    ERROR: Command errored out with exit status 1:
-     command: /opt/hue-4.7.1/build/env/bin/python3.7 -c &#39;import sys, setuptools, tokenize; sys.argv[0] = &#39;&quot;&#39;&quot;&#39;/tmp/pip-install-42esl1q6/pysqlite/setup.py&#39;&quot;&#39;&quot;&#39;; __file__=&#39;&quot;&#39;&quot;&#39;/tmp/pip-install-42esl1q6/pysqlite/setup.py&#39;&quot;&#39;&quot;&#39;;f=getattr(tokenize, &#39;&quot;&#39;&quot;&#39;open&#39;&quot;&#39;&quot;&#39;, open)(__file__);code=f.read().replace(&#39;&quot;&#39;&quot;&#39;\r\n&#39;&quot;&#39;&quot;&#39;, &#39;&quot;&#39;&quot;&#39;\n&#39;&quot;&#39;&quot;&#39;);f.close();exec(compile(code, __file__, &#39;&quot;&#39;&quot;&#39;exec&#39;&quot;&#39;&quot;&#39;))&#39; egg_info --egg-base /tmp/pip-pip-egg-info-v9a4at6e
-         cwd: /tmp/pip-install-42esl1q6/pysqlite/
-    Complete output (1 lines):
-    pysqlite is not supported on Python 3. When using Python 3, use the sqlite3 module from the standard library.
-    ----------------------------------------
-ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
-(env) [root@ycluster-resourcemanager1 bin]# pip install pysqlite3
-Collecting pysqlite3
-  Downloading pysqlite3-0.4.3.tar.gz (40 kB)
-     |████████████████████████████████| 40 kB 682 kB/s 
-Building wheels for collected packages: pysqlite3
-  Building wheel for pysqlite3 (setup.py) ... done
-  Created wheel for pysqlite3: filename=pysqlite3-0.4.3-cp37-cp37m-linux_x86_64.whl size=128283 sha256=9a55112d80511438c46512efb0f4021301ba7b04af2897b6d6746158d5cd0fe5
-  Stored in directory: /root/.cache/pip/wheels/85/19/01/0a17a6cacac8cf8a4e8e8994d314abf10a9b11a1c4bc18218a
-Successfully built pysqlite3
-Installing collected packages: pysqlite3
-Successfully installed pysqlite3-0.4.3
-</code></pre>
-<p>重新编译，但是问题依旧：</p>
-<pre><code>Traceback (most recent call last):
-  File &quot;/opt/hue-4.7.1/build/env/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py&quot;, line 33, in &lt;module&gt;
-    from sqlite3 import dbapi2 as Database
-  File &quot;/opt/python/lib/python3.7/sqlite3/__init__.py&quot;, line 23, in &lt;module&gt;
-    from sqlite3.dbapi2 import *
-  File &quot;/opt/python/lib/python3.7/sqlite3/dbapi2.py&quot;, line 27, in &lt;module&gt;
-    from _sqlite3 import *
-ModuleNotFoundError: No module named &#39;_sqlite3&#39;
-</code></pre>
-<p>解决方案是在系统中安装 sqlit 相关的包，然后重新编译安装 Python3：</p>
-<pre><code># yum install sqlite*
-</code></pre>
-<p>安装Pyhton3参考博文：<a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2018/11/19/Centos7-3-%E5%AE%89%E8%A3%85-Python3/">http://zhang-jc.github.io/2018/11/19/Centos7-3-%E5%AE%89%E8%A3%85-Python3/</a></p>
-<h4 id="重试可以解决的问题"><a href="#重试可以解决的问题" class="headerlink" title="重试可以解决的问题"></a>重试可以解决的问题</h4><p>编译的过程可能会出现以下错误，直接重试即可：</p>
-<pre><code>ERROR: Could not find a version that satisfies the requirement threadloop&lt;2,&gt;=1 (from jaeger-client==4.3.0-&gt;-r /opt/hue-4.7.1/desktop/core/requirements.txt (line 30)) (from versions: none)
-ERROR: No matching distribution found for threadloop&lt;2,&gt;=1 (from jaeger-client==4.3.0-&gt;-r /opt/hue-4.7.1/desktop/core/requirements.txt (line 30))
-
-ERROR: Could not find a version that satisfies the requirement vine&lt;5.0.0a1,&gt;=1.1.3 (from amqp&lt;2.7,&gt;=2.6.0-&gt;kombu&lt;5.0,&gt;=4.2.0-&gt;celery==4.2.1-&gt;-r /opt/hue-4.7.1/desktop/core/requirements.txt (line 7)) (from versions: none)
-ERROR: No matching distribution found for vine&lt;5.0.0a1,&gt;=1.1.3 (from amqp&lt;2.7,&gt;=2.6.0-&gt;kombu&lt;5.0,&gt;=4.2.0-&gt;celery==4.2.1-&gt;-r /opt/hue-4.7.1/desktop/core/requirements.txt (line 7))
-</code></pre>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><pre><code>通过查看源代码可以轻松定位并解决以上问题。所以，快乐的享受有源代码的日子吧^_^
-</code></pre>
-
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/24/CentOS-7-3-Python-3-7-2-%E7%BC%96%E8%AF%91-Hue-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -774,6 +801,22 @@ ERROR: No matching distribution found for vine&lt;5.0.0a1,&gt;=1.1.3 (from amqp&
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/06/23/Hue-%E7%BC%96%E8%AF%91%E5%BC%82%E5%B8%B8%EF%BC%9AImportError-cannot-import-name-six-from-urllib3-packages/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/06/23/Hue-%E7%BC%96%E8%AF%91%E5%BC%82%E5%B8%B8%EF%BC%9AImportError-cannot-import-name-six-from-urllib3-packages/" class="cy_cmt_count" data-xid="2020/06/23/Hue-编译异常：ImportError-cannot-import-name-six-from-urllib3-packages/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -831,19 +874,14 @@ Traceback (most recent call last):
 ImportError: cannot import name &#39;six&#39; from &#39;urllib3.packages&#39; (/usr/lib/python3/dist-packages/urllib3/packages/__init__.py)
 </code></pre>
 <p>错误原因：根据错误信息可以看到是“/usr/lib/python3/dist-packages/urllib3”这个包的问题。正确的应该是引用“build/env/lib/python3.7/site-packages/”下的包。查看”/usr/lib/python3/dist-packages/urllib3”下的包信息，发现包版本比较低。</p>
-<pre><code>$ ls -l /usr/lib/python3/dist-packages/
-drwxr-xr-x  6 root root   4096 1月  13 17:07 urllib3
-drwxr-xr-x  2 root root   4096 1月  13 17:06 urllib3-1.22.egg-info
-</code></pre>
-<p>解决方法：删除有问题的包后再试成功。</p>
-<pre><code>$ sudo rm -rf /usr/lib/python3/dist-packages/urllib3*
-</code></pre>
-<p>查看“build/env/lib/python3.7/site-packages/”下的urllib3包信息：</p>
-<pre><code>$ ls -l build/env/lib/python3.7/site-packages/|grep urllib3
-drwxr-xr-x  6 zhangjc zhangjc   4096 6月  23 17:06 urllib3
-drwxr-xr-x  2 zhangjc zhangjc   4096 6月  23 17:06 urllib3-1.25.9.dist-info
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/23/Hue-%E7%BC%96%E8%AF%91%E5%BC%82%E5%B8%B8%EF%BC%9AImportError-cannot-import-name-six-from-urllib3-packages/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -912,6 +950,22 @@ drwxr-xr-x  2 zhangjc zhangjc   4096 6月  23 17:06 urllib3-1.25.9.dist-info
         </span>
     </span>
 
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/05/19/%E5%8D%9A%E5%82%BB%E7%90%86%E8%AE%BA/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/05/19/%E5%8D%9A%E5%82%BB%E7%90%86%E8%AE%BA/" class="cy_cmt_count" data-xid="2020/05/19/博傻理论/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
   
 </div>
 
@@ -984,6 +1038,22 @@ drwxr-xr-x  2 zhangjc zhangjc   4096 6月  23 17:06 urllib3-1.25.9.dist-info
       </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/12/21/Python3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BA%A4%E4%BA%92%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%96%B9%E5%90%91%E9%94%AE/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/12/21/Python3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BA%A4%E4%BA%92%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%96%B9%E5%90%91%E9%94%AE/" class="cy_cmt_count" data-xid="2019/12/21/Python3-命令行交互不能使用方向键/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1001,9 +1071,14 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 &gt;&gt;&gt; ^[[A^[[B^[[C^[[D
 </code></pre>
 <p>解决方法是安装 readline：</p>
-<pre><code>pip3 install readline
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/21/Python3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BA%A4%E4%BA%92%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%96%B9%E5%90%91%E9%94%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1077,6 +1152,22 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/12/20/%E6%B2%89%E6%B2%A1%E6%88%90%E6%9C%AC/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/12/20/%E6%B2%89%E6%B2%A1%E6%88%90%E6%9C%AC/" class="cy_cmt_count" data-xid="2019/12/20/沉没成本/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1089,7 +1180,14 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
           <p>沉没成本（Sunk Cost）是指以往发生的，但与当前决策无关的费用。从决策的角度看，以往发生的费用只是造成当前状态的某个因素，当前决策所要考虑的是未来可能发生的费用及所带来的收益，而不考虑以往发生的费用。</p>
 <p>人们在决定是否去做一件事情的时候，不仅是看这件事对自己有没有好处，而且也看过去是不是已经在这件事情上有过投入。我们把这些已经发生不可收回的支出，如时间、金钱、精力等称为“沉没成本”。在经济学和商业决策制定过程中会用到“沉没成本”的概念，代指已经付出且不可收回的成本。沉没成本常用来和可变成本作比较，可变成本可以被改变，而沉没成本则不能被改变。</p>
 <p>例如，买了一张电影票，不能退票的那种，那么买这张电影票的钱就属于沉没成本。电影开场后，在看电影的过程中发现电影不是自己喜欢的类型，现在有两个选择继续看完还是中间退场。不管坐哪个选择，票钱都不应该做为做出选择的依据，因为不管那种选择票钱都是没法挽回的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/20/%E6%B2%89%E6%B2%A1%E6%88%90%E6%9C%AC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1163,6 +1261,22 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/12/19/%E6%9C%BA%E4%BC%9A%E6%88%90%E6%9C%AC/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/12/19/%E6%9C%BA%E4%BC%9A%E6%88%90%E6%9C%AC/" class="cy_cmt_count" data-xid="2019/12/19/机会成本/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1174,18 +1288,14 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     <div class="post-body" itemprop="articleBody">
           <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>机会成本（Opportunity Cost）是指在面临多方案择一决策时，被舍弃的选项中的最高价值者是本次决策的机会成本。</p>
 <p>机会成本又称为择一成本、替代性成本。机会成本对商业公司来说，可以是利用一定的时间或资源生产一种商品时，而失去的利用这些资源生产其他最佳替代品的机会就是机会成本。</p>
-<h3 id="涵盖内容"><a href="#涵盖内容" class="headerlink" title="涵盖内容"></a>涵盖内容</h3><ul>
-<li>使用他人资源的机会成本，即付给资源拥有者的货币代价被称作显性成本。</li>
-<li>因为使用自有资源而放弃其他可能性中得到的最大回报的那个代价，也被称为隐性成本。</li>
-</ul>
-<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><p>利用机会成本概念进行经济分析的前提条件是：</p>
-<ul>
-<li>资源是稀缺的</li>
-<li>资源具有多种用途</li>
-<li>资源已经得到充分利用</li>
-<li>资源可以自由流动</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/19/%E6%9C%BA%E4%BC%9A%E6%88%90%E6%9C%AC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1240,7 +1350,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -1263,6 +1373,8 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>

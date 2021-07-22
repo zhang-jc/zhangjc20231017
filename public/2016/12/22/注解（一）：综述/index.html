@@ -21,13 +21,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="注解，一种元数据的形式，提供程序相关的数据，这些数据不是程序本身的一部分。注解对它们注解的代码操作没有直接的作用。 注解有许多用途，其中：  为编译器提供信息 - 注解被编译器用来发现错误或禁止告警。 编译期和部署期处理 - 软件工具可以处理注解信息来生成代码、XML 文件等等。 运行时处理 - 一些注解可以在运行时检查。  这节课讲解哪些地方可以用注解、如何应用注解、在 Java 平台（标准版">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="注解，一种元数据的形式，提供程序相关的数据，这些数据不是程序本身的一部分。注解对它们注解的代码操作没有直接的作用。 注解有许多用途，其中：  为编译器提供信息 - 注解被编译器用来发现错误或禁止告警。 编译期和部署期处理 - 软件工具可以处理注解信息来生成代码、XML 文件等等。 运行时处理 - 一些注解可以在运行时检查。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="注解（一）：综述">
 <meta property="og:url" content="https://www.zhangjc.com/2016/12/22/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BB%BC%E8%BF%B0/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
-<meta property="og:description" content="注解，一种元数据的形式，提供程序相关的数据，这些数据不是程序本身的一部分。注解对它们注解的代码操作没有直接的作用。 注解有许多用途，其中：  为编译器提供信息 - 注解被编译器用来发现错误或禁止告警。 编译期和部署期处理 - 软件工具可以处理注解信息来生成代码、XML 文件等等。 运行时处理 - 一些注解可以在运行时检查。  这节课讲解哪些地方可以用注解、如何应用注解、在 Java 平台（标准版">
+<meta property="og:description" content="注解，一种元数据的形式，提供程序相关的数据，这些数据不是程序本身的一部分。注解对它们注解的代码操作没有直接的作用。 注解有许多用途，其中：  为编译器提供信息 - 注解被编译器用来发现错误或禁止告警。 编译期和部署期处理 - 软件工具可以处理注解信息来生成代码、XML 文件等等。 运行时处理 - 一些注解可以在运行时检查。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-12-22T14:19:13.000Z">
 <meta property="article:modified_time" content="2021-07-19T16:28:00.308Z">
@@ -248,6 +248,22 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2016/12/22/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E7%BB%BC%E8%BF%B0/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2016/12/22/注解（一）：综述/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -317,6 +333,7 @@
 
 
 
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
@@ -350,7 +367,7 @@
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -373,6 +390,8 @@
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>

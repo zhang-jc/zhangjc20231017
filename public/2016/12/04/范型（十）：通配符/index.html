@@ -21,13 +21,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="在范型代码中，问好（?），被叫做通配符，表示一个未知的类型。通配符可以被用在多种情况：作为一个参数的类型、域或本地变量；有时作为返回类型（虽然编程的最佳实践是更明确）。通配符永远不会被用作范型方法调用的类型参数、范型类实例化的创建或者超类型。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在范型代码中，问好（?），被叫做通配符，表示一个未知的类型。通配符可以被用在多种情况：作为一个参数的类型、域或本地变量；有时作为返回类型（虽然编程的最佳实践是更明确）。通配符永远不会被用作范型方法调用的类型参数、范型类实例化的创建或者超类型。   下面的章节更细致的讨论通配符，包括上限通配符、下限通配符和通配符匹配。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="范型（十）：通配符">
 <meta property="og:url" content="https://www.zhangjc.com/2016/12/04/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E9%80%9A%E9%85%8D%E7%AC%A6/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
-<meta property="og:description" content="在范型代码中，问好（?），被叫做通配符，表示一个未知的类型。通配符可以被用在多种情况：作为一个参数的类型、域或本地变量；有时作为返回类型（虽然编程的最佳实践是更明确）。通配符永远不会被用作范型方法调用的类型参数、范型类实例化的创建或者超类型。">
+<meta property="og:description" content="在范型代码中，问好（?），被叫做通配符，表示一个未知的类型。通配符可以被用在多种情况：作为一个参数的类型、域或本地变量；有时作为返回类型（虽然编程的最佳实践是更明确）。通配符永远不会被用作范型方法调用的类型参数、范型类实例化的创建或者超类型。   下面的章节更细致的讨论通配符，包括上限通配符、下限通配符和通配符匹配。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.zhangjc.com/uploads/20161203/generics-listParent.gif">
 <meta property="og:image" content="https://www.zhangjc.com/uploads/20161203/generics-wildcardSubtyping.gif">
@@ -252,6 +252,22 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2016/12/04/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E9%80%9A%E9%85%8D%E7%AC%A6/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2016/12/04/范型（十）：通配符/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -555,6 +571,7 @@ ln.add(new NaturalNumber(35));  // compile-time error
 
 
 
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
@@ -588,7 +605,7 @@ ln.add(new NaturalNumber(35));  // compile-time error
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -611,6 +628,8 @@ ln.add(new NaturalNumber(35));  // compile-time error
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>

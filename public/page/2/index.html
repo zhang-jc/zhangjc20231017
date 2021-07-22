@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="人一定要有梦想，万一实现了呢...">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一张假钞的真实世界">
@@ -238,6 +238,22 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/01/13/Hue%E5%AE%89%E8%A3%85ImportError%E9%94%99%E8%AF%AF%E4%B8%80%E4%BE%8B/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2021/01/13/Hue%E5%AE%89%E8%A3%85ImportError%E9%94%99%E8%AF%AF%E4%B8%80%E4%BE%8B/" class="cy_cmt_count" data-xid="2021/01/13/Hue安装ImportError错误一例/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -390,14 +406,14 @@ Traceback (most recent call last):
 ImportError: /opt/hue-4.8.0/hue/build/env/lib/python2.7/site-packages/cryptography-2.9-py2.7-linux-x86_64.egg/cryptography/hazmat/bindings/_openssl.so: undefined symbol: RSA_set0_factors
 </code></pre>
 <p>错误原因是系统中有多个OpenSSL的版本，因为自己编译安装的版本未创建对应的软连接，导致编译时查找的版本不正确。通过以下方式解决：</p>
-<pre><code># ln -s /usr/local/openssl/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1
-# ln -s /usr/local/openssl/lib/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
-# export LDFLAGS=&quot;-L/usr/local/openssl/lib&quot;
-# export CPPFLAGS=&quot;-I/usr/local/openssl/include&quot;
-# export PKG_CONFIG_PATH=&quot;/usr/local/openssl/lib/pkgconfig&quot;
-</code></pre>
-<p>完成后再次编译安装成功。对于OpenSSL的处理可以参见我的另外一篇博文：<a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2018/11/27/CentOS-6-8-%E5%AE%89%E8%A3%85-Python3-Could-not-build-the-ssl-module/">CentOS 6.8 安装 Python3 Could not build the ssl module</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/13/Hue%E5%AE%89%E8%A3%85ImportError%E9%94%99%E8%AF%AF%E4%B8%80%E4%BE%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -471,6 +487,22 @@ ImportError: /opt/hue-4.8.0/hue/build/env/lib/python2.7/site-packages/cryptograp
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/12/03/shell-c/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/12/03/shell-c/" class="cy_cmt_count" data-xid="2020/12/03/shell-c/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -485,9 +517,14 @@ ImportError: /opt/hue-4.8.0/hue/build/env/lib/python2.7/site-packages/cryptograp
 rm: cannot remove `i_20201108_CONTENTINFO_xy_001.dat&#39;: Permission denied
 </code></pre>
 <p>按照以下方式处理即可：</p>
-<pre><code>$ sudo sh -c &#39;find ../*/exportFiles -mtime +15 -name &quot;*&quot; | xargs -I &#123;&#125; rm -rf &#123;&#125;&#39;
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/03/shell-c/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -561,6 +598,22 @@ rm: cannot remove `i_20201108_CONTENTINFO_xy_001.dat&#39;: Permission denied
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/12/02/Ranger-Hive-Service%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/12/02/Ranger-Hive-Service%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="cy_cmt_count" data-xid="2020/12/02/Ranger-Hive-Service连接测试失败问题解决/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -578,17 +631,14 @@ Could not establish connection to jdbc:hive2://192.168.72.212:10000: Required fi
 Required field &#39;client_protocol&#39; is unset! Struct:TOpenSessionReq(client_protocol:null, configuration:&#123;set:hiveconf:hive.server2.thrift.resultset.default.fetch.size=1000, use:database=default&#125;). 
 </code></pre>
 <p>百度后是因为Hive版本不匹配导致的。我的测试环境Hive版本是2.1.1，通过下面的命令发现确实版本不一致：</p>
-<pre><code># find . -name &quot;*hive*&quot;
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive/ranger-hive-plugin-1.2.0.jar
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive/hive-common-2.3.2.jar
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive/hive-service-2.3.2.jar
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive/hive-exec-2.3.2.jar
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive/hive-metastore-2.3.2.jar
-./ews/webapp/WEB-INF/classes/ranger-plugins/hive/hive-jdbc-2.3.2.jar
-</code></pre>
-<p>问题解决方法就显而易见了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/02/Ranger-Hive-Service%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -662,6 +712,22 @@ Required field &#39;client_protocol&#39; is unset! Struct:TOpenSessionReq(client
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/12/01/Ranger-Admin%E5%AE%89%E8%A3%85MySQL%E5%88%9D%E5%A7%8B%E5%8C%96%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/12/01/Ranger-Admin%E5%AE%89%E8%A3%85MySQL%E5%88%9D%E5%A7%8B%E5%8C%96%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="cy_cmt_count" data-xid="2020/12/01/Ranger-Admin安装MySQL初始化问题解决/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -684,22 +750,14 @@ javax_net_ssl_keyStorePassword=
 javax_net_ssl_trustStore=
 javax_net_ssl_trustStorePassword=
 </code></pre>
-<p>跟踪源代码发现安装过程只处理了启用ssl的情况，但是新版本的mysql默认是需要启用ssl的。修改Ranger安装源代码（apache-ranger-1.2.0/security-admin/scripts/db_setup.py）增加下面代码中的221、222行，如下：</p>
-<pre><code>210         def get_jisql_cmd(self, user, password ,db_name):
-211                 path = RANGER_ADMIN_HOME
-212                 db_ssl_param=&#39;&#39;
-213                 db_ssl_cert_param=&#39;&#39;
-214                 if self.db_ssl_enabled == &#39;true&#39;:
-215                         db_ssl_param=&quot;?useSSL=%s&amp;requireSSL=%s&amp;verifyServerCertificate=%s&quot; %(self.db_ssl_enabled,self.db_ssl_required,self.db_ssl_verifyServerCertificate)
-216                         if self.db_ssl_verifyServerCertificate == &#39;true&#39;:
-217                                 if self.db_ssl_auth_type == &#39;1-way&#39;:
-218                                         db_ssl_cert_param=&quot; -Djavax.net.ssl.trustStore=%s -Djavax.net.ssl.trustStorePassword=%s &quot; %(self.javax_net_ssl_trustStore,self.javax_net_ssl_trustStorePassword)
-219                                 else:
-220                                         db_ssl_cert_param=&quot; -Djavax.net.ssl.keyStore=%s -Djavax.net.ssl.keyStorePassword=%s -Djavax.net.ssl.trustStore=%s -Djavax.net.ssl.trustStorePassword=%s &quot; %(self.javax_net_ssl_keyStore,self.javax_net_ssl_keyStorePassword,self.javax_net_ssl_trustStore,self.javax_net_ssl_trustStorePassword)
-221                 else:
-222                         db_ssl_param=&#39;?useSSL=false&#39;
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/01/Ranger-Admin%E5%AE%89%E8%A3%85MySQL%E5%88%9D%E5%A7%8B%E5%8C%96%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -773,6 +831,22 @@ javax_net_ssl_trustStorePassword=
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/30/Linux-Iptables-%E7%A4%BA%E4%BE%8B%E4%B8%80%E5%88%99/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/30/Linux-Iptables-%E7%A4%BA%E4%BE%8B%E4%B8%80%E5%88%99/" class="cy_cmt_count" data-xid="2020/11/30/Linux-Iptables-示例一则/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -790,14 +864,14 @@ iptables -t filter -I OUTPUT -d 192.168.72.0/24 -j DROP
 iptables -t filter -I OUTPUT -d 192.168.72.1/32 -j ACCEPT
 service iptables save
 </code></pre>
-<ol>
-<li>第一条命令是修改OUTPUT链的默认策略为ACCEPT，这样做的优点是方便通过yum安装软件时不需要设置一堆放行规则，当然网络入口的防火墙需要做好安全防护。</li>
-<li>第二条命令是情况OUTPUT链的所有规则，重新进行配置。</li>
-<li>第三条命令是插入一条filter规则，禁用当前服务器对192.168.72网段的访问。</li>
-<li>第四条命令是在filter表插入放行规则，允许当前服务器访问网关192.168.72.1。</li>
-</ol>
-<p>注意，因为filter规则添加采用的是 -I 插入模式，每次都是在表的最前名插入，所有第三、四的顺序不能颠倒。如果采用的是 -A 追加模式，则第三、四命令需要颠倒。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/30/Linux-Iptables-%E7%A4%BA%E4%BE%8B%E4%B8%80%E5%88%99/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -870,6 +944,22 @@ service iptables save
         </span>
     </span>
 
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/30/Ubuntu-%E7%BB%88%E7%AB%AF-CTRL-S-%E8%A2%AB%E9%94%81%E5%AE%9A%E5%90%8E%E8%A7%A3%E9%94%81%E5%BF%AB%E6%8D%B7%E9%94%AE/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/30/Ubuntu-%E7%BB%88%E7%AB%AF-CTRL-S-%E8%A2%AB%E9%94%81%E5%AE%9A%E5%90%8E%E8%A7%A3%E9%94%81%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="cy_cmt_count" data-xid="2020/11/30/Ubuntu-终端-CTRL-S-被锁定后解锁快捷键/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
   
 </div>
 
@@ -954,6 +1044,22 @@ service iptables save
         </span>
     </span>
 
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/27/MySQL-JDBC-%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8%EF%BC%9Ajavax-net-ssl-SSLException-closing-inbound-before-receiving-peer-s-close-notify/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/27/MySQL-JDBC-%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8%EF%BC%9Ajavax-net-ssl-SSLException-closing-inbound-before-receiving-peer-s-close-notify/" class="cy_cmt_count" data-xid="2020/11/27/MySQL-JDBC-连接异常：javax-net-ssl-SSLException-closing-inbound-before-receiving-peer-s-close-notify/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
   
 </div>
 
@@ -1067,8 +1173,14 @@ javax.net.ssl.SSLException: closing inbound before receiving peer&#39;s close_no
 ** END NESTED EXCEPTION **
 </code></pre>
 <p>解决方法：在 JDBC 连接串中添加 useSSL=false 配置，如：jdbc:mysql://192.168.72.212/hive?createDatabaseIfNotExist=true&amp;characterEncoding=utf-8&amp;useSSL=false</p>
-<p>注意，XML 中的 &amp; 需要改写为：&amp;amp;</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/27/MySQL-JDBC-%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8%EF%BC%9Ajavax-net-ssl-SSLException-closing-inbound-before-receiving-peer-s-close-notify/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1142,6 +1254,22 @@ javax.net.ssl.SSLException: closing inbound before receiving peer&#39;s close_no
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/26/CentOS7-7-%E5%AE%89%E8%A3%85-MySQL-5-7/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/26/CentOS7-7-%E5%AE%89%E8%A3%85-MySQL-5-7/" class="cy_cmt_count" data-xid="2020/11/26/CentOS7-7-安装-MySQL-5-7/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1153,55 +1281,14 @@ javax.net.ssl.SSLException: closing inbound before receiving peer&#39;s close_no
     <div class="post-body" itemprop="articleBody">
           <h3 id="添加-MySQL-Yum-Repository"><a href="#添加-MySQL-Yum-Repository" class="headerlink" title="添加 MySQL Yum Repository"></a>添加 MySQL Yum Repository</h3><p>a. 从 MySQL Yum Repository 下载页面（<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/%EF%BC%89%E9%80%89%E6%8B%A9%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD%E3%80%82">https://dev.mysql.com/downloads/repo/yum/）选择对应的版本下载。</a></p>
 <p>b. 使用以下命令安装 RPM 包：</p>
-<pre><code># sudo yum localinstall mysql80-community-release-el7-3.noarch.rpm
-</code></pre>
-<h3 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h3><p>a. 查看当前启用的版本：</p>
-<pre><code># yum repolist all | grep mysql
-mysql-cluster-7.5-community/x86_64 MySQL Cluster 7.5 Community      禁用
-mysql-cluster-7.5-community-source MySQL Cluster 7.5 Community - So 禁用
-mysql-cluster-7.6-community/x86_64 MySQL Cluster 7.6 Community      禁用
-mysql-cluster-7.6-community-source MySQL Cluster 7.6 Community - So 禁用
-mysql-cluster-8.0-community/x86_64 MySQL Cluster 8.0 Community      禁用
-mysql-cluster-8.0-community-source MySQL Cluster 8.0 Community - So 禁用
-mysql-connectors-community/x86_64  MySQL Connectors Community       启用:    175
-mysql-connectors-community-source  MySQL Connectors Community - Sou 禁用
-mysql-tools-community/x86_64       MySQL Tools Community            启用:    120
-mysql-tools-community-source       MySQL Tools Community - Source   禁用
-mysql-tools-preview/x86_64         MySQL Tools Preview              禁用
-mysql-tools-preview-source         MySQL Tools Preview - Source     禁用
-mysql55-community/x86_64           MySQL 5.5 Community Server       禁用
-mysql55-community-source           MySQL 5.5 Community Server - Sou 禁用
-mysql56-community/x86_64           MySQL 5.6 Community Server       禁用
-mysql56-community-source           MySQL 5.6 Community Server - Sou 禁用
-mysql57-community/x86_64           MySQL 5.7 Community Server       禁用
-mysql57-community-source           MySQL 5.7 Community Server - Sou 禁用
-mysql80-community/x86_64           MySQL 8.0 Community Server       启用:    211
-mysql80-community-source           MySQL 8.0 Community Server - Sou 禁用
-</code></pre>
-<p>b. 启用 MySQL5.7 版本</p>
-<pre><code># sudo yum-config-manager --disable mysql80-community
-# sudo yum-config-manager --enable mysql57-community
-</code></pre>
-<h3 id="安装-MySQL5-7"><a href="#安装-MySQL5-7" class="headerlink" title="安装 MySQL5.7"></a>安装 MySQL5.7</h3><pre><code># sudo yum install mysql-community-server
-</code></pre>
-<h3 id="启动-MySQL-Server"><a href="#启动-MySQL-Server" class="headerlink" title="启动 MySQL Server"></a>启动 MySQL Server</h3><pre><code># sudo service mysqld start
-</code></pre>
-<p>检查 MySQL 启动状态</p>
-<pre><code># sudo service mysqld status
-</code></pre>
-<p>安装时生成的超级用户初始密码查看：</p>
-<pre><code># sudo grep &#39;temporary password&#39; /var/log/mysqld.log
-</code></pre>
-<p>修改初始密码：</p>
-<pre><code># mysql -uroot -p
-mysql&gt; ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;MyNewPass4!&#39;;
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;Data-platform@212&#39; WITH GRANT OPTION;
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-
-mysql&gt; FLUSH   PRIVILEGES;
-Query OK, 0 rows affected (0.00 sec)
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/26/CentOS7-7-%E5%AE%89%E8%A3%85-MySQL-5-7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1275,6 +1362,22 @@ Query OK, 0 rows affected (0.00 sec)
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/26/Shell-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%AA%E5%8F%96%E6%8A%80%E5%B7%A7/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/26/Shell-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%AA%E5%8F%96%E6%8A%80%E5%B7%A7/" class="cy_cmt_count" data-xid="2020/11/26/Shell-字符串截取技巧/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1301,21 +1404,14 @@ abc
 $ echo $&#123;var%%b*&#125;
 a
 </code></pre>
-<p>示例二：</p>
-<pre><code>$ cat /etc/passwd
-root:x:0:0:root:/root:/bin/bash
-daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
-bin:x:2:2:bin:/bin:/usr/sbin/nologin
-sys:x:3:3:sys:/dev:/usr/sbin/nologin
-sync:x:4:65534:sync:/bin:/bin/sync
-$ for line in `cat /etc/passwd`; do echo $&#123;line%%:*&#125;; done
-root
-daemon
-bin
-sys
-sync
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/26/Shell-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%AA%E5%8F%96%E6%8A%80%E5%B7%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1389,6 +1485,22 @@ sync
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2020/11/25/Maven-Too-many-files-with-unapproved-license/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2020/11/25/Maven-Too-many-files-with-unapproved-license/" class="cy_cmt_count" data-xid="2020/11/25/Maven-Too-many-files-with-unapproved-license/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1425,7 +1537,14 @@ org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal o
    
 </code></pre>
 <p>解决方法：增加 -Drat.skip=true 参数 ，跳过licensing 检查。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/25/Maven-Too-many-files-with-unapproved-license/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1480,7 +1599,7 @@ org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal o
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -1503,6 +1622,8 @@ org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal o
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>

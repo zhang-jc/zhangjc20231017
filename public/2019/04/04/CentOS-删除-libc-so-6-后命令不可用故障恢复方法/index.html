@@ -21,13 +21,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="在升级 glibc 的过程中需要先删除软连接 &#x2F;lib64&#x2F;libc.so.6。删除后执行系统命令会一直报错：">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在升级 glibc 的过程中需要先删除软连接 &#x2F;lib64&#x2F;libc.so.6。删除后执行系统命令会一直报错：   # ls -l libc.so.6 lrwxrwxrwx 1 root root 12 4月   2 13:49 libc.so.6 -&gt; libc-2.12.so # mv libc.so.6 libc.so.6.bak # mv libc.so.6.bak libc.so.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 删除 libc.so.6 后命令不可用故障恢复方法">
 <meta property="og:url" content="https://www.zhangjc.com/2019/04/04/CentOS-%E5%88%A0%E9%99%A4-libc-so-6-%E5%90%8E%E5%91%BD%E4%BB%A4%E4%B8%8D%E5%8F%AF%E7%94%A8%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
-<meta property="og:description" content="在升级 glibc 的过程中需要先删除软连接 &#x2F;lib64&#x2F;libc.so.6。删除后执行系统命令会一直报错：">
+<meta property="og:description" content="在升级 glibc 的过程中需要先删除软连接 &#x2F;lib64&#x2F;libc.so.6。删除后执行系统命令会一直报错：   # ls -l libc.so.6 lrwxrwxrwx 1 root root 12 4月   2 13:49 libc.so.6 -&gt; libc-2.12.so # mv libc.so.6 libc.so.6.bak # mv libc.so.6.bak libc.so.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-04T08:40:32.000Z">
 <meta property="article:modified_time" content="2021-07-19T16:28:00.232Z">
@@ -248,6 +248,22 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/04/CentOS-%E5%88%A0%E9%99%A4-libc-so-6-%E5%90%8E%E5%91%BD%E4%BB%A4%E4%B8%8D%E5%8F%AF%E7%94%A8%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/04/CentOS-删除-libc-so-6-后命令不可用故障恢复方法/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -327,6 +343,7 @@ mv: error while loading shared libraries: libc.so.6: cannot open shared object f
 
 
 
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
@@ -360,7 +377,7 @@ mv: error while loading shared libraries: libc.so.6: cannot open shared object f
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -383,6 +400,8 @@ mv: error while loading shared libraries: libc.so.6: cannot open shared object f
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>

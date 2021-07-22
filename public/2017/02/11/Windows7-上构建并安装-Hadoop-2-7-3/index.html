@@ -21,13 +21,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="构建 Hadoop Windows 版本不要尝试从 Cygwin 中运行安装。Cygwin 既不是必须的也不被支持的。 选择 Java 版本并设置 JAVA_HOMEHadoop 开发者已经测试了 Oracle JDK 1.7 和 1.6，并且已知可以正常工作的版本。 确保设置了 JAVA_HOME，并且不包含任何空字符。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="构建 Hadoop Windows 版本不要尝试从 Cygwin 中运行安装。Cygwin 既不是必须的也不被支持的。 选择 Java 版本并设置 JAVA_HOME">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows7 上构建并安装 Hadoop 2.7.3">
 <meta property="og:url" content="https://www.zhangjc.com/2017/02/11/Windows7-%E4%B8%8A%E6%9E%84%E5%BB%BA%E5%B9%B6%E5%AE%89%E8%A3%85-Hadoop-2-7-3/index.html">
 <meta property="og:site_name" content="一张假钞的真实世界">
-<meta property="og:description" content="构建 Hadoop Windows 版本不要尝试从 Cygwin 中运行安装。Cygwin 既不是必须的也不被支持的。 选择 Java 版本并设置 JAVA_HOMEHadoop 开发者已经测试了 Oracle JDK 1.7 和 1.6，并且已知可以正常工作的版本。 确保设置了 JAVA_HOME，并且不包含任何空字符。">
+<meta property="og:description" content="构建 Hadoop Windows 版本不要尝试从 Cygwin 中运行安装。Cygwin 既不是必须的也不被支持的。 选择 Java 版本并设置 JAVA_HOME">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-11T14:14:12.000Z">
 <meta property="article:modified_time" content="2021-07-19T16:28:00.296Z">
@@ -250,6 +250,22 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2017/02/11/Windows7-%E4%B8%8A%E6%9E%84%E5%BB%BA%E5%B9%B6%E5%AE%89%E8%A3%85-Hadoop-2-7-3/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/02/11/Windows7-上构建并安装-Hadoop-2-7-3/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -491,6 +507,7 @@ C:\deploy&gt;
 
 
 
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
@@ -524,7 +541,7 @@ C:\deploy&gt;
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -547,6 +564,8 @@ C:\deploy&gt;
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>

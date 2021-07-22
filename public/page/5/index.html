@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.zhangjc.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="人一定要有梦想，万一实现了呢...">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一张假钞的真实世界">
@@ -225,6 +225,22 @@
       </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/05/07/MapReduce-%E8%AF%BB%E5%8F%96-Hive-ORC-ArrayIndexOutOfBoundsException-1024-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/05/07/MapReduce-%E8%AF%BB%E5%8F%96-Hive-ORC-ArrayIndexOutOfBoundsException-1024-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/" class="cy_cmt_count" data-xid="2019/05/07/MapReduce-读取-Hive-ORC-ArrayIndexOutOfBoundsException-1024-异常解决/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -248,21 +264,14 @@
     at org.apache.hadoop.hive.ql.io.orc.RecordReaderImpl.hasNext(RecordReaderImpl.java:89)
 </code></pre>
 <p>通过搜索发现这个 Bug 在 Hive 2.1.1 版本中已经修复。我使用的就是这个版本，检查对应的源代码发现代码是已经按照下面的 Patch 修复过得：<a target="_blank" rel="noopener" href="https://issues.apache.org/jira/browse/HIVE-14483">https://issues.apache.org/jira/browse/HIVE-14483</a> </p>
-<p>通过反编译发现我最终打包后的代码中使用的是未修复 Bug 的代码版本。通过依赖包发现依赖的以下模块中也包含 ORC 的 Jar：</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.orc&lt;/groupId&gt;
-    &lt;artifactId&gt;orc-mapreduce&lt;/artifactId&gt;
-    &lt;version&gt;1.1.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<p>解决方法是将 orc-mapreduce 包升级到 1.1.2 版本，依赖配置如下：</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.orc&lt;/groupId&gt;
-    &lt;artifactId&gt;orc-mapreduce&lt;/artifactId&gt;
-    &lt;version&gt;1.1.2&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/05/07/MapReduce-%E8%AF%BB%E5%8F%96-Hive-ORC-ArrayIndexOutOfBoundsException-1024-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -335,6 +344,22 @@
         </span>
     </span>
 
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/17/Emacs-org-%E6%96%87%E6%A1%A3-Table-%E8%A1%8C%E5%92%8C%E5%88%97%E6%93%8D%E4%BD%9C/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/17/Emacs-org-%E6%96%87%E6%A1%A3-Table-%E8%A1%8C%E5%92%8C%E5%88%97%E6%93%8D%E4%BD%9C/" class="cy_cmt_count" data-xid="2019/04/17/Emacs-org-文档-Table-行和列操作/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
   
 </div>
 
@@ -420,6 +445,22 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/06/CentOS-6-5-%E7%BC%96%E8%AF%91-omhttp-so-%E4%B8%8B%E8%BD%BD/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/06/CentOS-6-5-%E7%BC%96%E8%AF%91-omhttp-so-%E4%B8%8B%E8%BD%BD/" class="cy_cmt_count" data-xid="2019/04/06/CentOS-6-5-编译-omhttp-so-下载/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -504,6 +545,22 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/04/CentOS-%E5%88%A0%E9%99%A4-libc-so-6-%E5%90%8E%E5%91%BD%E4%BB%A4%E4%B8%8D%E5%8F%AF%E7%94%A8%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/04/CentOS-%E5%88%A0%E9%99%A4-libc-so-6-%E5%90%8E%E5%91%BD%E4%BB%A4%E4%B8%8D%E5%8F%AF%E7%94%A8%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/" class="cy_cmt_count" data-xid="2019/04/04/CentOS-删除-libc-so-6-后命令不可用故障恢复方法/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -514,6 +571,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>在升级 glibc 的过程中需要先删除软连接 /lib64/libc.so.6。删除后执行系统命令会一直报错：</p>
+<span id="more"></span>
+
+<pre><code># ls -l libc.so.6
+lrwxrwxrwx 1 root root 12 4月   2 13:49 libc.so.6 -&gt; libc-2.12.so
+# mv libc.so.6 libc.so.6.bak
+# mv libc.so.6.bak libc.so.6
+mv: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+</code></pre>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/04/CentOS-%E5%88%A0%E9%99%A4-libc-so-6-%E5%90%8E%E5%91%BD%E4%BB%A4%E4%B8%8D%E5%8F%AF%E7%94%A8%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/#more" rel="contents">
@@ -595,6 +660,22 @@
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/04/%E8%A7%A3%E5%86%B3-HTTP-POST-%E8%AF%B7%E6%B1%82-Nginx-%E9%9D%99%E6%80%81%E5%86%85%E5%AE%B9-405-%E9%94%99%E8%AF%AF/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/04/%E8%A7%A3%E5%86%B3-HTTP-POST-%E8%AF%B7%E6%B1%82-Nginx-%E9%9D%99%E6%80%81%E5%86%85%E5%AE%B9-405-%E9%94%99%E8%AF%AF/" class="cy_cmt_count" data-xid="2019/04/04/解决-HTTP-POST-请求-Nginx-静态内容-405-错误/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -605,6 +686,17 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>Nginx 是不支持 POST 请求静态内容的，通过 POST 请求时出现以下错误：</p>
+<span id="more"></span>
+
+<pre><code># curl -d &quot;a=b&quot; &quot;http://192.16.36.15:11013/upgrade&quot;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.14.2&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/04/%E8%A7%A3%E5%86%B3-HTTP-POST-%E8%AF%B7%E6%B1%82-Nginx-%E9%9D%99%E6%80%81%E5%86%85%E5%AE%B9-405-%E9%94%99%E8%AF%AF/#more" rel="contents">
@@ -673,6 +765,22 @@
       </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/03/CentOS-6-5-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/03/CentOS-6-5-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/" class="cy_cmt_count" data-xid="2019/04/03/CentOS-6-5-编译-Rsyslog-8-1903-0/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -685,9 +793,6 @@
           <p>源码下载参考我的另外一片博文：<a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 7.3 编译 Rsyslog 8.1903.0</a>。</p>
 <p>本篇博文从创建构建环境开始填坑/(ㄒoㄒ)/~~。通过上一篇博文可以解决的问题此处不再赘述。</p>
 <p>执行配置时出现以下错误：</p>
-<pre><code># ./configure --enable-omhttp
-configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./..&quot; &quot;./../..&quot;
-</code></pre>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/03/CentOS-6-5-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/#more" rel="contents">
@@ -769,6 +874,22 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/" class="cy_cmt_count" data-xid="2019/04/03/CentOS-7-3-编译-Rsyslog-8-1903-0/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -782,6 +903,7 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
 <pre><code># wget https://github.com/rsyslog/rsyslog/archive/v8.1903.0.tar.gz
 # tar xzvf v8.1903.0.tar.gz
 </code></pre>
+<span id="more"></span>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/#more" rel="contents">
@@ -863,6 +985,22 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/" class="cy_cmt_count" data-xid="2019/04/01/Rsyslog-omhttp（HTTP-输出模块）/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -873,6 +1011,9 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
     
     <div class="post-body" itemprop="articleBody">
           <p>使用 Rsyslog 的 omhttp 模块可以将收集的日志数据以 HTTP 请求的方式输出。该模块支持单条/批量发送数据，支持 GZIP 压缩，支持 HTTPS。</p>
+<span id="more"></span>
+
+<p>Rsyslog 默认未包含 omhttp 模块，需要重新编译。编译过程参考我的博文：<br><a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2019/04/03/CentOS-7-3-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 7.3 编译 Rsyslog 8.1903.0</a><br><a target="_blank" rel="noopener" href="http://zhang-jc.github.io/2019/04/03/CentOS-6-5-%E7%BC%96%E8%AF%91-Rsyslog-8-1903-0/">CentOS 6.5 编译 Rsyslog 8.1903.0</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/04/01/Rsyslog-omhttp%EF%BC%88HTTP-%E8%BE%93%E5%87%BA%E6%A8%A1%E5%9D%97%EF%BC%89/#more" rel="contents">
@@ -953,6 +1094,22 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
         </span>
     </span>
 
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/03/27/CentOS-6-8-%E5%AE%89%E8%A3%85-Nginx/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/03/27/CentOS-6-8-%E5%AE%89%E8%A3%85-Nginx/" class="cy_cmt_count" data-xid="2019/03/27/CentOS-6-8-安装-Nginx/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
   
 </div>
 
@@ -1048,6 +1205,22 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
     </span>
 
   
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2019/03/27/MongoDB-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%B7%A5%E5%85%B7-mongoexport/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://www.zhangjc.com/2019/03/27/MongoDB-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%B7%A5%E5%85%B7-mongoexport/" class="cy_cmt_count" data-xid="2019/03/27/MongoDB-数据导出工具-mongoexport/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
 </div>
 
         </div>
@@ -1060,6 +1233,7 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
           <p>导出示例：</p>
 <pre><code>$ mongoexport --host 192.168.72.60 --db realtime_statistic_backup --collection all_play_stats_summary --fields &quot;_id.timestamp,total_uv&quot; --type csv --out uv.csv --sort &quot;&#123;&#39;_id.timestamp&#39;: -1&#125;&quot; --query &quot;&#123;&#39;_id.province_id&#39;:&#39;sc&#39;,&#39;_id.city_id&#39;:&#39;all&#39;, &#39;_id.display_name&#39;: &#39;all&#39;&#125;&quot;
 </code></pre>
+<span id="more"></span>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/03/27/MongoDB-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E5%B7%A5%E5%85%B7-mongoexport/#more" rel="contents">
@@ -1122,7 +1296,7 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -1145,6 +1319,8 @@ configure: error: cannot find install-sh or install.sh in &quot;.&quot; &quot;./
 
 
 
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvzjVauu","appkey":"37a4035ac51fb5296159e02cae686df6"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
 
 </body>
 </html>
