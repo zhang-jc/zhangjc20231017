@@ -4,16 +4,16 @@
 
 # Site
 title: 一张假钞的真实世界
-subtitle: ''
+subtitle: '大道至简'
 description: '人一定要有梦想，万一实现了呢...'
 keywords: '一张假钞, 大数据'
-author: 一张假钞
+author: Charles Zhang
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://zhang-jc.github.io/
+url: https://www.zhangjc.com/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
