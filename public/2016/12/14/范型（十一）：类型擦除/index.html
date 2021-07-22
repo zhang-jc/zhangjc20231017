@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Java 语言引入范型是为了在编译期提供严谨的类型检查和支持范型编程。为了实现范型，Java 编译器应用类型擦除：  替换所有范型类型中的类型参数，用它们的边界或者 Object（如果类型参数是无界的）。因此，生成的字节码只包含普通的类、接口和方法。 如果为了保护类型安全不要则插入类型转换。 生成桥接方法来保护继承范型类型中的多态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="范型（十一）：类型擦除">
+<meta property="og:url" content="http://zhang-jc.github.io/2016/12/14/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4/index.html">
+<meta property="og:site_name" content="一张假钞的真实世界">
+<meta property="og:description" content="Java 语言引入范型是为了在编译期提供严谨的类型检查和支持范型编程。为了实现范型，Java 编译器应用类型擦除：  替换所有范型类型中的类型参数，用它们的边界或者 Object（如果类型参数是无界的）。因此，生成的字节码只包含普通的类、接口和方法。 如果为了保护类型安全不要则插入类型转换。 生成桥接方法来保护继承范型类型中的多态。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-12-14T05:53:00.000Z">
+<meta property="article:modified_time" content="2021-07-19T16:28:00.316Z">
+<meta property="article:author" content="一张假钞">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zhang-jc.github.io/2016/12/14/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2016/12/14/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4/","path":"2016/12/14/范型（十一）：类型擦除/","title":"范型（十一）：类型擦除"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>范型（十一）：类型擦除 | 一张假钞的真实世界</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?94b1e62b5b593fa5e1e026e280b9db7e"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">一张假钞的真实世界</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9E%8B%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%93%A6%E9%99%A4"><span class="nav-number">1.</span> <span class="nav-text">范型类型的擦除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E6%93%A6%E9%99%A4"><span class="nav-number">2.</span> <span class="nav-text">范型方法的擦除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4%E5%92%8C%E6%A1%A5%E6%8E%A5%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">类型擦除和桥接方法的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A1%A5%E6%8E%A5%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">桥接方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E8%8C%83%E5%9E%8B%E5%85%B7%E4%BD%93%E5%8C%96%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">非范型具体化类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E8%8C%83%E5%9E%8B%E5%85%B7%E4%BD%93%E5%8C%96%E7%B1%BB%E5%9E%8B-1"><span class="nav-number">4.1.</span> <span class="nav-text">非范型具体化类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E6%B1%A1%E6%9F%93"><span class="nav-number">4.2.</span> <span class="nav-text">堆污染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%9D%9E%E8%8C%83%E5%9E%8B%E5%85%B7%E4%BD%93%E5%8C%96%E5%BD%A2%E5%BC%8F%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E6%96%B9%E6%B3%95%E7%9A%84%E6%BD%9C%E5%9C%A8%E6%BC%8F%E6%B4%9E"><span class="nav-number">4.3.</span> <span class="nav-text">有非范型具体化形式参数的可变参数方法的潜在漏洞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E9%9D%9E%E8%8C%83%E5%9E%8B%E5%85%B7%E4%BD%93%E5%8C%96%E5%BD%A2%E5%BC%8F%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E6%96%B9%E6%B3%95%E9%A2%84%E9%98%B2%E8%AD%A6%E5%91%8A"><span class="nav-number">4.4.</span> <span class="nav-text">从非范型具体化形式参数的可变参数方法预防警告</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="一张假钞"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2016/12/14/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一张假钞的真实世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          范型（十一）：类型擦除
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-12-14 13:53:00" itemprop="dateCreated datePublished" datetime="2016-12-14T13:53:00+08:00">2016-12-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-20 00:28:00" itemprop="dateModified" datetime="2021-07-20T00:28:00+08:00">2021-07-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2016/12/14/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4/" class="post-meta-item leancloud_visitors" data-flag-title="范型（十一）：类型擦除" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Java 语言引入范型是为了在编译期提供严谨的类型检查和支持范型编程。为了实现范型，Java 编译器应用类型擦除：</p>
+<ul>
+<li>替换所有范型类型中的类型参数，用它们的边界或者 Object（如果类型参数是无界的）。因此，生成的字节码只包含普通的类、接口和方法。</li>
+<li>如果为了保护类型安全不要则插入类型转换。</li>
+<li>生成桥接方法来保护继承范型类型中的多态。</li>
+</ul>
+<span id="more"></span>
+
+<p>类型擦除确保对于参数化类型没有新类被创建；因此，范型不会引起运行时消耗。</p>
+<h3 id="范型类型的擦除"><a href="#范型类型的擦除" class="headerlink" title="范型类型的擦除"></a>范型类型的擦除</h3><p>在类型擦除的过程中，Java 编译器擦除所有类型参数，如果类型参数是有界的则用它的第一边界替换每个类型参数，或者用 Object替换，如果类型参数是无界的。</p>
+<p>考虑下面的范型类，展示了单向列表中的一个节点：</p>
+<pre><code>public class Node&lt;T&gt; &#123;
+
+  private T data;
+  private Node&lt;T&gt; next;
+
+  public Node(T data, Node&lt;T&gt; next) &#125;
+    this.data = data;
+    this.next = next;
+  &#125;
+
+  public T getData() &#123; return data; &#125;
+  // ...
+&#125;
+</code></pre>
+<p>因为类型参数 T 是无界的，Java 编译器用 Object 替换它：</p>
+<pre><code>public class Node &#123;
+
+  private Object data;
+  private Node next;
+
+  public Node(Object data, Node next) &#123;
+    this.data = data;
+    this.next = next;
+  &#125;
+
+  public Object getData() &#123; return data; &#125;
+  // ...
+&#125;
+</code></pre>
+<p>在下面的例子中，范型类 Node 使用一个有界类型参数：</p>
+<pre><code>public class Node&lt;T extends Comparable&lt;T&gt;&gt; &#123;
+
+  private T data;
+  private Node&lt;T&gt; next;
+
+  public Node(T data, Node&lt;T&gt; next) &#123;
+    this.data = data;
+    this.next = next;
+  &#125;
+
+  public T getData() &#123; return data; &#125;
+  // ...
+&#125;
+</code></pre>
+<p>Java 编译器用第一边界类 Comparable 替换有界类型参数 T：</p>
+<pre><code>public class Node &#123;
+
+  private Comparable data;
+  private Node next;
+
+  public Node(Comparable data, Node next) &#123;
+    this.data = data;
+    this.next = next;
+  &#125;
+
+  public Comparable getData() &#123; return data; &#125;
+  // ...
+&#125;
+</code></pre>
+<h3 id="范型方法的擦除"><a href="#范型方法的擦除" class="headerlink" title="范型方法的擦除"></a>范型方法的擦除</h3><p>Java 编译器也擦除范型方法参数中的类型参数。考虑下面的范型方法：</p>
+<pre><code>// Counts the number of occurrences of elem in anArray.
+//
+public static &lt;T&gt; int count(T[] anArray, T elem) &#123;
+  int cnt = 0;
+  for (T e : anArray)
+    if (e.equals(elem))
+      ++cnt;
+    return cnt;
+&#125;
+</code></pre>
+<p>因为 T 是无界的，Java 编译器用 Object 替换它：</p>
+<pre><code>public static int count(Object[] anArray, Object elem) &#123;
+  int cnt = 0;
+  for (Object e : anArray)
+    if (e.equals(elem))
+        ++cnt;
+    return cnt;
+&#125;
+</code></pre>
+<p>假设定义了下面的类：</p>
+<pre><code>class Shape &#123; /* ... */ &#125;
+class Circle extends Shape &#123; /* ... */ &#125;
+class Rectangle extends Shape &#123; /* ... */ &#125;
+</code></pre>
+<p>可以写一个范型方法来画不同的形状：</p>
+<pre><code>public static &lt;T extends Shape&gt; void draw(T shape) &#123; /* ... */ &#125;
+</code></pre>
+<p>Java 编译器用 Shape 替换 T：</p>
+<pre><code>public static void draw(Shape shape) &#123; /* ... */ &#125;
+</code></pre>
+<h3 id="类型擦除和桥接方法的作用"><a href="#类型擦除和桥接方法的作用" class="headerlink" title="类型擦除和桥接方法的作用"></a>类型擦除和桥接方法的作用</h3><p>有时类型擦除会引起一种不可预期的情况。下面的例子展示了这种情况是如何发生的。这个例子（在<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/bridgeMethods.html#bridgeMethods">桥接方法</a>中描述的）展示了编译器如何创建一个作为类型擦除过程中一部分的合成方法（叫做桥接方法）。</p>
+<p>给出下面两个类：</p>
+<pre><code>public class Node&lt;T&gt; &#123;
+
+  public T data;
+
+  public Node(T data) &#123; this.data = data; &#125;
+
+  public void setData(T data) &#123;
+    System.out.println(&quot;Node.setData&quot;);
+    this.data = data;
+  &#125;
+&#125;
+
+public class MyNode extends Node&lt;Integer&gt; &#123;
+  public MyNode(Integer data) &#123; super(data); &#125;
+
+  public void setData(Integer data) &#123;
+    System.out.println(&quot;MyNode.setData&quot;);
+    super.setData(data);
+  &#125;
+&#125;
+</code></pre>
+<p>考虑下面的代码：</p>
+<pre><code>MyNode mn = new MyNode(5);
+Node n = mn;            // A raw type - compiler throws an unchecked warning
+n.setData(&quot;Hello&quot;);     
+Integer x = mn.data;    // Causes a ClassCastException to be thrown.
+</code></pre>
+<p>类型擦除后，代码变为：</p>
+<pre><code>MyNode mn = new MyNode(5);
+Node n = (MyNode)mn;         // A raw type - compiler throws an unchecked warning
+n.setData(&quot;Hello&quot;);
+Integer x = (String)mn.data; // Causes a ClassCastException to be thrown.
+</code></pre>
+<p>代码被执行时会发生这些：</p>
+<ul>
+<li>n.setData(“Hello”); 引起 MyNode 类对象的 setData(Object) 方法被执行。（MyNode 类从 Node 继承 setData(Object)。）</li>
+<li>setData(Object) 的方法体中，n 指向的对象的 data 属性被赋值了一个 String。</li>
+<li>同一个对象的 data 属性（mn 指向的对象）可以被访问且希望是一个 integer（因为 mn 是 MyNode 的对象，MyNode 是 Node<Integer>）。</li>
+<li>尝试赋值一个 String 给一个 Integer 引起一个 ClassCastException（来自被 Java 编译器在赋值中插入的类型转化）。</li>
+</ul>
+<h4 id="桥接方法"><a href="#桥接方法" class="headerlink" title="桥接方法"></a>桥接方法</h4><p>当编译一个继承参数化类或实现参数化接口的类或接口时，编译器可能需要创建一个作为类型擦除过程中一部分的合成方法（叫做桥接方法）。通常不需要担心桥接方法，但在跟踪栈中出现时可能会使你困惑。</p>
+<p>类型擦除之后，Node 和 MyNode 类变为：</p>
+<pre><code>public class Node &#123;
+
+  public Object data;
+
+  public Node(Object data) &#123; this.data = data; &#125;
+
+  public void setData(Object data) &#123;
+    System.out.println(&quot;Node.setData&quot;);
+    this.data = data;
+  &#125;
+&#125;
+
+public class MyNode extends Node &#123;
+
+  public MyNode(Integer data) &#123; super(data); &#125;
+
+  public void setData(Integer data) &#123;
+    System.out.println(&quot;MyNode.setData&quot;);
+    super.setData(data);
+  &#125;
+&#125;
+</code></pre>
+<p>类型擦除之后，方法特征并不匹配。Node 方法变为 setData(Object)，MyNode 方法变为 setData(Integer)。因此，MyNode setData 方法不是重载 Node setData 方法。</p>
+<p>为了解决这个问题，并保持类型擦除后范型类型的<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html">多态性</a>，Java 编译器生成一个桥接方法来保证子类型化像期望的一样工作。对于 MyNode 类，编译器为 setData 生成下面的桥接方法：</p>
+<pre><code>class MyNode extends Node &#123;
+
+  // Bridge method generated by the compiler
+  //
+  public void setData(Object data) &#123;
+    setData((Integer) data);
+  &#125;
+
+  public void setData(Integer data) &#123;
+    System.out.println(&quot;MyNode.setData&quot;);
+    super.setData(data);
+  &#125;
+
+  // ...
+&#125;
+</code></pre>
+<p>像你看到的，桥接方法与 Node 类的 setData 方法类型擦除后有相同的方法特征，代表原来的 setData 方法。</p>
+<h3 id="非范型具体化类型"><a href="#非范型具体化类型" class="headerlink" title="非范型具体化类型"></a>非范型具体化类型</h3><p><a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/erasure.html">类型擦除</a>一节讨论了编译器移除类型参数相关的过程。类型擦除关于变量参数（也被称为可变参数）方法有重要地位，变量参数方法的可变的形式参数有一个非范型具体化类型。参见<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html">将信息传递给方法或构造函数</a>中的<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs">任意数量参数</a>一节获取关于可变参数方法的更多信息。</p>
+<p>这页内容覆盖下面的主题：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html#non-reifiable-types">非范型具体化类型</a></li>
+<li><a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html#heap_pollution">堆污染</a></li>
+<li><a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html#vulnerabilities">有非范型具体化形式参数的可变参数方法的潜在漏洞</a></li>
+<li><a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html#suppressing">从非范型具体化形式参数的可变参数方法预防警告</a></li>
+</ul>
+<h4 id="非范型具体化类型-1"><a href="#非范型具体化类型-1" class="headerlink" title="非范型具体化类型"></a>非范型具体化类型</h4><p>一个可具体化的类型是在运行时类型信息完全可用的类型。这包含原生类型、非范型类型、原始类型和无界通配符的调用。</p>
+<p>非范型具体化类型是通过类型擦除在编译期被移除信息的类型 - 非无界通配符范型类型的调用。非范型具体化类型不能在运行时获取它的所有信息。非范型具体化类型的例子是 List<String> 和 List<Number>；JVM 在运行时不知道这些类型的差别。如在<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/restrictions.html">范型限制</a>中展示的，不能使用非范型具体化类型的情况：例如，在 instanceof 表达式中或者作为数组中的元素。</p>
+<h4 id="堆污染"><a href="#堆污染" class="headerlink" title="堆污染"></a>堆污染</h4><p>堆污染发生在一个参数化类型变量指向一个不是这个参数化类型的对象。如果程序执行一些在编译期产生一个未检查告警的操作，这种情况就会发生。如果涉及参数化类型操作（例如，类型转换或方法调用）的正确性不能被核查，不管是在编译期（在编译期类型检查规则范围内）或是在运行时，会生成一个未检查告警。例如，堆污染会发生在原始类型和参数化类型混合使用的时候，或者执行未检查类型转换的时候。</p>
+<p>常规情况下，所有代码同时被编译时，编译器放出一个未检查告警来引起你对潜在堆污染的注意。如果分别单独编译你的各部分代码，发现潜在的堆污染风险就很困难。如果确保代码没有编译警告，那么就没有堆污染发生。</p>
+<h4 id="有非范型具体化形式参数的可变参数方法的潜在漏洞"><a href="#有非范型具体化形式参数的可变参数方法的潜在漏洞" class="headerlink" title="有非范型具体化形式参数的可变参数方法的潜在漏洞"></a>有非范型具体化形式参数的可变参数方法的潜在漏洞</h4><p>包含可变输入参数的范型方法可能引起堆污染。</p>
+<p>考虑下面的 ArrayBuilder 类：</p>
+<pre><code>public class ArrayBuilder &#123;
+
+  public static &lt;T&gt; void addToList (List&lt;T&gt; listArg, T... elements) &#123;
+    for (T x : elements) &#123;
+      listArg.add(x);
+    &#125;
+  &#125;
+
+  public static void faultyMethod(List&lt;String&gt;... l) &#123;
+    Object[] objectArray = l;     // Valid
+    objectArray[0] = Arrays.asList(42);
+    String s = l[0].get(0);       // ClassCastException thrown here
+  &#125;
+
+&#125;
+</code></pre>
+<p>下面的例子，HeapPollutionExample 使用 ArrayBuiler 类：</p>
+<pre><code>public class HeapPollutionExample &#123;
+
+  public static void main(String[] args) &#123;
+
+    List&lt;String&gt; stringListA = new ArrayList&lt;String&gt;();
+    List&lt;String&gt; stringListB = new ArrayList&lt;String&gt;();
+
+    ArrayBuilder.addToList(stringListA, &quot;Seven&quot;, &quot;Eight&quot;, &quot;Nine&quot;);
+    ArrayBuilder.addToList(stringListB, &quot;Ten&quot;, &quot;Eleven&quot;, &quot;Twelve&quot;);
+    List&lt;List&lt;String&gt;&gt; listOfStringLists = new ArrayList&lt;List&lt;String&gt;&gt;();
+    ArrayBuilder.addToList(listOfStringLists, stringListA, stringListB);
+
+    ArrayBuilder.faultyMethod(Arrays.asList(&quot;Hello!&quot;), Arrays.asList(&quot;World!&quot;));
+  &#125;
+&#125;
+</code></pre>
+<p>当编译时，ArrayBuilder.addToList 方法定义会产生下面的告警：</p>
+<pre><code>warning: [varargs] Possible heap pollution from parameterized vararg type T
+</code></pre>
+<p>当编译器遇到一个可变参数的方法时，它转化可变常规参数为一个数组。然而，Java 编程语言不保证参数化类型数组的创建。在 ArrayBuilder.addToList 方法中，编译器转化可变参数 T… elements 为一个常规数组参数 T[] elements。然而，因为类型擦除，编译器转换可变常规参数为 Object[] elements。因此，存在堆污染的可能性。</p>
+<p>下面的表达式赋值可变常规参数 l 给 Object 数组 objectArgs：</p>
+<pre><code>Object[] objectArray = l;
+</code></pre>
+<p>这个表达式会产生潜在的堆污染。匹配可变常规参数 l 的参数化类型的值可以被赋值给 objectArray 变量，因此可以被赋给 l。但是，编译器不会在这个表达式上生成未检查告警。编译器已经在转化可变常规参数 List<String>… l 到常规参数 List[] l 时生成了告警。这个表达式是有效的；变量 l 的类型是 List[]（Object[] 的子类型）。</p>
+<p>因此，如果通过下面展示的表达式赋值任何类型的 List 对象给 objectArray 数组的任何数组元素，编译器不会显示告警或错误：</p>
+<pre><code>objectArray[0] = Arrays.asList(42);
+</code></pre>
+<p>这个表达式给 objectArray 数组的第一个元素赋值一个包含一个 Integer 类型对象的 List 对象。</p>
+<p>假设用下面的表达式调用 ArrayBuilder.faultyMethod：</p>
+<pre><code>ArrayBuilder.faultyMethod(Arrays.asList(&quot;Hello!&quot;), Arrays.asList(&quot;World!&quot;));
+</code></pre>
+<p>在运行时，JVM 在下面的表达式中抛出一个 ClassCastException：</p>
+<pre><code>// ClassCastException thrown here
+String s = l[0].get(0);
+</code></pre>
+<p>存储在变量 l 数组的第一个元素是 List<Integer> 类型，但是这个表达式希望得到一个 List<String> 类型的对象。</p>
+<h4 id="从非范型具体化形式参数的可变参数方法预防警告"><a href="#从非范型具体化形式参数的可变参数方法预防警告" class="headerlink" title="从非范型具体化形式参数的可变参数方法预防警告"></a>从非范型具体化形式参数的可变参数方法预防警告</h4><p>如果声明一个有参数化类型参数的可变参数方法，你需要确认方法体不会抛出 ClassCastException 或因为不适当的处理可变常规参数引起的其他类似异常，可以通过给静态或非构造方法声明添加下面的注解防止编译器针对可变参数方法生成的这些类型的告警：</p>
+<pre><code>@SafeVarargs
+</code></pre>
+<p>@SafeVarargs 注解是方法协议文档化的一部分；这个注解断言方法的实现会恰当处理可变常规参数。</p>
+<p>添加下面的内容到方法的声明来防止这样的告警也是勉强可取的：</p>
+<pre><code>@SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;varargs&quot;&#125;)
+</code></pre>
+<p>然而，这种方法不能防止从方法调用端生成的告警。如果对 @SuppressWarnings 语法不熟悉，参见<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/annotations/index.html">注解</a>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/12/04/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E9%80%9A%E9%85%8D%E7%AC%A6/" rel="prev" title="范型（十）：通配符">
+                  <i class="fa fa-chevron-left"></i> 范型（十）：通配符
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/12/17/%E8%8C%83%E5%9E%8B%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%EF%BC%9A%E8%8C%83%E5%9E%8B%E9%99%90%E5%88%B6/" rel="next" title="范型（十二）：范型限制">
+                  范型（十二）：范型限制 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"jrvDEw4g5DJT4x0YfGPEm0MT-gzGzoHsz","app_key":"65zbvF5eSp8XmEcCPeiszS3m","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在 Java SE API 中预定义了一系列注解类型。一些注解类型被 Java 编译器使用，一些应用到其他注解上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="注解（四）：预定义注解类型">
+<meta property="og:url" content="http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="一张假钞的真实世界">
+<meta property="og:description" content="在 Java SE API 中预定义了一系列注解类型。一些注解类型被 Java 编译器使用，一些应用到其他注解上。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-12-23T09:51:38.000Z">
+<meta property="article:modified_time" content="2021-07-19T16:28:00.312Z">
+<meta property="article:author" content="一张假钞">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B/","path":"2016/12/23/注解（四）：预定义注解类型/","title":"注解（四）：预定义注解类型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>注解（四）：预定义注解类型 | 一张假钞的真实世界</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?94b1e62b5b593fa5e1e026e280b9db7e"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">一张假钞的真实世界</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E8%AF%AD%E8%A8%80%E4%BD%BF%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Java 语言使用的注解类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%88%B0%E5%85%B6%E4%BB%96%E6%B3%A8%E8%A7%A3%E4%B8%8A%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">应用到其他注解上的注解</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="一张假钞"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一张假钞的真实世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          注解（四）：预定义注解类型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-12-23 17:51:38" itemprop="dateCreated datePublished" datetime="2016-12-23T17:51:38+08:00">2016-12-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-20 00:28:00" itemprop="dateModified" datetime="2021-07-20T00:28:00+08:00">2021-07-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E9%A2%84%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B/" class="post-meta-item leancloud_visitors" data-flag-title="注解（四）：预定义注解类型" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在 Java SE API 中预定义了一系列注解类型。一些注解类型被 Java 编译器使用，一些应用到其他注解上。</p>
+<span id="more"></span>
+
+<h3 id="Java-语言使用的注解类型"><a href="#Java-语言使用的注解类型" class="headerlink" title="Java 语言使用的注解类型"></a>Java 语言使用的注解类型</h3><p>在 java.lang 中预定义的注解类型是 @Deprecated、@Override 和 @SuppressWarnings。</p>
+<p><strong>@Deprecated</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html">@Deprecated</a> 注解表明被标记的元素是过时的且不应该继续使用。不管什么时候程序使用了一个有 @Deprecated 注解的方法、类或属性，编译期都会生成一个告警。当一个元素是过时的，应该使用 Javadoc @deprecated 标签记入文档，像下面的例子展示的。在 Javadoc 注释和在注解中使用 @ 符号不是同时发生的：从概念上它们是有关系的。并且，注意 Javadoc 标签以小写 d 开始，注解以大写 D 开始。</p>
+<pre><code>// Javadoc comment follows
+/**
+ * @deprecated
+ * explanation of why it was deprecated
+ */
+@Deprecated
+static void deprecatedMethod() &#123; &#125;
+</code></pre>
+<p><strong>@Override</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Override.html">@Override</a> 注解告诉编译器这个元素是从超类重载的一个元素。重载方法将在<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/IandI/index.html">接口和继承</a>中讨论。</p>
+<pre><code>// mark method as a superclass method
+// that has been overridden
+@Override
+int overriddenMethod() &#123; &#125;
+</code></pre>
+<p>因为当重载一个方法的时候使用这个注解不是必须的，但它有助于防止错误。如果用 @Override 标记的一个方法不能正确的重载一个它的超类中的方法，编译器会生成一个错误。</p>
+<p><strong>@SuppressWarnings</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/SuppressWarnings.html">@SuppressWarnings</a> 注解告诉编译器禁止指定的告警，否则会生成该告警。在下面的例子中，使用了一个过时的方法，编译器通常会生成一个告警。然而，在这个例子中，注解使告警被禁止。</p>
+<pre><code>// use a deprecated method and tell
+// compiler not to generate a warning
+@SuppressWarnings(&quot;deprecation&quot;)
+void useDeprecatedMethod() &#123;
+  // deprecation warning
+  // - suppressed
+  objectOne.deprecatedMethod();
+&#125;
+</code></pre>
+<p>每一个编译告警属于一种分类。Java 语言规范列出了两种分类：deprecation 和 unchecked。unchecked 告警发生在<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/generics/index.html">范型</a>出现之前结合遗传代码编写时。禁止多种类型警告，使用下面的语法：</p>
+<pre><code>@SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;deprecation&quot;&#125;)
+</code></pre>
+<p><strong>@SafeVarargs</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/SafeVarargs.html">@SafeVarargs</a> 注解，当应用到一个方法或构造方法时，代码不会对可变参数执行潜在的不安全的操作。当这种注解类型被使用时，跟可变参数相关的未检查告警被禁止。</p>
+<p><strong>@FunctionalInterface</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html">@FunctionalInterface</a> 注解，在 Java SE 8 中被引进，表明这个类型声明是一个功能性接口，像 Java 语言规范中定义的。</p>
+<h3 id="应用到其他注解上的注解"><a href="#应用到其他注解上的注解" class="headerlink" title="应用到其他注解上的注解"></a>应用到其他注解上的注解</h3><p>应用到其他注解上的注解被叫做<em>元注解</em>。在 java.lang.annotation 中定义了几种元注解类型。</p>
+<p><strong>@Retention</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Retention.html">@Retention</a> 注解指定被标记的注解如何存储：</p>
+<ul>
+<li>RetentionPolicy.SOURCE - 被标记的注解只在源码级别被保留且被编译器忽略。</li>
+<li>RetentionPolicy.CLASS - 被标记的注解在编译期被编译器保留，但被 Java 虚拟机（JVM）忽略。</li>
+<li>RetentionPolicy.RUNTIME - 被标记的注解被 JVM 保留，因此可以被运行时环境使用。</li>
+</ul>
+<p><strong>@Documented</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Documented.html">@Documented</a> 注解表明不论何时使用该注解的元素会被 Javadoc 工具文档化。（默认的，注解不包含在 Javadoc 中。）获取更多信息，参见<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/javadoc/index.html">Javadoc 工具页面</a>。</p>
+<p><strong>@Target</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Target.html">@Target</a> 注解标记另外一个注解来限制它可以应用到什么类型的 Java 元素上。一个目标注解指定一个下面元素的类型作为它的值：</p>
+<ul>
+<li>ElementType.ANNOTATION_TYPE 可以应用到一个注解类型。</li>
+<li>ElementType.CONSTRUCTOR 可以应用到一个构造方法。</li>
+<li>ElementType.FIELD 可以应用到一个域或属性。</li>
+<li>ElementType.LOCAL_VARIABLE 可以应用到一个本地变量。</li>
+<li>ElementType.METHOD 可以应用到方法级别的注解。</li>
+<li>ElementType.PACKAGE 可以应用到包声明。</li>
+<li>ElementType.PARAMETER 可以应用到方法的参数。</li>
+<li>ElementType.TYPE 可以应用到一个累的任何元素。</li>
+</ul>
+<p><strong>@Inherited</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Inherited.html">@Inherited</a> 注解表明注解类型可以从超类继承。（默认是否。）当用户查询注解类型且类没有这种类型的注解时，会查询这个类的超类获取这个注解类型。这个注解只应用于类声明。</p>
+<p><strong>@Repeatable</strong> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/Repeatable.html">@Repeatable</a> 注解，在 Java SE 8 中被引入，表明被标记的注解可以对同一个声明或类型使用被应用多次。获取更多信息，参见<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/tutorial/java/annotations/repeating.html">重复注解</a>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%A3%B0%E6%98%8E%E4%B8%80%E4%B8%AA%E6%B3%A8%E8%A7%A3%E7%B1%BB%E5%9E%8B/" rel="prev" title="注解（三）：声明一个注解类型">
+                  <i class="fa fa-chevron-left"></i> 注解（三）：声明一个注解类型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/12/23/%E6%B3%A8%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%AF%E6%8F%92%E6%8B%94%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" rel="next" title="注解（五）：类型注解和可插拔类型系统">
+                  注解（五）：类型注解和可插拔类型系统 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"jrvDEw4g5DJT4x0YfGPEm0MT-gzGzoHsz","app_key":"65zbvF5eSp8XmEcCPeiszS3m","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+</body>
+</html>

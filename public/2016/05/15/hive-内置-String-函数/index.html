@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Hive 支持以下内置字符串函数：  int ascii(string str)：返回字符串第一个字符的 ASCII 码值 string base64(binary bin)：将二进制参数转换为 base 64 编码的字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive 内置字符串（String）函数">
+<meta property="og:url" content="http://zhang-jc.github.io/2016/05/15/hive-%E5%86%85%E7%BD%AE-String-%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="一张假钞的真实世界">
+<meta property="og:description" content="Hive 支持以下内置字符串函数：  int ascii(string str)：返回字符串第一个字符的 ASCII 码值 string base64(binary bin)：将二进制参数转换为 base 64 编码的字符串">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-05-15T00:55:09.000Z">
+<meta property="article:modified_time" content="2021-07-19T16:28:00.300Z">
+<meta property="article:author" content="一张假钞">
+<meta property="article:tag" content="Hive">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zhang-jc.github.io/2016/05/15/hive-%E5%86%85%E7%BD%AE-String-%E5%87%BD%E6%95%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2016/05/15/hive-%E5%86%85%E7%BD%AE-String-%E5%87%BD%E6%95%B0/","path":"2016/05/15/hive-内置-String-函数/","title":"hive 内置字符串（String）函数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>hive 内置字符串（String）函数 | 一张假钞的真实世界</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?94b1e62b5b593fa5e1e026e280b9db7e"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">一张假钞的真实世界</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="一张假钞"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2016/05/15/hive-%E5%86%85%E7%BD%AE-String-%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一张假钞的真实世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hive 内置字符串（String）函数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-05-15 08:55:09" itemprop="dateCreated datePublished" datetime="2016-05-15T08:55:09+08:00">2016-05-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-20 00:28:00" itemprop="dateModified" datetime="2021-07-20T00:28:00+08:00">2021-07-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2016/05/15/hive-%E5%86%85%E7%BD%AE-String-%E5%87%BD%E6%95%B0/" class="post-meta-item leancloud_visitors" data-flag-title="hive 内置字符串（String）函数" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hive 支持以下内置字符串函数：</p>
+<ol>
+<li>int ascii(string str)：返回字符串第一个字符的 ASCII 码值</li>
+<li>string base64(binary bin)：将二进制参数转换为 base 64 编码的字符串</li>
+</ol>
+<span id="more"></span>
+
+<ol start="3">
+<li>string concat(string|binary A, string|binary B…)：将作为参数的字符串或者二进制数据依次拼接，并返回拼接后的结果。例如：concat(‘foo’, ‘bar’)，返回结果为‘foobar’。这个函数可以接受任意数量的字符串参数。</li>
+<li>array&lt;struct&lt;string,double&gt;&gt; context_ngrams(array&lt;array&lt;string&gt;&gt;, array&lt;string&gt;, int K, int pf)：给定一个字符串作“语境”，返回一组标记句子的Top-k语境n-grams。更多信息参见 <a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/StatisticsAndDataMining">StatisticsAndDataMining</a></li>
+<li>string concat_ws(string SEP, string A, string B…)：像上面的 concat() 函数一样，不过可以自定义分隔符 SEP。</li>
+<li>string concat_ws(string SEP, array<string>)：像上面的 concat_ws() 函数一样，不过传入一个字符串数据作为参数。</li>
+<li>string decode(binary bin, string charset)：用提供的字符集（’US-ASCII’, ‘ISO-8859-1’, ‘UTF-8’, ‘UTF-16BE’, ‘UTF-16LE’, ‘UTF-16’ 中的一个）解码第一个参数为一个字符串。如果任一个参数为 null，则结果也为 null。</li>
+<li>binary encode(string src, string charset)：用提供的字符集（’US-ASCII’, ‘ISO-8859-1’, ‘UTF-8’, ‘UTF-16BE’, ‘UTF-16LE’, ‘UTF-16’ 中的一个）编码第一个参数为二进制。</li>
+<li>int find_in_set(string str, string strList)：返回 str 在 strList 中第一次出现的序号；strList 是一个逗号分隔的字符串。如果任何一个参数为 null，则返回 null。如果第一个参数包含逗号则返回 0。例如，find_in_set(‘ab’, ‘abc,b,ab,c,def’) 返回 3。</li>
+<li>string format_number(number x, int d)：格式化数字 X 为像 ‘#,###,###.##’ 的格式，四舍五入到 D 的小数点位置，并返回结果为一个字符串。如果 D 是 0，结果没有小数点或分数部分。</li>
+<li>string get_json_object(string json_string, string path)：基于给定的 json 路径从 json 字符串中提取 json 对象，返回提取 json 对象的 json 字符串。如果输入的 json 字符串非法则返回 null。备注：json 路径只能包含 [0-9a-z_] 字符，即，没有大写或特殊字符。并且键不能以数字开头。这是由于 Hive 列名称的限制。</li>
+<li>boolean n_file(string str, string filename)：如果字符串 str 在 filename 中整行出现则返回 true。</li>
+<li>int instr(string str, string substr)：返回 substr 在 str 中第一次出现的位置。如果任一个参数为 null，则返回 null；如果在 str 中找不到 substr，则返回 0。注意这个函数不是以 0 为基础的。str 中第一个字符的索引是 1。</li>
+<li>int length(string A)：返回字符串的长度。</li>
+<li>int locate(string substr, string str[, int pos])：返回 pos 位置之后 substr 在 str 中第一次出现的位置。</li>
+<li>string lower(string A) lcase(string A)： 返回全部字符转为小写之后的字符串。例如，lower(‘fOoBaR’) 结果为 ‘foobar’。</li>
+<li>string lpad(string str, int len, string pad)：左边添加 pad 参数输入的字符使字符串长度为 len，然后返回该字符串。</li>
+<li>string ltrim(string A)：返回从 A 的开头（左手边）删除空白字符后的字符串。例如，ltrim(‘ foobar ‘) 结果为 ‘foobar’。</li>
+<li>array&lt;struct&lt;string,double&gt;&gt; ngrams(array&lt;array&lt;string&gt;&gt;, int N, int K, int pf)：返回一组标记句子的Top-k语境n-grams，就像 sentences() UDAF 返回的结果。参见 <a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/StatisticsAndDataMining">StatisticsAndDataMining</a> 获取更多信息。</li>
+<li>string parse_url(string urlString, string partToExtract [, string keyToExtract])：返回指定的 URL 中的部分。partToExtract 合法的取值有 HOST、PATH、QUERY、REF、PROTOCOL、AUTHORITY、FILE 和 USERINFO。例如，parse_url(‘<a target="_blank" rel="noopener" href="http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1&#39;">http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1&#39;</a>, ‘HOST’) 返回 ‘facebook.com’。并且通过提供第三个参数，可以提取 QUERY 中普通的键值，例如，parse_url(‘<a target="_blank" rel="noopener" href="http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1&#39;">http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1&#39;</a>, ‘QUERY’, ‘k1’) 返回 ‘v1’。</li>
+<li>string printf(String format, Obj… args)：返回按照输入的格式输出格式化的字符串。</li>
+<li>string regexp_extract(string subject, string pattern, int index)：返回使用模式提取的字符串。例如，regexp_extract(‘foothebar’, ‘foo(.*?)(bar)’, 2) 返回 ‘bar’。注意，使用预定义字符类型有一些必要的关注：使用 ‘\s’ 作为第二个参数将匹配字母 s；匹配空白字符 ‘\\s’ 是必须的，等。‘index’ 参数是 Java 正则 Matcher group() 方法索引。查阅 docs/api/java/util/regex/Matcher.html 获取‘index’或 Java 正则 group() 方法的更多信息。</li>
+<li>string regexp_replace(string INITIAL_STRING, string PATTERN, string REPLACEMENT)：返回用 REPLACEMENT 的实例替换 INITIAL_STRING 中所有 PATTERN 中定义的匹配 java 正则表达式的子字符串的结果字符串。例如，regexp_replace(“foobar”, “oo|ar”, “”) 返回‘fb’。注意，使用预定义字符类型有一些必要的关注：使用 ‘\s’ 作为第二个参数将匹配字母 s；匹配空白字符 ‘\\s’ 是必须的，等。</li>
+<li>string repeat(string str, int n)：重复 str n 次。</li>
+<li>string reverse(string A)：返回反转后的字符串。</li>
+<li>string rpad(string str, int len, string pad)：右边添加 pad 参数输入的字符使字符串长度为 len，然后返回该字符串。</li>
+<li>string rtrim(string A)：返回从 A 的末尾（右手边）删除空白字符后的字符串。例如，rtrim(‘ foobar ‘) 结果为 ‘foobar’。</li>
+<li>array&lt;array&lt;string&gt;&gt; sentences(string str, string lang, string locale)：标记一个自然语言文本字符串为单词和句子，每个句子在适当的句子边界被拆分并且作为一个单词数组返回。‘lang’和‘locale’是可选参数。例如，sentences(‘Hello there! How are you?’) 返回 ( (“Hello”, “there”), (“How”, “are”, “you”))。</li>
+<li>string space(int n)：返回 n 空白的字符串。</li>
+<li>array split(string str, string pat)：从 pat 左右分解 str（ pat 是一个正则表达式）。</li>
+<li>map&lt;string,string&gt; str_to_map(text[, delimiter1, delimiter2])：使用两个分隔符将文本分割为键值对。delimiter1 分割文本为键值对，delimiter2 拆分每个键值对。默认的第一分隔符是‘,’，第二个分隔符是‘＝’。</li>
+<li>string substr(string|binary A, int start) substring(string|binary A, int start)：返回从 start 位置到末尾的字符串 A 的子字符串或字节数组的部分。例如，substr(‘foobar’, 4) 结果为 ‘bar’。</li>
+<li>string substr(string|binary A, int start, int len) substring(string|binary A, int start, int len)：返回从 start 位置开始长度为 len 的 A 的字符串或字节数组的部分。例如，substr(‘foobar’, 4, 1) 返回‘b’。</li>
+<li>string substring_index(string A, string delim, int count)：返回字符串 A 中 delim 分隔符第 count 次匹配前的子字符串。如果 count 是正数，所有到左边最后分隔符（从左边计算）都会返回。如果 count 是负数，所有到右边最后分隔符（从右边计算）都会返回。当搜索 delim 时，Substring_index 是大小写敏感的。示例：substring_index(‘<a target="_blank" rel="noopener" href="http://www.apache.org&/#39;">www.apache.org&#39;</a>, ‘.’, 2) = ‘<a target="_blank" rel="noopener" href="http://www.apache&/#39;%E3%80%82">www.apache&#39;。</a></li>
+<li>string translate(string|char|varchar input, string|char|varchar from, string|char|varchar to)：通过用 to 中对应的字符替换 from 中展示的字符转化 input 字符串。这跟 <a target="_blank" rel="noopener" href="http://www.postgresql.org/docs/9.1/interactive/functions-string.html">PostgreSQL</a> 中的 <strong>translate</strong> 函数相似。这个 UDF 的任一个参数为 NULL，结果也为 NULL。</li>
+<li>string trim(string A)：返回从 A 两端去除空白字符后的字符串。例如，trim(‘ foobar ‘) 结果为 ‘foobar’。</li>
+<li>binary unbase64(string str)：转换参数从一个 base 64 字符串为 BINARY。</li>
+<li>string upper(string A) ucase(string A)：返回转换字符串 A 中所有字符为大写后的字符串。例如，upper(‘fOoBaR’) 结果为‘FOOBAR’。</li>
+<li>string initcap(string A)：返回字符串，每个单词的第一个字母为大写，所有其他字母为小写。单词以空白字符分割。</li>
+<li>int levenshtein(string A, string B)：返回两个字符串之间的 Levenshtein 距离。例如，levenshtein(‘kitten’, ‘sitting’) 结果为 3。</li>
+<li>string soundex(string A)：返回字符串的 soundex 码。例如，soundex(‘Miller’) 结果为 M460。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hive/" rel="tag"># Hive</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/05/13/Java-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="prev" title="Java 单例模式">
+                  <i class="fa fa-chevron-left"></i> Java 单例模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/05/15/Markdown-%E8%BD%AC%E4%B9%89/" rel="next" title="Markdown 转义">
+                  Markdown 转义 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"jrvDEw4g5DJT4x0YfGPEm0MT-gzGzoHsz","app_key":"65zbvF5eSp8XmEcCPeiszS3m","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+</body>
+</html>

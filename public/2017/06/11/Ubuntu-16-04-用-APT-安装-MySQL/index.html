@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhang-jc.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.6.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="安装 MySQL用以下命令安装 MySQL: sudo apt-get install mysql-server  这个命令会安装 MySQL 服务器、客户端和公共文件。安装过程会出现两个要求输入的对话框：  输入 MySQL root 用户的密码。 指明是否创建 test 数据库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 16.04 用 APT 安装 MySQL">
+<meta property="og:url" content="http://zhang-jc.github.io/2017/06/11/Ubuntu-16-04-%E7%94%A8-APT-%E5%AE%89%E8%A3%85-MySQL/index.html">
+<meta property="og:site_name" content="一张假钞的真实世界">
+<meta property="og:description" content="安装 MySQL用以下命令安装 MySQL: sudo apt-get install mysql-server  这个命令会安装 MySQL 服务器、客户端和公共文件。安装过程会出现两个要求输入的对话框：  输入 MySQL root 用户的密码。 指明是否创建 test 数据库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-06-11T10:39:03.000Z">
+<meta property="article:modified_time" content="2021-07-19T16:28:00.292Z">
+<meta property="article:author" content="一张假钞">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Ubuntu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://zhang-jc.github.io/2017/06/11/Ubuntu-16-04-%E7%94%A8-APT-%E5%AE%89%E8%A3%85-MySQL/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zhang-jc.github.io/2017/06/11/Ubuntu-16-04-%E7%94%A8-APT-%E5%AE%89%E8%A3%85-MySQL/","path":"2017/06/11/Ubuntu-16-04-用-APT-安装-MySQL/","title":"Ubuntu 16.04 用 APT 安装 MySQL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ubuntu 16.04 用 APT 安装 MySQL | 一张假钞的真实世界</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?94b1e62b5b593fa5e1e026e280b9db7e"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">一张假钞的真实世界</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MySQL"><span class="nav-number">1.</span> <span class="nav-text">安装 MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8-%E5%81%9C%E6%AD%A2-MySQL"><span class="nav-number">2.</span> <span class="nav-text">启动&#x2F;停止 MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5-%E6%96%AD%E5%BC%80-MySQL-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">连接&#x2F;断开 MySQL 服务器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">创建数据库</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="一张假钞"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">一张假钞</p>
+  <div class="site-description" itemprop="description">人一定要有梦想，万一实现了呢...</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zhang-jc.github.io/2017/06/11/Ubuntu-16-04-%E7%94%A8-APT-%E5%AE%89%E8%A3%85-MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="一张假钞">
+      <meta itemprop="description" content="人一定要有梦想，万一实现了呢...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一张假钞的真实世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu 16.04 用 APT 安装 MySQL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-06-11 18:39:03" itemprop="dateCreated datePublished" datetime="2017-06-11T18:39:03+08:00">2017-06-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-20 00:28:00" itemprop="dateModified" datetime="2021-07-20T00:28:00+08:00">2021-07-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2017/06/11/Ubuntu-16-04-%E7%94%A8-APT-%E5%AE%89%E8%A3%85-MySQL/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu 16.04 用 APT 安装 MySQL" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h3><p>用以下命令安装 MySQL:</p>
+<pre><code>sudo apt-get install mysql-server
+</code></pre>
+<p>这个命令会安装 MySQL 服务器、客户端和公共文件。安装过程会出现两个要求输入的对话框：</p>
+<ul>
+<li>输入 MySQL root 用户的密码。</li>
+<li>指明是否创建 test 数据库。</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="启动-停止-MySQL"><a href="#启动-停止-MySQL" class="headerlink" title="启动/停止 MySQL"></a>启动/停止 MySQL</h3><p>安装之后，MySQL 服务器会自动启动。用下面的命令检查 MySQL 服务器状态：</p>
+<pre><code>$ sudo service mysql status
+● mysql.service - MySQL Community Server
+   Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+   Active: active (running) since 日 2017-06-11 17:05:11 CST; 14min ago
+ Main PID: 11970 (mysqld)
+   CGroup: /system.slice/mysql.service
+           └─11970 /usr/sbin/mysqld
+
+6月 11 17:05:09 frin systemd[1]: Starting MySQL Community Server...
+6月 11 17:05:11 frin systemd[1]: Started MySQL Community Server.
+</code></pre>
+<p>使用下面的命令停止 MySQL：</p>
+<pre><code>sudo service mysql stop
+</code></pre>
+<p>使用下面的命令启动 MySQL：</p>
+<pre><code>sudo service mysql start
+</code></pre>
+<h3 id="连接-断开-MySQL-服务器："><a href="#连接-断开-MySQL-服务器：" class="headerlink" title="连接/断开 MySQL 服务器："></a>连接/断开 MySQL 服务器：</h3><p>使用 root 用户连接 MySQL 服务器：</p>
+<pre><code>$ mysql -h 127.0.0.1 -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.7.18-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+mysql&gt;
+</code></pre>
+<p>使用以下命令断开连接：</p>
+<pre><code>mysql&gt; quit
+Bye
+</code></pre>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>创建 Hive 元数据使用的数据库 hive。使用以下命令：</p>
+<pre><code>mysql&gt; CREATE DATABASE hive;
+Query OK, 1 row affected (0.03 sec)
+</code></pre>
+<p>使用以下命令切换到 hive 数据库：</p>
+<pre><code>mysql&gt; use hive;
+Database changed
+</code></pre>
+<p>使用以下命令创建用户 hive，并授权：</p>
+<pre><code>mysql&gt; use mysql;
+Database changed
+
+mysql&gt; CREATE USER &#39;hive&#39;@&#39;%&#39; IDENTIFIED BY &#39;hive@mysql123&#39;;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql&gt; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON hive.* TO &#39;hive&#39;@&#39;%&#39;;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql&gt; CREATE USER &#39;hive&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;hive@mysql123&#39;;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql&gt; GRANT ALL ON hive.* TO &#39;hive&#39;@&#39;localhost&#39;;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql&gt; FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/05/31/HDFS-getmerge-Operation-not-permitted/" rel="prev" title="HDFS getmerge: Operation not permitted">
+                  <i class="fa fa-chevron-left"></i> HDFS getmerge: Operation not permitted
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/06/11/Hive-2-1-1-%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" rel="next" title="Hive 2.1.1 编译安装">
+                  Hive 2.1.1 编译安装 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一张假钞</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"jrvDEw4g5DJT4x0YfGPEm0MT-gzGzoHsz","app_key":"65zbvF5eSp8XmEcCPeiszS3m","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+</body>
+</html>
