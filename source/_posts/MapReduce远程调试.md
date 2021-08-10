@@ -94,7 +94,7 @@ Container exited with a non-zero exit code 143
 </property>
 ```
 
-> 对于虚拟内存的理解见我的另外一片博文：[对yarn-nodemanager-vmem-pmem-ratio的理解](/2021/08/09/对yarn-nodemanager-vmem-pmem-ratio的理解/)
+> 此处有一个很大的疑问：为什么物理内存占用很小，但虚拟内存占用会这么大？这个问题目前还未搞懂(>﹏<)
 > 问题解决的关键是Container分配物理内存的值乘以“yarn.nodemanager.vmem-pmem-ratio”的值大于异常信息中的数据；另外一种思路是禁用虚拟内存的检查，这种方法我没有实际验证。
 
 
