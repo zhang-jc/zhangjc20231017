@@ -155,3 +155,5 @@ Time taken: 0.041 seconds, Fetched: 31 row(s)
 ```SQL
 ALTER TABLE `hive`.`partition_params` CHANGE COLUMN `PARAM_VALUE` `PARAM_VALUE` VARCHAR(4000) CHARACTER SET 'utf8' NULL DEFAULT NULL;
 ```
+
+> 遗留问题：为什么在Hive表的属性中新增了spark相关的属性？
