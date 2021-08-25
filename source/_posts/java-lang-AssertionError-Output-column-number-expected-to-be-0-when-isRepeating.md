@@ -176,3 +176,5 @@ Caused by: java.lang.AssertionError: Output column number expected to be 0 when 
     <value>false</value>
   </property>
 ```
+
+参考链接：[https://issues.apache.org/jira/browse/HIVE-20990?jql=project%20%3D%20HIVE%20AND%20component%20%3D%20Vectorization](https://issues.apache.org/jira/browse/HIVE-20990?jql=project%20%3D%20HIVE%20AND%20component%20%3D%20Vectorization)
