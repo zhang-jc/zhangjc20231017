@@ -22,9 +22,36 @@ ERROR: Command errored out with exit status 128: git clone -q https://github.com
 The command '/bin/sh -c ./build/env/bin/pip install --no-cache-dir   psycopg2-binary   django_redis==4.11.0   flower   git+https://github.com/gethue/PyHive   git+https://github.com/bryanyang0528/ksql-python   pydruid   pybigquery   elasticsearch-dbapi   pyasn1==0.4.1   python-snappy==0.5.4   threadloop   sqlalchemy-clickhouse   infi.clickhouse_orm==1.0.4' returned a non-zero code: 1
 ```
 
-网上大都是说因为代理的问题，对我这个场景没用。我的解决方法是在命令行先执行异常的clone，然后再次执行构建，问题解决。如下：
+网上大都是说因为代理的问题，对我这个场景没用。通过搜索找到一个很好的代理：[https://mirror.ghproxy.com](https://mirror.ghproxy.com)
 
-```Shell
-# git clone -q https://github.com/gethue/PyHive /tmp/pip-req-build-86w_hwe4
-# docker build -t hue -f tools/docker/hue/Dockerfile .
+desktop/core/requirements.txt中以下位置：
+
+```Text
+git+https://github.com/gethue/django-babel.git
+git+https://github.com/gethue/django-mako.git
+```
+
+改为：
+
+```Text
+git+https://mirror.ghproxy.com/https://github.com/gethue/django-babel.git
+git+https://mirror.ghproxy.com/https://github.com/gethue/django-mako.git
+```
+
+tools/docker/hue/Dockerfile中以下位置：
+
+```Text
+  git+https://github.com/gethue/PyHive \
+  # pyhive \
+  #ksql \
+  git+https://github.com/bryanyang0528/ksql-python \
+```
+
+改为：
+
+```Text
+  git+https://mirror.ghproxy.com/https://github.com/gethue/PyHive \
+  # pyhive \
+  #ksql \
+  git+https://mirror.ghproxy.com/https://github.com/bryanyang0528/ksql-python \
 ```
