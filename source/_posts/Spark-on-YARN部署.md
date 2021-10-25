@@ -6,6 +6,9 @@ tags:
 - Spark
 - Hadoop
 - Yarn
+categories:
+- 大数据
+- Spark
 ---
 
 目前各大数据组件部署其实都比较简单，几乎接近开箱即用。此处只记录部署时遇到的问题。
