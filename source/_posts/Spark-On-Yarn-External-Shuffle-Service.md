@@ -47,3 +47,21 @@ export HADOOP_CLASSPATH=${SPARK_HOME}/yarn/spark-3.1.2-yarn-shuffle.jar:$HADOOP_
 yarn --daemon stop nodemanager
 yarn --daemon start nodemanager
 ```
+
+# 检查
+
+在NodeManager节点上使用以下命令查看7337端口是否已被监听：
+
+```Shell
+netstat -ntlp|grep 7337
+```
+
+该端口通过spark.shuffle.service.port指定，默认是7337。
+
+# 启用
+
+在${SPARK_HOME}/conf/spark-defaults.conf中添加以下配置，并分发至所有节点。
+
+```Conf
+spark.shuffle.service.enabled true
+```
