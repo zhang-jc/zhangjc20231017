@@ -19,7 +19,7 @@ categories:
 
 # 第一步：Hive部署
 
-在所有Worker节点上部署Hive。
+在所有Worker节点上部署Hive。主要是使用Hive下面的libs。
 
 # 第二步：Spark CLASSPATH
 
@@ -44,12 +44,12 @@ export SPARK_DIST_CLASSPATH=$(hadoop classpath)
 # 第五步：兼容Hive 3.1.2
 
 - 将hive-site.xml复制到spark配置目录下。
-- 在配置文件spark-defaults.conf中添加以下内容：
+- 在配置文件spark-defaults.conf中添加以下内容。假设Hive安装目录为：/opt/hive。
 
 ```Conf
 spark.sql.hive.metastore.version 3.1.2
 spark.sql.hive.metastore.jars path
-spark.sql.hive.metastore.jars.path file:///opt/hive/lib/hive-metastore-3.1.2.jar,file:///opt/hive/lib/hive-exec-3.1.2.jar,file:///opt/hive/lib/commons-logging-1.0.4.jar,file:///opt/hive/lib/commons-io-2.4.jar,file:///opt/hive/lib/javax.servlet-api-3.1.0.jar,file:///opt/hive/lib/calcite-core-1.16.0.jar,file:///opt/hive/lib/commons-codec-1.7.jar,file:///opt/hive/lib/libfb303-0.9.3.jar
+spark.sql.hive.metastore.jars.path file:///opt/hive/lib/*.jar
 ```
 
 > 注意：这些Jar包需要使用Hive 3.1.2版本的。
