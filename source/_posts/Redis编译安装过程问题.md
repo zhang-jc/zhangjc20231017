@@ -27,6 +27,12 @@ make distclean
 make
 ```
 
+如果问题未解决则使用以下命令再试：
+
+```Shell
+make MALLOC=libc
+```
+
 # tcl 8.5
 
 ```Text
