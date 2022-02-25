@@ -67,3 +67,22 @@ source /etc/profile
 安装完成后，在我的环境里面仍然提示上面的错误。查看runtest脚本源码，并使用which命令验证才发现是我的Docker环境中没有安装which命令。-_-||
 
 所以，一言不合就撸源代码是一个好习惯(*￣︶￣)
+
+# release.h
+
+```Text
+release.c:37:21: fatal error: release.h: No such file or directory
+ #include "release.h"
+                     ^
+compilation terminated.
+make[1]: *** [release.o] Error 1
+```
+
+竟然是因为下面的脚本没有权限导致的。遇到问题仔细检查Log的重要性啊！！
+
+```Text
+cd src && make all
+sh: ./mkreleasehdr.sh: Permission denied
+make[1]: Entering directory `/home/redis/redis-6.2.6/src'
+    CC Makefile.dep
+```
